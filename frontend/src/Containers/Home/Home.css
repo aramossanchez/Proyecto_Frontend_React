@@ -1,0 +1,72 @@
+:root {
+    --masoscuro: #401708;
+    --oscuro: #8C2703;
+    --neutro: #D93D04;
+    --claro: #F27405;
+    --masclaro: #F2AA6B;
+}
+/* CONTENEDOR HOME */
+#container-home{
+    width: 100vw;
+    height: calc(100vh - 3.5em);
+    background-color: var(--masclaro);
+    color: var(--masoscuro);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+/* BLOQUE IZQUIERDA HOME */
+#mensaje-inicio{
+    width: 60%;
+}
+/* BLOQUE DERECHA HOME */
+#login-inicio{
+    width: 30%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--oscuro);
+}
+/* H2 DE HOME */
+#login-inicio h2{
+    color: var(--claro);
+    align-self: flex-start;
+    margin: 1em 0 0 1em;
+}
+/* INPUT DE HOME */
+#login-inicio input{
+    all:unset;
+    text-align: left;
+    border: 2px solid transparent;
+    border-bottom: 2px solid var(--masoscuro);
+    padding: 0.25em;
+    width: 80%;
+}
+#login-inicio input:focus{
+    border: 2px solid var(--masoscuro);
+    background-color: var(--claro);
+}
+/* BOTON LOGIN DE HOME */
+#boton-login{
+    color: var(--claro);
+    background-color: var(--masoscuro);
+    padding: 0.5em 2em;
+    border-radius: 0.25em;
+    cursor: pointer;
+    transition: 0.3s;
+    align-self: flex-end;
+    margin: 0 1em 0.5em 0;
+}
+#boton-login:hover{
+    color: var(--neutro);
+    background-color: var(--masclaro);
+    padding: 0.5em 2em;
+    border-radius: 0.25em;
+    cursor: pointer;
+    transition: 0.3s;
+    align-self: flex-end;
+    margin: 0 1em 0.5em 0;
+}

@@ -1,0 +1,27 @@
+:root {
+    --masoscuro: #401708;
+    --oscuro: #8C2703;
+    --neutro: #D93D04;
+    --claro: #F27405;
+    --masclaro: #F2AA6B;
+}
+#container-header{
+    height: 3.5em;
+    width: 100%;
+    background-color: var(--masoscuro);
+    color: var(--masclaro);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+/*ENLACES*/
+#container-header div{
+    margin: 0 2em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#container-header div:hover{
+    text-shadow: 0px 0px 5px var(--masclaro);
+    transform: scale(1.1);
+}
