@@ -1,0 +1,32 @@
+:root {
+    --masoscuro: #401708;
+    --oscuro: #8C2703;
+    --neutro: #D93D04;
+    --claro: #F27405;
+    --masclaro: #F2AA6B;
+}
+#container-peliculas{
+    min-height: 100vh;
+    background-color: var(--masclaro);
+    color: var(--masoscuro);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.pelicula-individual{
+    text-align: left;
+    width: 20%;
+    margin: 2em;
+    border:2px solid var(--claro);
+    padding: 1em;
+    cursor: pointer;
+    transition: 0.25s;
+}
+.pelicula-individual:hover{
+    background-color: var(--oscuro);
+    border:2px solid var(--masoscuro);
+    color: var(--masclaro);
+
+}

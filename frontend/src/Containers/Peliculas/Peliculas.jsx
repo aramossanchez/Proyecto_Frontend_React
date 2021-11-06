@@ -15,7 +15,12 @@ const Peliculas = () =>{
     return(
         <div id="container-peliculas">
             {peliculas.map((pelicula)=>{
-                return <div key={pelicula.id}>{JSON.stringify(pelicula.titulo)}</div>
+                return <div key={pelicula.id} className="pelicula-individual">
+                    <p>Título: {JSON.stringify(pelicula.titulo)}</p>
+                    <p>Ciudad disponible: {JSON.stringify(pelicula.ciudad)}</p>
+                    <p>Disponible para alquilar: {JSON.stringify(pelicula.alquilada)}</p>
+                    
+                    </div>
             })}
         </div>
     )
