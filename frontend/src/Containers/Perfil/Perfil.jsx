@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './Perfil.css';
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Perfil = () =>{
 
@@ -34,17 +34,19 @@ const Perfil = () =>{
         })
     };
 
-    //AL CARGAR EL COMPONENTE, GUARDA EN datosUsuario LOS DATOS GUARDADOS EN LOCALSTORAGE
+    //AL CARGAR EL COMPONENTE, GUARDA EN datosUsuario LOS DATOS GUARDADOS EN LOCALSTORAGE, Y GUARDO EN token EL TOKEN OBTENIDO
     useEffect(()=>{
         let datosPerfil = JSON.parse(localStorage.getItem("datosLogin"));
+        //GUARDAMOS EL TOKEN EL LOCALSTORAGE
+        localStorage.setItem("token", datosPerfil.token);
 
         setdatosUsuario({
+            id: datosPerfil.usuario.id,
             nombre: datosPerfil.usuario.nombre,
             correo: datosPerfil.usuario.correo,
             ciudad: datosPerfil.usuario.ciudad,
             createdAt: datosPerfil.usuario.createdAt,
         });
-        console.log(datosUsuario);
     }, [])
 
     //AL ACTUALIZAR datosUsuario, datosActualizar SE ACTUALIZA CON ESTOS CAMBIOS 
@@ -59,8 +61,14 @@ const Perfil = () =>{
         )
     },[datosUsuario]);
 
-    const actualizarRegistro = () =>{
-        console.log(datosActualizar);
+    const actualizarRegistro = async () =>{
+        //RECUPERAMOS TOKEN
+        let token = localStorage.getItem("token");
+        //CREAMOS LA CONFIGURACIÓN DEL HEADER QUE SE VA A MANDAR
+        let config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+        await axios.put(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${datosUsuario.id}`, datosActualizar, config)
     }
 
     return(

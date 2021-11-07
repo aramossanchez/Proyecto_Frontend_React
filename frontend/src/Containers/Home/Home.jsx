@@ -23,7 +23,6 @@ const Home = () =>{
 
     //FUNCIÓN PARA LOGUEAR USUARIO
     const loguear = async () => {
-        console.log("hola");
 
         let body = {
             correo: datosUsuario.correo,
@@ -34,7 +33,7 @@ const Home = () =>{
         
         try {
             localStorage.setItem("datosLogin", JSON.stringify(res.data));
-            if(res.data.usuario.rol == "administrador"){
+            if(res.data.usuario.rol === "administrador"){
                 localStorage.setItem("perfil", "administrador");
             }else{
                 localStorage.setItem("perfil", "usuario");

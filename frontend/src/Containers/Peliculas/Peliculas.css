@@ -42,20 +42,20 @@
     cursor: pointer;
 }
 /* CONTENEDOR DE BARRA DE BUSQUEDA DE PELICULAS Y LUPA */
-#barra-busqueda-peliculas-titulo{
+.barra-busqueda-peliculas{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
 }
 /* BOTON PARA BUSCAR PELICULAS POR NOMBRE */
-#boton-buscar-pelicula-nombre{
+.boton-buscar-pelicula{
     width: 2em;
     height: 2em;
     cursor: pointer;
     transition: 0.2s;
 }
-#boton-buscar-pelicula-nombre img{
+.boton-buscar-pelicula img{
     width: 1.5em;
     height: 1.5em;
 }
@@ -76,9 +76,16 @@
     border:2px solid var(--claro);
     padding: 1em;
     transition: 0.25s;
-}
-.pelicula-individual:hover{
     background-color: var(--oscuro);
     border:2px solid var(--masoscuro);
     color: var(--masclaro);
+    cursor: default;
+}
+.pelicula-individual span{
+    font-weight: bold;
+}
+.pelicula-individual:hover{
+    background-color: var(--neutro);
+    border:2px solid var(--claro);
+    color: var(--masoscuro);
 }

@@ -50,3 +50,4 @@ El directorio **src** es donde está almacenada toda la aplicación. En este dir
 * **Containers**: En este directorio es donde se guardarán las diferentes vistas:
     * **Inicio**: Es la página principal, donde se ve un pequeño mensaje de bienvenida, el header y la ventana de login.
     * **Perfil**: Es la página donde se puede ver los datos del usuario que se ha logado en la página, actualizar esos datos,
+    * **Películas**: Es la página donde podemos ver todas las películas de la base de datos. Podemos filtrarlas por ciudades, hacer búsqueda por título, por género, por protagonista

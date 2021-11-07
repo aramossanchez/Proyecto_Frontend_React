@@ -14,7 +14,7 @@ const Peliculas = () =>{
         let indiceCiudadSeleccionada = e.target.selectedIndex;
         let ciudadSeleccionada = e.target.options[indiceCiudadSeleccionada].text;
         console.log(ciudadSeleccionada);
-        let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas${ciudadSeleccionada == "España" ? "" : "/ciudad/" + ciudadSeleccionada}`);
+        let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas${ciudadSeleccionada === "España" ? "" : "/ciudad/" + ciudadSeleccionada}`);
         setPeliculas((res.data));
     };
 
@@ -32,10 +32,20 @@ const Peliculas = () =>{
         setPeliculas((res.data));
     }
 
-    //CARGA DE TODAS LAS PELICULAS DE LA BASE DE DATOS
-    useEffect(async ()=>{
-        let res = await axios.get("https://aramossanchez-videoclub-api.herokuapp.com/peliculas/");
+    //BUSQUEDA POR PROTAGONISTA
+    const buscarProtagonista = async () =>{
+        let valorBusqueda = document.getElementById("busqueda-protagonista").value;
+        let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas/actor_principal/${valorBusqueda}`)
         setPeliculas((res.data));
+    }
+
+    //CARGA DE TODAS LAS PELICULAS DE LA BASE DE DATOS
+    useEffect(()=>{
+        const cargarPeliculas = async () =>{
+            let res = await axios.get("https://aramossanchez-videoclub-api.herokuapp.com/peliculas/");
+            setPeliculas((res.data));
+        }
+        cargarPeliculas();
     }, [])
 
     return(
@@ -52,19 +62,27 @@ const Peliculas = () =>{
                     </select>
                 </div>
                 {/* BUSQUEDA POR TITULO */}
-                <div id="busqueda-pelicula-nombre">
+                <div id="busqueda-pelicula-titulo">
                     <p>Búsqueda de películas por título</p>
-                    <div id="barra-busqueda-peliculas-titulo">
+                    <div className="barra-busqueda-peliculas">
                         <input type="text" name="busqueda" id="busqueda-titulo" autoComplete="off"/>
-                        <div id="boton-buscar-pelicula-nombre" onClick={()=>buscarTitulo()}><img src={lupa} /></div>
+                        <div className="boton-buscar-pelicula" onClick={()=>buscarTitulo()}><img src={lupa} alt="Lupa" /></div>
                     </div>
                 </div>
                 {/* BUSQUEDA POR GENERO */}
-                <div id="busqueda-pelicula-nombre">
+                <div id="busqueda-pelicula-genero">
                     <p>Búsqueda de películas por género</p>
-                    <div id="barra-busqueda-peliculas-titulo">
+                    <div className="barra-busqueda-peliculas">
                         <input type="text" name="busqueda" id="busqueda-genero" autoComplete="off"/>
-                        <div id="boton-buscar-pelicula-nombre" onClick={()=>buscarGenero()}><img src={lupa} /></div>
+                        <div className="boton-buscar-pelicula" onClick={()=>buscarGenero()}><img src={lupa} alt="Lupa" /></div>
+                    </div>
+                </div>
+                {/* BUSQUEDA POR PROTAGONISTA */}
+                <div id="busqueda-pelicula-protagonista">
+                    <p>Búsqueda de películas por actor principal</p>
+                    <div className="barra-busqueda-peliculas">
+                        <input type="text" name="busqueda" id="busqueda-protagonista" autoComplete="off"/>
+                        <div className="boton-buscar-pelicula" onClick={()=>buscarProtagonista()}><img src={lupa} alt="Lupa"/></div>
                     </div>
                 </div>
             </div>
@@ -72,13 +90,11 @@ const Peliculas = () =>{
             <div id="listado-peliculas">
                 {peliculas.map((pelicula)=>{
                     return <div key={pelicula.id} className="pelicula-individual">
-                        <p>Título: {JSON.stringify(pelicula.titulo)}</p>
-                        <p>Género: {JSON.stringify(pelicula.genero)}</p>
-                        <p>Protagonista: {JSON.stringify(pelicula.actor_principal)}</p>
-                        <p>Ciudad disponible: {JSON.stringify(pelicula.ciudad)}</p>
-                        <p>Disponible para alquilar: {JSON.stringify(pelicula.alquilada)}</p>
-                        
-                        </div>
+                        <p><span>Título:</span> {JSON.stringify(pelicula.titulo)}</p>
+                        <p><span>Género:</span> {JSON.stringify(pelicula.genero)}</p>
+                        <p><span>Protagonista:</span> {JSON.stringify(pelicula.actor_principal)}</p>
+                        <p><span>Ciudad disponible:</span> {JSON.stringify(pelicula.ciudad)}</p>                        
+                    </div>
                 })}
             </div>
         </div>
