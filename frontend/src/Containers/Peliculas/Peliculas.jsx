@@ -13,7 +13,6 @@ const Peliculas = () =>{
     const filtrarPorCiudad = async (e) =>{
         let indiceCiudadSeleccionada = e.target.selectedIndex;
         let ciudadSeleccionada = e.target.options[indiceCiudadSeleccionada].text;
-        console.log(ciudadSeleccionada);
         let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas${ciudadSeleccionada === "España" ? "" : "/ciudad/" + ciudadSeleccionada}`);
         setPeliculas((res.data));
     };
@@ -53,7 +52,7 @@ const Peliculas = () =>{
             <div id="filtros-peliculas">
                 {/* FILTRAR POR CIUDAD */}
                 <div id="pelicula-ciudad">
-                    <p>Todas las películas disponibles en tu zona</p>
+                    <h2>Todas las películas disponibles en tu zona</h2>
                     <select name="ciudades" id="ciudades-disponibles" onChange={(e)=>filtrarPorCiudad(e)}>
                         <option value="Todas">España</option>
                         <option value="Valencia">Valencia</option>
@@ -63,7 +62,7 @@ const Peliculas = () =>{
                 </div>
                 {/* BUSQUEDA POR TITULO */}
                 <div id="busqueda-pelicula-titulo">
-                    <p>Búsqueda de películas por título</p>
+                    <h2>Búsqueda de películas por título</h2>
                     <div className="barra-busqueda-peliculas">
                         <input type="text" name="busqueda" id="busqueda-titulo" autoComplete="off"/>
                         <div className="boton-buscar-pelicula" onClick={()=>buscarTitulo()}><img src={lupa} alt="Lupa" /></div>
@@ -71,7 +70,7 @@ const Peliculas = () =>{
                 </div>
                 {/* BUSQUEDA POR GENERO */}
                 <div id="busqueda-pelicula-genero">
-                    <p>Búsqueda de películas por género</p>
+                    <h2>Búsqueda de películas por género</h2>
                     <div className="barra-busqueda-peliculas">
                         <input type="text" name="busqueda" id="busqueda-genero" autoComplete="off"/>
                         <div className="boton-buscar-pelicula" onClick={()=>buscarGenero()}><img src={lupa} alt="Lupa" /></div>
@@ -79,7 +78,7 @@ const Peliculas = () =>{
                 </div>
                 {/* BUSQUEDA POR PROTAGONISTA */}
                 <div id="busqueda-pelicula-protagonista">
-                    <p>Búsqueda de películas por actor principal</p>
+                    <h2>Búsqueda de películas por actor principal</h2>
                     <div className="barra-busqueda-peliculas">
                         <input type="text" name="busqueda" id="busqueda-protagonista" autoComplete="off"/>
                         <div className="boton-buscar-pelicula" onClick={()=>buscarProtagonista()}><img src={lupa} alt="Lupa"/></div>

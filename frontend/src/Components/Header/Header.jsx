@@ -15,7 +15,7 @@ const Header = () =>{
             <div className="enlace-header" onClick={()=>redireccionar("/")}>Home</div>
             <div className="enlace-header" onClick={()=>redireccionar("/perfil")}>Perfil</div>
             <div className="enlace-header" onClick={()=>redireccionar("/peliculas")}>Peliculas</div>
-            <div className="enlace-header">Contacto</div>
+            <div className="enlace-header" onClick={()=>redireccionar("/contacto")}>Contacto</div>
         </div>
     )
 }

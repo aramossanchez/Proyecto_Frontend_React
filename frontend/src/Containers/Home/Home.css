@@ -49,6 +49,9 @@
     border: 2px solid var(--masoscuro);
     background-color: var(--claro);
 }
+#login-inicio input::placeholder {
+    color: var(--neutro);
+}
 /* BOTON LOGIN DE HOME */
 #boton-login{
     color: var(--claro);
@@ -61,8 +64,8 @@
     margin: 0 1em 0.5em 0;
 }
 #boton-login:hover{
-    color: var(--neutro);
-    background-color: var(--masclaro);
+    color: var(--masoscuro);
+    background-color: var(--claro);
     padding: 0.5em 2em;
     border-radius: 0.25em;
     cursor: pointer;
