@@ -5,10 +5,28 @@
     --claro: #F27405;
     --masclaro: #F2AA6B;
 }
+/* CONTENEDOR DE LISTADO Y FILTROS DE PELICULAS */
 #container-peliculas{
     min-height: 100vh;
     background-color: var(--masclaro);
     color: var(--masoscuro);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+/* SELECT DE CIUDADES DISPONIBLES */
+#ciudades-disponibles{
+    font-size: 1em;
+    background-color: var(--claro);
+    color: var(--masoscuro);
+    border: 2px solid var(--masoscuro);
+    cursor: pointer;
+}
+/* CONTENEDOR DEL LISTADO DE PELICULAS */
+#listado-peliculas{
+    min-height: 100vh;
     display: flex;
     flex-direction: row;
     align-items: flex-start;

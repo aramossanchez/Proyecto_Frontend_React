@@ -23,5 +23,4 @@
 }
 #container-header div:hover{
     text-shadow: 0px 0px 5px var(--masclaro);
-    transform: scale(1.1);
 }

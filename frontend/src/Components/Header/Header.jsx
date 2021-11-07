@@ -13,8 +13,8 @@ const Header = () =>{
     return(
         <div id="container-header">
             <div className="enlace-header" onClick={()=>redireccionar("/")}>Home</div>
+            <div className="enlace-header" onClick={()=>redireccionar("/perfil")}>Perfil</div>
             <div className="enlace-header" onClick={()=>redireccionar("/peliculas")}>Peliculas</div>
-            <div className="enlace-header">Pedidos</div>
             <div className="enlace-header">Contacto</div>
         </div>
     )

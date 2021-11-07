@@ -1,6 +1,17 @@
+:root {
+  --masoscuro: #401708;
+  --oscuro: #8C2703;
+  --neutro: #D93D04;
+  --claro: #F27405;
+  --masclaro: #F2AA6B;
+}
 *{
   padding: 0;
   margin: 0;
+}
+*::selection{
+  color: var(--masclaro);
+  background-color: var(--masoscuro);
 }
 body {
   margin: 0;
