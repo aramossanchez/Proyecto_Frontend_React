@@ -1,5 +1,5 @@
 # Proyecto Frontend React
-## Nos solicitan desde GeeksHubs Academy realizar un frontend para el proyecto de API realizado en el repositorio https://github.com/aramossanchez/Proyecto_VideoClub_API.
+## Solicitan desde GeeksHubs Academy realizar un frontend para el proyecto de API realizado en el repositorio https://github.com/aramossanchez/Proyecto_VideoClub_API.
 ***
 ![Vista Inicial APP React](/frontend/src/screenshots/screenshot.jpg)
 ***
@@ -41,8 +41,12 @@ npm install axios
 
 ## Explicación de la estructura del proyecto
 
-El directorio **src** es donde tendremos almacenada toda nuestra aplicación. En este directorio tenemos lo siguiente:
+El directorio **src** es donde está almacenada toda la aplicación. En este directorio se encuentra lo siguiente:
 
-* **index.js**: Este es el archivo principal. Desde aquí llamamos a **<App/>**, que es donde se ejecutará toda nuestra aplicación.
+* **index.js**: Este es el archivo principal. Desde aquí se llama a **<App/>**, que es donde se ejecutará toda la aplicación.
 
-* **app.js**: En este archivo es donde gestionaremos los diferentes **Containers** de nuestra aplicación, así como diferentes **Components**.
+* **app.js**: En este archivo es donde se gestionan los diferentes **Containers** de la aplicación, así como diferentes **Components**.
+
+* **Containers**: En este directorio es donde se guardarán las diferentes vistas:
+    * **Inicio**: Es la página principal, donde se ve un pequeño mensaje de bienvenida, el header y la ventana de login.
+    * **Perfil**: Es la página donde se puede ver los datos del usuario que se ha logado en la página, actualizar esos datos,
