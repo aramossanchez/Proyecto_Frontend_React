@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useEffect } from 'react/cjs/react.development';
 
 const Home = () =>{
     
@@ -16,6 +17,10 @@ const Home = () =>{
         setdatosUsuario({...datosUsuario, [e.target.name]: e.target.value})
     }
 
+    useEffect(()=>{
+        localStorage.setItem("perfil", "visitante");
+    }, [])
+
     //FUNCIÓN PARA LOGUEAR USUARIO
     const loguear = async () => {
         console.log("hola");
@@ -29,6 +34,11 @@ const Home = () =>{
         
         try {
             localStorage.setItem("datosLogin", JSON.stringify(res.data));
+            if(res.data.usuario.rol == "administrador"){
+                localStorage.setItem("perfil", "administrador");
+            }else{
+                localStorage.setItem("perfil", "usuario");
+            }
             navigate("/perfil");
         } catch (error) {
             setmensajeError(error);
