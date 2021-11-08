@@ -65,7 +65,7 @@ const Peliculas = () =>{
                     <h2>Búsqueda de películas por título</h2>
                     <div className="barra-busqueda-peliculas">
                         <input type="text" name="busqueda" id="busqueda-titulo" autoComplete="off"/>
-                        <div className="boton-buscar-pelicula" onClick={()=>buscarTitulo()}><img src={lupa} alt="Lupa" /></div>
+                        <div className="boton-lupa" onClick={()=>buscarTitulo()}><img src={lupa} alt="Lupa" /></div>
                     </div>
                 </div>
                 {/* BUSQUEDA POR GENERO */}
@@ -73,7 +73,7 @@ const Peliculas = () =>{
                     <h2>Búsqueda de películas por género</h2>
                     <div className="barra-busqueda-peliculas">
                         <input type="text" name="busqueda" id="busqueda-genero" autoComplete="off"/>
-                        <div className="boton-buscar-pelicula" onClick={()=>buscarGenero()}><img src={lupa} alt="Lupa" /></div>
+                        <div className="boton-lupa" onClick={()=>buscarGenero()}><img src={lupa} alt="Lupa" /></div>
                     </div>
                 </div>
                 {/* BUSQUEDA POR PROTAGONISTA */}
@@ -81,7 +81,7 @@ const Peliculas = () =>{
                     <h2>Búsqueda de películas por actor principal</h2>
                     <div className="barra-busqueda-peliculas">
                         <input type="text" name="busqueda" id="busqueda-protagonista" autoComplete="off"/>
-                        <div className="boton-buscar-pelicula" onClick={()=>buscarProtagonista()}><img src={lupa} alt="Lupa"/></div>
+                        <div className="boton-lupa" onClick={()=>buscarProtagonista()}><img src={lupa} alt="Lupa"/></div>
                     </div>
                 </div>
             </div>

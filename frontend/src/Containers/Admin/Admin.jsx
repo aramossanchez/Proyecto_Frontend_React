@@ -80,6 +80,16 @@ const Admin = () =>{
             [campo]:e.target.value
         })
     };
+
+    //ACTUALIZO REGISTRO DE USUARIO BUSCADO POR ID EN BASE DE DATOS
+    const actualizarRegistro = async () =>{
+        await axios.put(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${usuarioID.id}`, datosParaActualizar, config)
+    }
+
+    //BORRO USUARIO BUSCADO POR ID
+    const borrarRegistro = () =>{
+        axios.delete(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${usuarioID.id}`, config);
+    }
     //LISTADO DE TODOS LOS USUARIOS
     const guardarListaUsuarios = async () =>{
         let res = await axios.get("https://aramossanchez-videoclub-api.herokuapp.com/usuarios",config);
@@ -92,6 +102,7 @@ const Admin = () =>{
 
     return(
         <div id="container-admin">
+            {/* REGISTRO DE USUARIO NUEVO */}
             <div id="cuadro-registro">
                 <h2>Registrar Usuario</h2>
                 <input autoComplete="off" placeholder="Nombre de usuario" type="text" name="nombre" id="nombre-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
@@ -99,13 +110,14 @@ const Admin = () =>{
                 <input autoComplete="off" placeholder="Contraseña" type="password" name="clave" id="clave-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
                 <input autoComplete="off" placeholder="Ciudad (Valencia, Getafe o Albacete)" type="text" name="ciudad" id="ciudad-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
                 <input autoComplete="off" placeholder="Rol (usuario o administrador)" type="text" name="rol" id="rol-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
-                <div id="boton-registrar" onClick={()=>registrarUsuario()}>REGISTRAR</div>
+                <div  className="boton" onClick={()=>registrarUsuario()}>REGISTRAR</div>
             </div>
+            {/* BUSQUEDA DE USUARIO POR ID */}
             <div id="cuadro-usuario-id">
                 <h2>Buscar usuario por ID</h2>
                 <div className="barra-busqueda-usuario">
                     <input type="text" name="busqueda" id="busqueda-usuario-id" autoComplete="off" onChange={(e)=>guardarID(e)}/>
-                    <div className="boton-buscar-usuario"><img onClick={()=>obtenerUsuarioPorID()} src={lupa} alt="Lupa" /></div>                    
+                    <div className="boton-lupa"><img onClick={()=>obtenerUsuarioPorID()} src={lupa} alt="Lupa" /></div>                    
                 </div>
                 <div id="datos-usuario-id">
                     <p><span>Correo electrónico:</span><input readOnly type="text" name="correo" value={usuarioID.correo}/></p>
@@ -113,7 +125,10 @@ const Admin = () =>{
                     <p><span>Ciudad:</span><input autoComplete="off" type="text" name="ciudad" onChange={(e)=>cambiarDatosParaActualizar(e, "ciudad")} value={datosParaActualizar.ciudad}/></p>
                     <p><span>Fecha de alta:</span><input readOnly type="text" name="createdAt" value={usuarioID.createdAt}/></p>
                 </div>
+                <div className="boton" onClick={()=>actualizarRegistro()}>ACTUALIZAR</div>
+                <div className="boton" onClick={()=>borrarRegistro()}>BORRAR</div>
             </div>
+            {/* LISTADO DE TODOS LOS USUARIOS */}
             <div id="cuadro-usuarios">
                 {datosTodosUsuarios.map((usuario)=>{
                     return(

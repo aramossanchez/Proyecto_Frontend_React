@@ -54,17 +54,6 @@
     align-items: flex-start;
     justify-content: center;
 }
-/* BOTON PARA BUSCAR PELICULAS POR NOMBRE */
-.boton-buscar-pelicula{
-    width: 2em;
-    height: 2em;
-    cursor: pointer;
-    transition: 0.2s;
-}
-.boton-buscar-pelicula img{
-    width: 1.5em;
-    height: 1.5em;
-}
 /* CONTENEDOR DEL LISTADO DE PELICULAS */
 #listado-peliculas{
     min-width: 98.5vw;

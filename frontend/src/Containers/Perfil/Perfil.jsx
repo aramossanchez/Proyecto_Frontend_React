@@ -85,7 +85,7 @@ const Perfil = () =>{
                     <p><span>Ciudad:</span><input autoComplete="off" type="text" name="ciudad" onChange={(e)=>actualizarDatos(e, "ciudad")} value={datosActualizar.ciudad}/></p>
                     <p><span>Fecha de alta:</span><input readOnly type="text" name="createdAt" value={datosUsuario.createdAt}/></p>
                 </div>
-                <div id="boton-actualizar-usuario" onClick={()=>actualizarRegistro()}>ACTUALIZAR</div>
+                <div className="boton" onClick={()=>actualizarRegistro()}>ACTUALIZAR</div>
             </div>   
             <div id="container-pedido">
                 <h2>Tus Pedidos</h2>

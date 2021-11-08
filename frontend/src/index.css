@@ -26,3 +26,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.boton{
+    color: var(--claro);
+    background-color: var(--masoscuro);
+    padding: 0.5em 2em;
+    border-radius: 0.25em;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 0 1em 0.5em 0;
+}
+.boton:hover{
+    color: var(--masoscuro);
+    background-color: var(--claro);
+}
+.boton-lupa{
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+}
+.boton-lupa img{
+  width: 1.5em;
+  height: 1.5em;
+}

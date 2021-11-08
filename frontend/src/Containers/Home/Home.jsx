@@ -49,7 +49,7 @@ const Home = () =>{
                 <h2>Login</h2>
                 <input type="email" name="correo" id="correo" title="correo" placeholder="Correo Electrónico" autoComplete="off" onChange={(e)=>rellenarDatos(e)}/>
                 <input type="password" name="clave" id="clave" title="clave" placeholder="Contraseña" autoComplete="off" onChange={(e)=>rellenarDatos(e)}/>
-                <div id="boton-login" onClick={()=>loguear()}>LOGIN</div>
+                <div className="boton" onClick={()=>loguear()}>LOGIN</div>
                 <div id="error-login">{setmensajeError}</div>
             </div>
         </div>
