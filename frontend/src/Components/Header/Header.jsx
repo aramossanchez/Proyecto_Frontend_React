@@ -8,7 +8,7 @@ const Header = () =>{
 
     const redireccionar = (destino) =>{
         navigate(destino)
-    }
+    };
 
     return(
         <div id="container-header">
@@ -16,6 +16,8 @@ const Header = () =>{
             <div className="enlace-header" onClick={()=>redireccionar("/perfil")}>Perfil</div>
             <div className="enlace-header" onClick={()=>redireccionar("/peliculas")}>Peliculas</div>
             <div className="enlace-header" onClick={()=>redireccionar("/contacto")}>Contacto</div>
+            <div className="enlace-header" onClick={()=>redireccionar("/admin")}>Admin</div>
+
         </div>
     )
 }

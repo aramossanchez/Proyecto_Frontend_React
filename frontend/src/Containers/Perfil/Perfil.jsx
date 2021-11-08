@@ -40,6 +40,9 @@ const Perfil = () =>{
         //GUARDAMOS EL TOKEN EL LOCALSTORAGE
         localStorage.setItem("token", datosPerfil.token);
 
+        //GUARDAMOS EL PERFIL DE USUARIO EN LOCALSTORAGE
+        localStorage.setItem("perfil", datosPerfil.usuario.rol);    
+
         setdatosUsuario({
             id: datosPerfil.usuario.id,
             nombre: datosPerfil.usuario.nombre,
@@ -83,7 +86,11 @@ const Perfil = () =>{
                     <p><span>Fecha de alta:</span><input readOnly type="text" name="createdAt" value={datosUsuario.createdAt}/></p>
                 </div>
                 <div id="boton-actualizar-usuario" onClick={()=>actualizarRegistro()}>ACTUALIZAR</div>
-            </div>            
+            </div>   
+            <div id="container-pedido">
+                <h2>Tus Pedidos</h2>
+                <hr />
+            </div>         
         </div>
     )
 }

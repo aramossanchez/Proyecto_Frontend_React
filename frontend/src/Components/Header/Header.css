@@ -16,12 +16,12 @@
     justify-content: flex-end;
 }
 /*ENLACES*/
-#container-header div{
+.enlace-header{
     margin: 0 2em;
     cursor: pointer;
     transition: 0.3s;
 }
-#container-header div:hover{
+.enlace-header:hover{
     text-shadow: 0px 0px 5px var(--neutro);
     color:var(--neutro)
 }

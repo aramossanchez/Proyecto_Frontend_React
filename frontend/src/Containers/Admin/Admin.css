@@ -1,0 +1,177 @@
+:root {
+    --masoscuro: #401708;
+    --oscuro: #8C2703;
+    --neutro: #D93D04;
+    --claro: #F27405;
+    --masclaro: #F2AA6B;
+}
+/* CONTENEDOR GESTION ADMINISTRADOR */
+#container-admin{
+    width: 100vw;
+    min-height: calc(100vh - 3.5em);
+    background-color: var(--masclaro);
+    color: var(--masoscuro);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+/*CONTENEDOR DE REGISTRO*/
+#cuadro-registro{
+    margin-top: 5em;
+    width: 30%;
+    height: 30em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--oscuro);
+}
+/* H2 DE REGISTRO */
+#cuadro-registro h2{
+    color: var(--claro);
+    align-self: center;
+    margin: 1em 0 0 1em;
+}
+/* INPUT DE REGISTRO */
+#cuadro-registro input{
+    all:unset;
+    text-align: left;
+    border: 2px solid transparent;
+    border-bottom: 2px solid var(--masoscuro);
+    padding: 0.25em;
+    width: 80%;
+}
+#cuadro-registro input:focus{
+    border: 2px solid var(--masoscuro);
+    background-color: var(--claro);
+}
+#cuadro-registro input::placeholder {
+    color: var(--neutro);
+}
+/* BOTON REGISTRAR USUARIO */
+#boton-registrar{
+    color: var(--claro);
+    background-color: var(--masoscuro);
+    padding: 0.5em 2em;
+    border-radius: 0.25em;
+    cursor: pointer;
+    transition: 0.3s;
+    align-self: center;
+    margin: 0 1em 0.5em 0;
+}
+#boton-registrar:hover{
+    color: var(--masoscuro);
+    background-color: var(--claro);
+}
+/*CONTENEDOR DE USUARIO POR ID*/
+#cuadro-usuario-id{
+    margin-top: 5em;
+    width: 30%;
+    height: 30em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: var(--oscuro);
+}
+/*BARRA DE BUSQUEDA Y LUPA DE USUARIO POR ID*/
+.barra-busqueda-usuario{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+.barra-busqueda-usuario input{
+    all: unset;
+    width: 3em;
+    font-size: 1em;
+    background-color: var(--claro);
+    color: var(--masoscuro);
+    border: 2px solid var(--masoscuro);
+    text-align: left;
+    padding: 0 0.25em;
+}
+/*CONTENEDOR DE DATOS DE USUARIO POR ID*/
+#datos-usuario-id{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+#datos-usuario-id p{
+    margin: 1em 0;
+}
+/* INPUT DE USUARIO ID PARA ACTUALIZAR CAMPOS */
+#datos-usuario-id input{
+    all:unset;
+    margin: 0 1em;
+    text-align: left;
+    border: 2px solid transparent;
+    border-bottom: 2px solid var(--masoscuro);
+    background-color: var(--oscuro);
+    padding: 0.25em;
+    color: var(--masclaro);
+}
+#datos-usuario-id input:focus{
+    border: 2px solid var(--masoscuro);
+    background-color: var(--claro);
+    color: var(--masoscuro);
+}
+/* INPUT NO MODIFICABLES */
+#datos-usuario-id input:read-only{
+    all:unset;
+    width: 12em;
+    margin: 0 1em;
+    text-align: left;
+    border: 2px solid transparent;
+    background-color: var(--oscuro);
+    padding: 0.25em;
+    color: var(--masclaro);
+}
+/*BOTON DE BUSCAR USUARIO POR ID*/
+.boton-buscar-usuario{
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.boton-buscar-usuario img{
+    width: 1.5em;
+    height: 1.5em;
+}
+/*CONTENEDOR DE TODOS LOS USUARIOS*/
+#cuadro-usuarios{
+    width: 100%;
+    height: 70%;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+/*USUARIO INDIVIDUAL*/
+.usuario-en-lista{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    width: 45%;
+    background-color: var(--oscuro);
+    border: 2px solid var(--masoscuro);
+    color: var(--masclaro);
+    margin: 1em 0;
+    padding: 1em;
+    transition: 0.25s;
+}
+.usuario-en-lista span{
+    font-weight: bold;
+}
+.usuario-en-lista:hover{
+    background-color: var(--neutro);
+    border: 2px solid var(--masclaro);
+    color: var(--masoscuro);
+}

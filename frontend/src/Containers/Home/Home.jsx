@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useEffect } from 'react/cjs/react.development';
 
 const Home = () =>{
     
@@ -16,10 +15,6 @@ const Home = () =>{
     const rellenarDatos = (e) =>{
         setdatosUsuario({...datosUsuario, [e.target.name]: e.target.value})
     }
-
-    useEffect(()=>{
-        localStorage.setItem("perfil", "visitante");
-    }, [])
 
     //FUNCIÓN PARA LOGUEAR USUARIO
     const loguear = async () => {

@@ -5,6 +5,7 @@ import Header from './Components/Header/Header';
 import Perfil from './Containers/Perfil/Perfil';
 import Peliculas from './Containers/Peliculas/Peliculas';
 import Contacto from './Containers/Contacto/Contacto';
+import Admin from './Containers/Admin/Admin';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/peliculas" element={<Peliculas />} />
           <Route path="/contacto" element={<Contacto />} />
+          <Route path="/admin" element={<Admin />} />
 
         </Routes>
 

@@ -76,7 +76,6 @@
     border: 2px solid transparent;
     background-color: var(--oscuro);
 }
-
 /* BOTON ACTUALIZAR USUARIO */
 #boton-actualizar-usuario{
     color: var(--claro);
@@ -91,10 +90,4 @@
 #boton-actualizar-usuario:hover{
     color: var(--masoscuro);
     background-color: var(--claro);
-    padding: 0.5em 2em;
-    border-radius: 0.25em;
-    cursor: pointer;
-    transition: 0.3s;
-    align-self: flex-end;
-    margin: 0 1em 0.5em 0;
 }
