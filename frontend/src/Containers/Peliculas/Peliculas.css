@@ -7,14 +7,19 @@
 }
 /* CONTENEDOR DE LISTADO Y FILTROS DE PELICULAS */
 #container-peliculas{
-    min-height: 100vh;
+    max-height: 100vh;
     background-color: var(--masclaro);
     color: var(--masoscuro);
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+/*CONTENEDOR DE FILTROS Y DE PELÍCULAS*/
+#contenido-peliculas{
+    width: 75em;
+    height: 100vh;
+    overflow-y: scroll;
 }
 /* CONTENEDOR DE FILTROS DE PELÍCULAS */
 #filtros-peliculas{
@@ -56,7 +61,7 @@
 }
 /* CONTENEDOR DEL LISTADO DE PELICULAS */
 #listado-peliculas{
-    min-width: 98.5vw;
+    width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: row;
@@ -71,16 +76,23 @@
     border:2px solid var(--claro);
     padding: 1em;
     transition: 0.25s;
-    background-color: var(--oscuro);
-    border:2px solid var(--masoscuro);
-    color: var(--masclaro);
+    background-color: var(--claro);
+    color: var(--masoscuro);
+    border-radius: 0.5em;
     cursor: default;
+}
+/*CARATULA*/
+.pelicula-individual div{
+    border: 2px solid var(--oscuro);
+    width: 8em;
+    height: 10em;
+    margin-bottom: 1em;
 }
 .pelicula-individual span{
     font-weight: bold;
 }
 .pelicula-individual:hover{
-    background-color: var(--neutro);
-    border:2px solid var(--claro);
-    color: var(--masoscuro);
+    background-color: var(--masoscuro);
+    border:2px solid var(--neutro);
+    color: var(--neutro);
 }

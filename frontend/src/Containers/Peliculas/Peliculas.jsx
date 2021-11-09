@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Peliculas.css';
 import axios from 'axios';
 import lupa from '../../img/lupa.png';
+import Lateral from '../../Components/Lateral/Lateral';
 
 const Peliculas = () =>{
 
@@ -48,52 +49,56 @@ const Peliculas = () =>{
 
     return(
         <div id="container-peliculas">
-            <div id="filtros-peliculas">
-                {/* FILTRAR POR CIUDAD */}
-                <div id="pelicula-ciudad">
-                    <h2>Todas las películas disponibles en tu zona</h2>
-                    <select name="ciudades" id="ciudades-disponibles" onChange={(e)=>filtrarPorCiudad(e)}>
-                        <option value="España">España</option>
-                        <option value="Valencia">Valencia</option>
-                        <option value="Getafe">Getafe</option>
-                        <option value="Albacete">Albacete</option>
-                    </select>
-                </div>
-                {/* BUSQUEDA POR TITULO */}
-                <div id="busqueda-pelicula-titulo">
-                    <h2>Búsqueda de películas por título</h2>
-                    <div className="barra-busqueda-peliculas">
-                        <input type="text" name="busqueda" id="busqueda-titulo" autoComplete="off"/>
-                        <div className="boton-lupa" onClick={()=>buscarTitulo()}><img src={lupa} alt="Lupa" /></div>
+            <Lateral/>
+            <div id="contenido-peliculas">
+                <div id="filtros-peliculas">
+                    {/* FILTRAR POR CIUDAD */}
+                    <div id="pelicula-ciudad">
+                        <h2>Todas las películas disponibles en tu zona</h2>
+                        <select name="ciudades" id="ciudades-disponibles" onChange={(e)=>filtrarPorCiudad(e)}>
+                            <option value="España">España</option>
+                            <option value="Valencia">Valencia</option>
+                            <option value="Getafe">Getafe</option>
+                            <option value="Albacete">Albacete</option>
+                        </select>
+                    </div>
+                    {/* BUSQUEDA POR TITULO */}
+                    <div id="busqueda-pelicula-titulo">
+                        <h2>Búsqueda de películas por título</h2>
+                        <div className="barra-busqueda-peliculas">
+                            <input type="text" name="busqueda" id="busqueda-titulo" autoComplete="off"/>
+                            <div className="boton-lupa" onClick={()=>buscarTitulo()}><img src={lupa} alt="Lupa" /></div>
+                        </div>
+                    </div>
+                    {/* BUSQUEDA POR GENERO */}
+                    <div id="busqueda-pelicula-genero">
+                        <h2>Búsqueda de películas por género</h2>
+                        <div className="barra-busqueda-peliculas">
+                            <input type="text" name="busqueda" id="busqueda-genero" autoComplete="off"/>
+                            <div className="boton-lupa" onClick={()=>buscarGenero()}><img src={lupa} alt="Lupa" /></div>
+                        </div>
+                    </div>
+                    {/* BUSQUEDA POR PROTAGONISTA */}
+                    <div id="busqueda-pelicula-protagonista">
+                        <h2>Búsqueda de películas por actor principal</h2>
+                        <div className="barra-busqueda-peliculas">
+                            <input type="text" name="busqueda" id="busqueda-protagonista" autoComplete="off"/>
+                            <div className="boton-lupa" onClick={()=>buscarProtagonista()}><img src={lupa} alt="Lupa"/></div>
+                        </div>
                     </div>
                 </div>
-                {/* BUSQUEDA POR GENERO */}
-                <div id="busqueda-pelicula-genero">
-                    <h2>Búsqueda de películas por género</h2>
-                    <div className="barra-busqueda-peliculas">
-                        <input type="text" name="busqueda" id="busqueda-genero" autoComplete="off"/>
-                        <div className="boton-lupa" onClick={()=>buscarGenero()}><img src={lupa} alt="Lupa" /></div>
-                    </div>
+                {/* MOSTRAR LAS PELICULAS */}
+                <div id="listado-peliculas">
+                    {peliculas.map((pelicula)=>{
+                        return <div key={pelicula.id} className="pelicula-individual">
+                            <div></div>
+                            <p><span>Título:</span> {JSON.stringify(pelicula.titulo)}</p>
+                            <p><span>Género:</span> {JSON.stringify(pelicula.genero)}</p>
+                            <p><span>Protagonista:</span> {JSON.stringify(pelicula.actor_principal)}</p>
+                            <p><span>Ciudad disponible:</span> {JSON.stringify(pelicula.ciudad)}</p>                        
+                        </div>
+                    })}
                 </div>
-                {/* BUSQUEDA POR PROTAGONISTA */}
-                <div id="busqueda-pelicula-protagonista">
-                    <h2>Búsqueda de películas por actor principal</h2>
-                    <div className="barra-busqueda-peliculas">
-                        <input type="text" name="busqueda" id="busqueda-protagonista" autoComplete="off"/>
-                        <div className="boton-lupa" onClick={()=>buscarProtagonista()}><img src={lupa} alt="Lupa"/></div>
-                    </div>
-                </div>
-            </div>
-            {/* MOSTRAR LAS PELICULAS */}
-            <div id="listado-peliculas">
-                {peliculas.map((pelicula)=>{
-                    return <div key={pelicula.id} className="pelicula-individual">
-                        <p><span>Título:</span> {JSON.stringify(pelicula.titulo)}</p>
-                        <p><span>Género:</span> {JSON.stringify(pelicula.genero)}</p>
-                        <p><span>Protagonista:</span> {JSON.stringify(pelicula.actor_principal)}</p>
-                        <p><span>Ciudad disponible:</span> {JSON.stringify(pelicula.ciudad)}</p>                        
-                    </div>
-                })}
             </div>
         </div>
     )
