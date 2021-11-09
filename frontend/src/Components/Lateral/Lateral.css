@@ -1,0 +1,32 @@
+:root {
+    --masoscuro: #401708;
+    --oscuro: #8C2703;
+    --neutro: #D93D04;
+    --claro: #F27405;
+    --masclaro: #F2AA6B;
+}
+#container-lateral{
+    height: 100vh;
+    width: 25vw;
+    background-color: var(--masoscuro);
+    color: var(--masclaro);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+/*ENLACES*/
+.enlace-lateral{
+    font-size: 1.25em;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 0.5em 0;
+    padding: 0.5em;
+}
+.enlace-lateral:hover{
+    text-shadow: 0px 0px 5px var(--neutro);
+    color:var(--masoscuro);
+    background-color: var(--masclaro);
+}

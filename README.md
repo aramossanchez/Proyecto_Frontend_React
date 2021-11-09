@@ -38,6 +38,14 @@ npm install react-router-dom
 ```
 npm install axios
 ```
+* **redux**: Instalamos redux en nuestro proyecto, para poder usar redux (centralización del estado):
+```
+npm install redux
+```
+* **react-redux**: Instalamos react-redux en nuestro proyecto (relaciona react y redux):
+```
+npm install react-redux
+```
 
 ## Explicación de la estructura del proyecto
 

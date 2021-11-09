@@ -23,8 +23,12 @@ const Admin = () =>{
     //DATOS DEL USUARIO BUSCADO
     const [usuarioID, setUsuarioID] = useState({
         correo:"",
+        dni:"",
         nombre:"",
+        apellidos:"",
+        direccion:"",
         ciudad:"",
+        telefono:"",
         createdAt:""
     });
     //ID CON EL QUE BUSCAREMOS AL USUARIO
@@ -34,8 +38,12 @@ const Admin = () =>{
     const [datosParaActualizar, setdatosParaActualizar] = useState(
         {
             correo:"",
+            dni:"",
             nombre:"",
+            apellidos:"",
+            direccion:"",
             ciudad:"",
+            telefono:"",
             createdAt:""
         }
     );
@@ -51,8 +59,12 @@ const Admin = () =>{
         setdatosParaActualizar(
             {
                 correo: usuarioID.correo,
+                dni: usuarioID.dni,
                 nombre: usuarioID.nombre,
+                apellidos: usuarioID.apellidos,
+                direccion: usuarioID.direccion,
                 ciudad: usuarioID.ciudad,
+                telefono: usuarioID.telefono,
                 createdAt: usuarioID.createdAt
             }
         )
@@ -113,10 +125,14 @@ const Admin = () =>{
             {/* REGISTRO DE USUARIO NUEVO */}
             <div id="cuadro-registro">
                 <h2>Registrar Usuario</h2>
-                <input autoComplete="off" placeholder="Nombre de usuario" type="text" name="nombre" id="nombre-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
                 <input autoComplete="off" placeholder="Correo electrónico" type="email" name="correo" id="correo-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
                 <input autoComplete="off" placeholder="Contraseña" type="password" name="clave" id="clave-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
+                <input autoComplete="off" placeholder="DNI de usuario" type="text" name="dni" id="dni-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
+                <input autoComplete="off" placeholder="Nombre de usuario" type="text" name="nombre" id="nombre-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
+                <input autoComplete="off" placeholder="Apellidos de usuario" type="text" name="apellidos" id="apellidos-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
+                <input autoComplete="off" placeholder="Dirección (calle, portal y piso)" type="text" name="direccion" id="direccion-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
                 <input autoComplete="off" placeholder="Ciudad (Valencia, Getafe o Albacete)" type="text" name="ciudad" id="ciudad-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
+                <input autoComplete="off" placeholder="Telefono" type="text" name="telefono" id="telefono-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
                 <input autoComplete="off" placeholder="Rol (usuario o administrador)" type="text" name="rol" id="rol-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
                 <div  className="boton" onClick={()=>registrarUsuario()}>REGISTRAR</div>
             </div>
@@ -129,8 +145,12 @@ const Admin = () =>{
                 </div>
                 <div id="datos-usuario-id">
                     <p><span>Correo electrónico:</span><input readOnly type="text" name="correo" value={usuarioID.correo}/></p>
+                    <p><span>DNI:</span><input autoComplete="off" type="text" name="dni" onChange={(e)=>cambiarDatosParaActualizar(e, "dni")} value={datosParaActualizar.dni}/></p>
                     <p><span>Nombre:</span><input autoComplete="off" type="text" name="nombre" onChange={(e)=>cambiarDatosParaActualizar(e, "nombre")} value={datosParaActualizar.nombre}/></p>
+                    <p><span>Apellidos:</span><input autoComplete="off" type="text" name="apellidos" onChange={(e)=>cambiarDatosParaActualizar(e, "apellidos")} value={datosParaActualizar.apellidos}/></p>
+                    <p><span>Direccion:</span><input autoComplete="off" type="text" name="direccion" onChange={(e)=>cambiarDatosParaActualizar(e, "direcccion")} value={datosParaActualizar.direccion}/></p>
                     <p><span>Ciudad:</span><input autoComplete="off" type="text" name="ciudad" onChange={(e)=>cambiarDatosParaActualizar(e, "ciudad")} value={datosParaActualizar.ciudad}/></p>
+                    <p><span>Telefono:</span><input autoComplete="off" type="text" name="telefono" onChange={(e)=>cambiarDatosParaActualizar(e, "telefono")} value={datosParaActualizar.telefono}/></p>
                     <p><span>Fecha de alta:</span><input readOnly type="text" name="createdAt" value={usuarioID.createdAt}/></p>
                 </div>
                 <div className="boton" onClick={()=>actualizarRegistro()}>ACTUALIZAR</div>
@@ -178,7 +198,7 @@ const Admin = () =>{
                 </div>
             :
                 <div id="container-boton-lista">
-                    <div className="boton" onClick={()=>guardarListaPedidos()}>Mostrar todos los usuarios</div>
+                    <div className="boton" onClick={()=>guardarListaPedidos()}>Mostrar todos los pedidos</div>
                 </div>
             }
         </div>

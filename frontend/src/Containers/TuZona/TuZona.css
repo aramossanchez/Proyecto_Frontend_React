@@ -1,0 +1,23 @@
+:root {
+    --masoscuro: #401708;
+    --oscuro: #8C2703;
+    --neutro: #D93D04;
+    --claro: #F27405;
+    --masclaro: #F2AA6B;
+}
+/* CONTENEDOR HOME */
+#container-tuzona{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+/* CONTENEDOR DE BLOQUE USUARIO */
+#contenido-tuzona{
+    width: 75vw;
+    height: 100%;
+    background-color:var(--masclaro);
+    color: var(--masoscuro);
+}
