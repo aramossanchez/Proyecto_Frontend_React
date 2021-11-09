@@ -52,6 +52,7 @@ El directorio **src** es donde está almacenada toda la aplicación. En este dir
     * **Perfil**: Es la página donde se puede ver los datos del usuario que se ha logado en la página, actualizar esos datos,
     * **Películas**: Es la página donde se pueden ver todas las películas de la base de datos. Se pueden filtrarlas por ciudades, hacer búsqueda por título, por género, por protagonista.
     * **Contacto**: Es la página en la que se podrá contactar con el administrador de la aplicación. Se puede mandar los datos de usuario para dar de alta un usuario nuevo.
+    * **Admin**: Es la página donde se puede acceder únicamente cuando se inicia sesión como administrador. Se puede registrar usuarios, buscar usuarios por id, actualizarlos, borrarlos, ver listado completo de usuarios.
 * **Components**: En este directorio es donde se guardan todos los componentes que se usarán en todas las vistas:
     * **Header**: Es el menú que aparece en la parte superior de la aplicación.
 * **img**: En este directorio se guardan todas las imágenes que se usarán en la aplicación.

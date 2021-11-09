@@ -43,6 +43,9 @@ const Admin = () =>{
     //LISTADO DE USUARIOS
     const [datosTodosUsuarios, setDatosTodosUsuarios] = useState ([]);
 
+    //LISTADO DE PEDIDOS
+    const [listadoPedidos, setlistadoPedidos] = useState ([]);
+
     //CADA VEZ QUE SE CAMBIA EL HOOK DE usuarioID, SE ACTUALIZAN LOS CAMPOS DE datosParaActualizar CON ESOS CAMBIOS
     useEffect(()=>{
         setdatosParaActualizar(
@@ -60,6 +63,10 @@ const Admin = () =>{
     const guardarDatosRegistro = (e) =>{
         setDatosRegistro({...datosRegistro, [e.target.name]: e.target.value})
     };
+
+    const registrarUsuario = async () =>{
+        await axios.post("https://aramossanchez-videoclub-api.herokuapp.com/usuarios/registro", datosRegistro, config);
+    }
 
     //USUARIO POR ID
     //GUARDAR ID EN HOOK
@@ -95,9 +102,10 @@ const Admin = () =>{
         let res = await axios.get("https://aramossanchez-videoclub-api.herokuapp.com/usuarios",config);
         setDatosTodosUsuarios(res.data);
     }
-
-    const registrarUsuario = async () =>{
-        await axios.post("https://aramossanchez-videoclub-api.herokuapp.com/usuarios/registro", datosRegistro, config);
+    //LISTADO DE TODOS LOS PEDIDOS
+    const guardarListaPedidos = async () =>{
+        let res = await axios.get("https://aramossanchez-videoclub-api.herokuapp.com/pedidos",config);
+        setlistadoPedidos(res.data);
     }
 
     return(
@@ -129,20 +137,50 @@ const Admin = () =>{
                 <div className="boton" onClick={()=>borrarRegistro()}>BORRAR</div>
             </div>
             {/* LISTADO DE TODOS LOS USUARIOS */}
-            <div id="cuadro-usuarios">
-                {datosTodosUsuarios.map((usuario)=>{
-                    return(
-                        <div key={usuario.id} className="usuario-en-lista">
-                            <p><span>ID: </span>{usuario.id}</p>
-                            <p><span>Nombre: </span>{usuario.nombre}</p>
-                            <p><span>Correo: </span>{usuario.correo}</p>
-                            <p><span>Ciudad: </span>{usuario.ciudad}</p>
-                            <p><span>Rol: </span>{usuario.rol}</p>
-                            <p><span>Fecha de alta: </span>{usuario.createdAt}</p>
-                        </div>
-                    )
-                })}
-            </div>
+            {datosTodosUsuarios[1]?.nombre
+            ? 
+                <div id="cuadro-usuarios">
+                    {datosTodosUsuarios.map((usuario)=>{
+                        return(
+                            <div key={usuario.id} className="articulo-en-lista">
+                                <p><span>ID: </span>{usuario.id}</p>
+                                <p><span>Nombre: </span>{usuario.nombre}</p>
+                                <p><span>Correo: </span>{usuario.correo}</p>
+                                <p><span>Ciudad: </span>{usuario.ciudad}</p>
+                                <p><span>Rol: </span>{usuario.rol}</p>
+                                <p><span>Fecha de alta: </span>{usuario.createdAt}</p>
+                            </div>
+                        )
+                    })}
+                </div>
+            :
+                <div id="container-boton-lista">
+                    <div className="boton" onClick={()=>guardarListaUsuarios()}>Mostrar todos los usuarios</div>
+                </div>
+            }
+            {/* LISTADO DE TODOS LOS USUARIOS */}
+            {listadoPedidos[1]?.peliculaId
+            ? 
+                <div id="cuadro-usuarios">
+                    {listadoPedidos.map((pedido)=>{
+                        return(
+                            <div key={pedido.id} className="articulo-en-lista">
+                                <p><span>ID: </span>{pedido.id}</p>
+                                <p><span>ID de película: </span>{pedido.peliculaId}</p>
+                                <p><span>Titulo de película: </span>{pedido.pelicula.titulo}</p>
+                                <p><span>ID de usuario: </span>{pedido.usuarioId}</p>
+                                <p><span>Correo de usuario: </span>{pedido.usuario.correo}</p>
+                                <p><span>Fecha de alquiler: </span>{pedido.fecha_alquiler}</p>
+                                <p><span>Fecha de devolución: </span>{pedido.fecha_devolucion}</p>
+                            </div>
+                        )
+                    })}
+                </div>
+            :
+                <div id="container-boton-lista">
+                    <div className="boton" onClick={()=>guardarListaPedidos()}>Mostrar todos los usuarios</div>
+                </div>
+            }
         </div>
     )
 };

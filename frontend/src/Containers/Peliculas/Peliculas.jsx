@@ -11,8 +11,7 @@ const Peliculas = () =>{
     //HANDLERS
     //FILTRO POR CIUDAD
     const filtrarPorCiudad = async (e) =>{
-        let indiceCiudadSeleccionada = e.target.selectedIndex;
-        let ciudadSeleccionada = e.target.options[indiceCiudadSeleccionada].text;
+        let ciudadSeleccionada = e.target.value;
         let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas${ciudadSeleccionada === "España" ? "" : "/ciudad/" + ciudadSeleccionada}`);
         setPeliculas((res.data));
     };
@@ -54,7 +53,7 @@ const Peliculas = () =>{
                 <div id="pelicula-ciudad">
                     <h2>Todas las películas disponibles en tu zona</h2>
                     <select name="ciudades" id="ciudades-disponibles" onChange={(e)=>filtrarPorCiudad(e)}>
-                        <option value="Todas">España</option>
+                        <option value="España">España</option>
                         <option value="Valencia">Valencia</option>
                         <option value="Getafe">Getafe</option>
                         <option value="Albacete">Albacete</option>

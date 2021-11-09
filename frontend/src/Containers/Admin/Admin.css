@@ -116,11 +116,20 @@
     padding: 0.25em;
     color: var(--masclaro);
 }
+/*BOTON BUSCAR TODOS LOS USUARIOS Y PEDIDOS*/
+#container-boton-lista{
+    width: 45%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+#container-boton-lista .boton{
+    width: 35%;
+}
 /*CONTENEDOR DE TODOS LOS USUARIOS*/
 #cuadro-usuarios{
-    width: 100%;
-    height: 70%;
-    overflow-y: scroll;
+    width: 45%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -128,12 +137,12 @@
     flex-wrap: wrap;
 }
 /*USUARIO INDIVIDUAL*/
-.usuario-en-lista{
+.articulo-en-lista{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-evenly;
-    width: 45%;
+    width: 95%;
     background-color: var(--oscuro);
     border: 2px solid var(--masoscuro);
     color: var(--masclaro);
