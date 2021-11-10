@@ -1,6 +1,7 @@
 :root {
     --masoscuro: #401708;
-    --oscuro: #8c2703ea;
+    --oscuro: #8c2703;
+    --oscuro-transparente: #8c2703ee;
     --neutro: #D93D04;
     --claro: #F27405;
     --masclaro: #F2AA6B;
@@ -30,7 +31,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    background-color: var(--oscuro);
+    background-color: var(--oscuro-transparente);
+    border-radius: 0.25em;
 }
 /* H2 DE INICIO */
 #login-inicio h2{

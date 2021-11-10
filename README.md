@@ -53,14 +53,22 @@ El directorio **src** es donde está almacenada toda la aplicación. En este dir
 
 * **index.js**: Este es el archivo principal. Desde aquí se llama a **<App/>**, que es donde se ejecutará toda la aplicación.
 
-* **app.js**: En este archivo es donde se gestionan los diferentes **Containers** de la aplicación, así como diferentes **Components**.
+* **app.js**: En este archivo es donde se gestionan los diferentes **Containers** de la aplicación.
+
+* **Redux**: En este directorio guardamos toda la configuración de redux de la aplicación.
+    * **store.js**: En este archivo se encuentra el estado general de la aplicación.
+    * **types.js**: En este archivo se encuentran los nombres de los actions.
+    * **reducers**: En este directorio se encuentran todos los reducers que modifican el estado:
+     * ****:
 
 * **Containers**: En este directorio es donde se guardarán las diferentes vistas:
     * **Inicio**: Es la página principal, donde se ve un pequeño mensaje de bienvenida, el header y la ventana de login.
-    * **Perfil**: Es la página donde se puede ver los datos del usuario que se ha logado en la página, actualizar esos datos,
-    * **Películas**: Es la página donde se pueden ver todas las películas de la base de datos. Se pueden filtrarlas por ciudades, hacer búsqueda por título, por género, por protagonista.
     * **Contacto**: Es la página en la que se podrá contactar con el administrador de la aplicación. Se puede mandar los datos de usuario para dar de alta un usuario nuevo.
+    * **Tu Zona**: Es la página de gestión, donde el usuario podrá acceder a las diferentes funcionalidades de la aplicación.
+    * **Perfil**: Es la página en la que el usuario podrá consultar sus datos guardados en la base de datos, actualizarlos o borrar su perfil.
+    * **Películas**: Es la página donde se pueden ver todas las películas de la base de datos. Se pueden filtrarlas por ciudades, hacer búsqueda por título, por género y por protagonista.
+    
     * **Admin**: Es la página donde se puede acceder únicamente cuando se inicia sesión como administrador. Se puede registrar usuarios, buscar usuarios por id, actualizarlos, borrarlos, ver listado completo de usuarios.
 * **Components**: En este directorio es donde se guardan todos los componentes que se usarán en todas las vistas:
-    * **Header**: Es el menú que aparece en la parte superior de la aplicación.
+    * **Lateral**: Es el menú que aparece en la parte lateral de la aplicación cuando nos logamos.
 * **img**: En este directorio se guardan todas las imágenes que se usarán en la aplicación.

@@ -17,7 +17,7 @@
 }
 /*CONTENEDOR DE FILTROS Y DE PELÍCULAS*/
 #contenido-peliculas{
-    width: 75em;
+    width: 75vw;
     height: 100vh;
     overflow-y: scroll;
 }
