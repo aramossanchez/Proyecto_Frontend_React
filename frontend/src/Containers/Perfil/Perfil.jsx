@@ -7,38 +7,29 @@ import { connect } from 'react-redux';
 import { COPIA_DATOS_LOGIN, GUARDA_CAMBIOS_ACTUALIZAR, ACTUALIZA_DATOS_LOGIN } from '../../redux/types';
 
 const Perfil = (props) =>{
-    
-    // let body =  {
-    //     correo: props.datosLogin.usuario.correo,
-    //     dni: props.datosLogin.usuario.dni,
-    //     nombre: props.datosLogin.usuario.nombre,
-    //     apellidos: props.datosLogin.usuario.apellidos,
-    //     direccion: props.datosLogin.usuario.direccion,
-    //     ciudad: props.datosLogin.usuario.ciudad,
-    //     telefono: props.datosLogin.usuario.telefono,
-    //     createdAt: props.datosLogin.usuario.createdAt
-    // }
 
-    //RELLENA LOS CAMPOS DE datosUsuario RECORRIENDO TODOS LOS INPUTS, Y DESPUES ACTUALIZA EL CAMPO SELECCIONADO CON LOS CAMBIOS QUE HACEMOS EN LOS INPUTS
-    const actualizarDatos = (e, propiedad) =>{
-        props.dispatch({type:GUARDA_CAMBIOS_ACTUALIZAR, payload: {propiedad: propiedad, valor:e.target.value}});
-    };
-
+    //LA PRIMERA VEZ QUE CARGA EL COMPONENTE, CREO UNA COPIA DE LOS DATOS DEL USUARIO LOGUEADO EN REDUX
     useEffect(()=>{
         props.dispatch({type:COPIA_DATOS_LOGIN, payload: props.datosLogin.usuario});
     }, [])
 
-    const actualizarRegistro = async () =>{
+    //CAMBIA LOS VALORES GUARDADOS DE LA COPIA DE DATOS DE USUARIO LOGUEADO POR LOS DE LOS INPUT
+    const actualizarDatos = (e, propiedad) =>{
+        props.dispatch({type:GUARDA_CAMBIOS_ACTUALIZAR, payload: {propiedad: propiedad, valor:e.target.value}});
+    };
 
-        // //CREAMOS LA CONFIGURACIÓN DEL HEADER QUE SE VA A MANDAR
+
+    const actualizarRegistro = async () =>{
+        //CREAMOS LA CONFIGURACIÓN DEL HEADER QUE SE VA A MANDAR
         let config = {
             headers: { Authorization: `Bearer ${props.datosLogin.token}` }
         };
 
+        //MODIFICO USUARIO EN LA BASE DE DATOS
         await axios.put(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${props.datosLogin.usuario.id}`, props.datosActualizarUsuario, config)
-    
+        
+        //CAMBIO LOS DATOS DE USUARIO LOGUEADO GUARDADOS POR LOS DATOS ACTUALES DEL USUARIO, TRAS ACTUALIZARLOS
         props.dispatch({type:ACTUALIZA_DATOS_LOGIN, payload: props.datosActualizarUsuario});
-
     }
 
     return(

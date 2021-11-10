@@ -3,49 +3,48 @@ import './Peliculas.css';
 import axios from 'axios';
 import lupa from '../../img/lupa.png';
 import Lateral from '../../Components/Lateral/Lateral';
+import { connect } from 'react-redux';
+import { GUARDAR_PELICULAS } from '../../redux/types';
 
-const Peliculas = () =>{
+const Peliculas = (props) =>{
 
-    //HOOKS
-    const [peliculas, setPeliculas] = useState([]);
+    //GUARDA TODO EL LISTADO DE LAS PELICULAS DE LA BASE DE DATOS
+    useEffect(()=>{
+        const cargarPeliculas = async () =>{
+            let res = await axios.get("https://aramossanchez-videoclub-api.herokuapp.com/peliculas/");
+            props.dispatch({type:GUARDAR_PELICULAS, payload: res.data});
+        }
+        cargarPeliculas();
+    }, [])
 
-    //HANDLERS
+    
     //FILTRO POR CIUDAD
     const filtrarPorCiudad = async (e) =>{
-        let ciudadSeleccionada = e.target.value;
-        let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas${ciudadSeleccionada === "España" ? "" : "/ciudad/" + ciudadSeleccionada}`);
-        setPeliculas((res.data));
+        // let ciudadSeleccionada = e.target.value;
+        // let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas${ciudadSeleccionada === "España" ? "" : "/ciudad/" + ciudadSeleccionada}`);
+        // setPeliculas((res.data));
     };
 
     //BUSQUEDA POR TITULO
     const buscarTitulo = async () =>{
         let valorBusqueda = document.getElementById("busqueda-titulo").value;
         let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas/titulo/${valorBusqueda}`)
-        setPeliculas((res.data));
+        props.dispatch({type:GUARDAR_PELICULAS, payload: res.data});
     }
 
     //BUSQUEDA POR GÉNERO
     const buscarGenero = async () =>{
-        let valorBusqueda = document.getElementById("busqueda-genero").value;
-        let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas/genero/${valorBusqueda}`)
-        setPeliculas((res.data));
+        // let valorBusqueda = document.getElementById("busqueda-genero").value;
+        // let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas/genero/${valorBusqueda}`)
+        // setPeliculas((res.data));
     }
 
     //BUSQUEDA POR PROTAGONISTA
     const buscarProtagonista = async () =>{
-        let valorBusqueda = document.getElementById("busqueda-protagonista").value;
-        let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas/actor_principal/${valorBusqueda}`)
-        setPeliculas((res.data));
+        // let valorBusqueda = document.getElementById("busqueda-protagonista").value;
+        // let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas/actor_principal/${valorBusqueda}`)
+        // setPeliculas((res.data));
     }
-
-    //CARGA DE TODAS LAS PELICULAS DE LA BASE DE DATOS
-    useEffect(()=>{
-        const cargarPeliculas = async () =>{
-            let res = await axios.get("https://aramossanchez-videoclub-api.herokuapp.com/peliculas/");
-            setPeliculas((res.data));
-        }
-        cargarPeliculas();
-    }, [])
 
     return(
         <div id="container-peliculas">
@@ -89,19 +88,23 @@ const Peliculas = () =>{
                 </div>
                 {/* MOSTRAR LAS PELICULAS */}
                 <div id="listado-peliculas">
-                    {peliculas.map((pelicula)=>{
+                    
+                    {props.peliculasMostradas.peliculas.map((pelicula)=>{
                         return <div key={pelicula.id} className="pelicula-individual">
                             <div></div>
-                            <p><span>Título:</span> {JSON.stringify(pelicula.titulo)}</p>
-                            <p><span>Género:</span> {JSON.stringify(pelicula.genero)}</p>
-                            <p><span>Protagonista:</span> {JSON.stringify(pelicula.actor_principal)}</p>
-                            <p><span>Ciudad disponible:</span> {JSON.stringify(pelicula.ciudad)}</p>                        
+                            <p><span>Título:</span> {pelicula.titulo}</p>
+                            <p><span>Género:</span> {pelicula.genero}</p>
+                            <p><span>Protagonista:</span> {pelicula.actor_principal}</p>
+                            <p><span>Ciudad disponible:</span> {pelicula.ciudad}</p>                        
                         </div>
                     })}
+
                 </div>
             </div>
         </div>
     )
 }
 
-export default Peliculas;
+export default connect((state)=>({
+    peliculasMostradas: state.peliculasMostradas,
+}))(Peliculas);

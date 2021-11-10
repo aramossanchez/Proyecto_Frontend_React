@@ -1,4 +1,4 @@
-import {COPIA_DATOS_LOGIN, GUARDA_CAMBIOS_ACTUALIZAR, ACTUALIZA_DATOS_LOGIN} from '../types';
+import {COPIA_DATOS_LOGIN, GUARDA_CAMBIOS_ACTUALIZAR} from '../types';
 
 const initialState = {
     correo:"",

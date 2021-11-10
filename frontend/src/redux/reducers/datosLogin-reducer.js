@@ -7,7 +7,7 @@ const initialState = {
 
 const datosLoginReducer = (state = initialState, action) => {
     switch(action.type){
-        //Ejemplo de añadido de datos
+        //GUARDO EN EL ESTADO LOS DATOS DEL USUARIO LOGUEADO
         case LOGIN :
             return action.payload;
 

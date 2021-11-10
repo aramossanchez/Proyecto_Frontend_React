@@ -59,7 +59,7 @@ El directorio **src** es donde está almacenada toda la aplicación. En este dir
     * **store.js**: En este archivo se encuentra el estado general de la aplicación.
     * **types.js**: En este archivo se encuentran los nombres de los actions.
     * **reducers**: En este directorio se encuentran todos los reducers que modifican el estado:
-     * ****:
+        * **index**: En este archivo combinamos todos los reducers, para conseguir la centralización deseada de estados con redux.
 
 * **Containers**: En este directorio es donde se guardarán las diferentes vistas:
     * **Inicio**: Es la página principal, donde se ve un pequeño mensaje de bienvenida, el header y la ventana de login.
