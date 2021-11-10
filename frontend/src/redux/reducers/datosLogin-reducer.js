@@ -11,9 +11,9 @@ const datosLoginReducer = (state = initialState, action) => {
         case LOGIN :
             return action.payload;
 
-        //Ejemplo de reestablecimiento o borrado de datos
+        //BORRAMOS DATOS GUARDADOS DE USUARIO LOGUEADO Y DEJAMOS VALORES VACIOS
         case LOGOUT : 
-            return initialState;
+            return action.payload;
         //MODIFICAMOS LOS DATOS QUE TENEMOS GUARDADOS EN ESTE ESTADO CON LOS VALORES QUE METAMOS POR INPUT EN Perfil.js
         case ACTUALIZA_DATOS_LOGIN :
             return {

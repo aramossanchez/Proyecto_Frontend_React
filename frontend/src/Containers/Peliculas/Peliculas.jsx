@@ -17,19 +17,11 @@ const Peliculas = (props) =>{
         cargarPeliculas();
     }, [])
 
-    
-    //FILTRO POR CIUDAD
-    const filtrarPorCiudad = async (e) =>{
-        // let ciudadSeleccionada = e.target.value;
-        // let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas${ciudadSeleccionada === "España" ? "" : "/ciudad/" + ciudadSeleccionada}`);
-        // setPeliculas((res.data));
-    };
-
     //BUSQUEDA POR TITULO
     const buscarTitulo = async () =>{
         let valorBusqueda = document.getElementById("busqueda-titulo").value;
         let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas/titulo/${valorBusqueda}`)
-        
+        props.dispatch({type:GUARDAR_PELICULAS, payload: res.data});
     }
 
     //BUSQUEDA POR GÉNERO
@@ -51,16 +43,6 @@ const Peliculas = (props) =>{
             <Lateral/>
             <div id="contenido-peliculas">
                 <div id="filtros-peliculas">
-                    {/* FILTRAR POR CIUDAD */}
-                    <div id="pelicula-ciudad">
-                        <h2>Todas las películas disponibles en tu zona</h2>
-                        <select name="ciudades" id="ciudades-disponibles" onChange={(e)=>filtrarPorCiudad(e)}>
-                            <option value="España">España</option>
-                            <option value="Valencia">Valencia</option>
-                            <option value="Getafe">Getafe</option>
-                            <option value="Albacete">Albacete</option>
-                        </select>
-                    </div>
                     {/* BUSQUEDA POR TITULO */}
                     <div id="busqueda-pelicula-titulo">
                         <h2>Búsqueda de películas por título</h2>

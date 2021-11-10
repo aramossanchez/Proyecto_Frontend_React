@@ -28,7 +28,7 @@ const PeliculasDisponibles = (props) =>{
                             <div></div>
                             <p><span>Título:</span> {pelicula.titulo}</p>
                             <p><span>Género:</span> {pelicula.genero}</p>
-                            <p><span>Protagonista:</span> {pelicula.actor_principal}</p>                    
+                            <p><span>Protagonista:</span> {pelicula.actor_principal}</p>                   
                         </div>
                     })}
 
