@@ -29,21 +29,21 @@ const Peliculas = (props) =>{
     const buscarTitulo = async () =>{
         let valorBusqueda = document.getElementById("busqueda-titulo").value;
         let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas/titulo/${valorBusqueda}`)
-        props.dispatch({type:GUARDAR_PELICULAS, payload: res.data});
+        
     }
 
     //BUSQUEDA POR GÉNERO
     const buscarGenero = async () =>{
-        // let valorBusqueda = document.getElementById("busqueda-genero").value;
-        // let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas/genero/${valorBusqueda}`)
-        // setPeliculas((res.data));
+        let valorBusqueda = document.getElementById("busqueda-genero").value;
+        let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas/genero/${valorBusqueda}`)
+        props.dispatch({type:GUARDAR_PELICULAS, payload: res.data});
     }
 
     //BUSQUEDA POR PROTAGONISTA
     const buscarProtagonista = async () =>{
-        // let valorBusqueda = document.getElementById("busqueda-protagonista").value;
-        // let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas/actor_principal/${valorBusqueda}`)
-        // setPeliculas((res.data));
+        let valorBusqueda = document.getElementById("busqueda-protagonista").value;
+        let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas/actor_principal/${valorBusqueda}`)
+        props.dispatch({type:GUARDAR_PELICULAS, payload: res.data});
     }
 
     return(
