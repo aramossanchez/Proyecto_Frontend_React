@@ -17,39 +17,7 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
-/*CONTENEDOR DE REGISTRO*/
-#cuadro-registro{
-    margin-top: 5em;
-    width: 30%;
-    height: 30em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    background-color: var(--oscuro);
-}
-/* H2 DE REGISTRO */
-#cuadro-registro h2{
-    color: var(--claro);
-    align-self: center;
-    margin: 1em 0 0 1em;
-}
-/* INPUT DE REGISTRO */
-#cuadro-registro input{
-    all:unset;
-    text-align: left;
-    border: 2px solid transparent;
-    border-bottom: 2px solid var(--masoscuro);
-    padding: 0.25em;
-    width: 80%;
-}
-#cuadro-registro input:focus{
-    border: 2px solid var(--masoscuro);
-    background-color: var(--claro);
-}
-#cuadro-registro input::placeholder {
-    color: var(--neutro);
-}
+
 /*CONTENEDOR DE USUARIO POR ID*/
 #cuadro-usuario-id{
     margin-top: 5em;

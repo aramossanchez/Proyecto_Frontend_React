@@ -30,3 +30,6 @@
     color:var(--masoscuro);
     background-color: var(--masclaro);
 }
+#opciones-admin{
+    width: 100%;
+}
