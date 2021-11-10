@@ -1,0 +1,66 @@
+:root {
+    --masoscuro: #401708;
+    --oscuro: #8C2703;
+    --neutro: #D93D04;
+    --claro: #F27405;
+    --masclaro: #F2AA6B;
+}
+/* CONTENEDOR DE PANTALLA DE ERROR*/
+#container-error{
+    height: 100vh;
+    background-color: var(--masclaro);
+    color: var(--masoscuro);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+}
+/*H2 DE PANTALLA DE ERROR*/
+#container-error h2{
+    font-size: 4em;
+    z-index: 4;
+}
+/*P DE PANTALLA DE ERROR*/
+#container-error p{
+    font-size: 2em;
+    z-index: 4;
+}
+/*FOTOS DE GATOS DE PANTALLA DE ERROR*/
+.gato-trabajando{
+    position: absolute;
+    width: 10em;
+    transform: rotate(-15deg);
+    animation: rotacion 3s infinite;
+}
+#gato-1{
+    top: 2em;
+    left: 0;
+}
+#gato-2{
+    bottom: 5em;
+    left: 40em;
+}
+#gato-3{
+    bottom: 15em;
+    right: 10em;
+}
+#gato-4{
+    top: 5em;
+    right: 20em;
+}
+#gato-5{
+    left: 20em;
+}
+
+@keyframes rotacion {
+    0% {
+        transform: rotate(-15deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+    100% {
+        transform: rotate(-15deg);
+    }
+  }

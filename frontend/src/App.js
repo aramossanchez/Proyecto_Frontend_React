@@ -6,7 +6,7 @@ import Perfil from './Containers/Perfil/Perfil';
 import Peliculas from './Containers/Peliculas/Peliculas';
 import PeliculasDisponibles from './Containers/PeliculasDisponibles/PeliculasDisponibles';
 import Contacto from './Containers/Contacto/Contacto';
-import Admin from './Containers/Admin/Admin';
+import PantallaError from './Containers/PantallaError/PantallaError';
 
 function App() {
   return (
@@ -15,13 +15,13 @@ function App() {
 
         <Routes>
 
+          <Route path="/error" element={<PantallaError />} />
           <Route path="/" element={<Inicio />} />
           <Route path="/tuzona" element={<TuZona />} />
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/peliculas" element={<Peliculas />} />
           <Route path="/peliculasdisponibles" element={<PeliculasDisponibles />} />
           <Route path="/contacto" element={<Contacto />} />
-          <Route path="/admin" element={<Admin />} />
 
         </Routes>
 

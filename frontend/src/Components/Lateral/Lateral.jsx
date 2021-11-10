@@ -11,7 +11,8 @@ const Lateral = (props) =>{
     const redireccionar = (destino) =>{
         navigate(destino)
     };
-
+    
+    //BORRAMOS LOS DATOS DEL USUARIO LOGUEADO Y LOS RESETEAMOS A VALOR VACÍO
     const logout = () => {
         let datosBorradosLogin = {
             token : '',
@@ -26,8 +27,20 @@ const Lateral = (props) =>{
             <div className="enlace-lateral" onClick={()=>redireccionar("/perfil")}>Tus alquileres</div>
             <div className="enlace-lateral" onClick={()=>redireccionar("/peliculas")}>Catálogo de películas</div>
             <div className="enlace-lateral" onClick={()=>redireccionar("/peliculasdisponibles")}>Películas disponibles para alquilar en tu ciudad</div>
+            {/* ENLACES SOLO PARA ADMINISTRADOR */}
+            {props.datosLogin.usuario.rol === "administrador"
+            ?
+            <div>
+            <div className="enlace-lateral" onClick={()=>redireccionar("/peliculasdisponibles")}>Registro de usuarios</div>
+            <div className="enlace-lateral" onClick={()=>redireccionar("/peliculasdisponibles")}>Buscar usuario por ID</div>
+            <div className="enlace-lateral" onClick={()=>redireccionar("/peliculasdisponibles")}>Listado de todos los usuarios</div>
+            <div className="enlace-lateral" onClick={()=>redireccionar("/peliculasdisponibles")}>Buscar pedido por ID</div>
+            <div className="enlace-lateral" onClick={()=>redireccionar("/peliculasdisponibles")}>Listado de todos los pedidos</div>
+            </div>
+            :
+            ""
+            }
             <div className="enlace-lateral" onClick={()=>{logout(); redireccionar("/")}}>Logout</div>
-
         </div>
     )
 }

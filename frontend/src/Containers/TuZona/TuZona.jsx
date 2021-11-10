@@ -1,18 +1,28 @@
 import React, {useState, useEffect} from 'react';
 import './TuZona.css';
-import axios from 'axios';
-import Header from '../../Components/Lateral/Lateral';
+import Lateral from '../../Components/Lateral/Lateral';
+import PantallaError from '../PantallaError/PantallaError';
+import { connect } from 'react-redux';
 
-const TuZona = () =>{
+const TuZona = (props) =>{
 
-    return(
-        <div id="container-tuzona">
-            <Header/>
-            <div id="contenido-tuzona">
-                <h2>Bienvenido a Tu Zona</h2>
+    if (props.datosLogin.usuario.rol === undefined) {
+        console.log("Maquina")
+        return(
+            <PantallaError/>
+        )
+    }else{
+        return(
+            <div id="container-tuzona">
+                <Lateral/>
+                <div id="contenido-tuzona">
+                    <h2>Bienvenido a Tu Zona</h2>
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
-export default TuZona;
+export default connect((state)=>({
+    datosLogin: state.datosLogin
+}))(TuZona);
