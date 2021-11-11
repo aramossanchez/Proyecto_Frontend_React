@@ -1,0 +1,105 @@
+:root {
+    --masoscuro: #401708;
+    --oscuro: #8C2703;
+    --neutro: #D93D04;
+    --claro: #F27405;
+    --masclaro: #F2AA6B;
+}
+/* CONTENEDOR GESTION ADMINISTRADOR */
+#container-buscar-usuario{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--masclaro);
+    color: var(--masoscuro);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+/*CONTENEDOR DE USUARIO POR ID*/
+#cuadro-usuario-id{
+    width: 75em;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0.5em;
+}
+/*H2 DE VISTA DE BUSQUEDA DE USUARIO*/
+#cuadro-usuario-id h2{
+
+}
+/*BARRA DE BUSQUEDA Y LUPA DE USUARIO POR ID*/
+.barra-busqueda-usuario{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+.barra-busqueda-usuario input{
+    all: unset;
+    width: 3em;
+    font-size: 1em;
+    background-color: var(--claro);
+    color: var(--masoscuro);
+    border: 2px solid var(--masoscuro);
+    text-align: left;
+    padding: 0 0.25em;
+}
+/*CONTENEDOR DE DATOS DE USUARIO POR ID*/
+#datos-usuario-id{
+    font-size: 1em;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-color: var(--claro);
+    border-radius: 0.5em;
+    padding: 0.5em;
+}
+#datos-usuario-id span{
+    font-weight: bold;
+}
+#datos-usuario-id p{
+    margin: 1em 0;
+}
+/* INPUT DE USUARIO ID PARA ACTUALIZAR CAMPOS */
+#datos-usuario-id input{
+    all:unset;
+    margin: 0 1em;
+    text-align: left;
+    border: 2px solid transparent;
+    border-bottom: 2px solid var(--masoscuro);
+    background-color: var(--claro);
+    padding: 0.25em;
+    width: 40em;
+    color: var(--masoscuro);
+}
+#datos-usuario-id input:focus{
+    border: 2px solid var(--masclaro);
+    background-color: var(--masoscuro);
+    color: var(--neutro);
+}
+/* INPUT NO MODIFICABLES */
+#datos-usuario-id input:read-only{
+    all:unset;
+    width: 12em;
+    margin: 0 1em;
+    text-align: left;
+    border: 2px solid transparent;
+    background-color: var(--claro);
+    padding: 0.25em;
+    color: var(--masoscuro);
+}
+/*BOTONES*/
+#botones-buscar-usuario{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+#botones-buscar-usuario div{
+    margin: 1em 2em;
+}

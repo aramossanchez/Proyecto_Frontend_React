@@ -22,24 +22,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-}
-
-/*CONTENEDOR DE REGISTRO*/
-#cuadro-registro{
-    width: 80%;
-    height: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    background-color: var(--claro);
+    justify-content: space-evenly;
 }
 /* H2 DE REGISTRO */
 #cuadro-registro h2{
     color: var(--masoscuro);
     align-self: center;
     margin: 1em 0 0 1em;
+}
+/*CONTENEDOR DE REGISTRO*/
+#cuadro-registro{
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--claro);
+    border-radius: 0.5em;
 }
 /* INPUT DE REGISTRO */
 #cuadro-registro input{

@@ -8,6 +8,7 @@ import PeliculasDisponibles from './Containers/PeliculasDisponibles/PeliculasDis
 import Contacto from './Containers/Contacto/Contacto';
 import PantallaError from './Containers/PantallaError/PantallaError';
 import RegistroUsuarios from './Containers/RegistroUsuarios/RegistroUsuarios';
+import BuscarUsuario from './Containers/BuscarUsuario/BuscarUsuario';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/peliculas" element={<Peliculas />} />
           <Route path="/peliculasdisponibles" element={<PeliculasDisponibles />} />
           <Route path="/registrousuarios" element={<RegistroUsuarios />} />
+          <Route path="/buscarusuario" element={<BuscarUsuario />} />
           <Route path="/contacto" element={<Contacto />} />
 
         </Routes>
