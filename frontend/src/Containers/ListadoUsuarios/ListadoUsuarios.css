@@ -7,35 +7,80 @@
 }
 /* CONTENEDOR DE LISTADO Y FILTROS DE PELICULAS */
 #container-usuarios{
+    width: 100vw;
     height: 100vh;
-    background-color: var(--masclaro);
-    color: var(--masoscuro);
+    background-color: var(--claro);
+    color: var(--oscuro);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
-#lista-usuarios{
-    width: 75em;
+/*CONTENEDOR DE H2, NOMBRES DE COLUMNAS Y LISTADO DE USUARIOS*/
+#contenido-usuarios{
+    width: 80em;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: scroll;
+}
+/*H2 DE CONTENIDO USUARIOS*/
+#contenido-usuarios h2{
+    font-size: 2em;
+    margin: 1em 0;
+}
+/*CONTENEDOR DE NOMBRES DE COLUMNAS*/
+#contenido-usuarios #nombres-columnas-usuarios{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-bottom: 0.75em;
+}
+#contenido-usuarios #nombres-columnas-usuarios div{
+    width: 10%;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+/*LISTA DE USUARIOS*/
+#lista-usuarios{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+/*UN UNICO USUARIO*/
+.usuario-individual{
+    font-size: 1.25em;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-evenly;
-    flex-wrap: wrap;
-    overflow-y: scroll;
+    width: 100%;
+    background-color: var(--complementario2);
+    margin: 0.25em 0;
+    transition: 0.3s;
+    overflow: hidden;
+    border-top: 2px solid var(--oscuro);
+    border-bottom: 2px solid var(--oscuro);
 }
-.usuario-individual{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-evenly;
-    width: 30%;
-    background-color: var(--claro);
-    margin: 1em 0;
-    padding: 0.5em;
-    border-radius: 0.5em;
+.usuario-individual p{
+    font-size: 0.6em;
+    text-align: center;
+    width: 10%;
 }
 .usuario-individual span{
     font-weight: bold;
+}
+.usuario-individual:hover{
+    background-color: var(--principal);
+    color: var(--claro);
+    cursor: pointer;
+    border-top: 2px solid var(--complementario1);
+    border-bottom: 2px solid var(--complementario1);
 }

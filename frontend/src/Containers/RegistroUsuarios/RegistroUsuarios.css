@@ -7,9 +7,9 @@
 }
 /* CONTENEDOR REGISTRO */
 #container-registro{
-    max-height: 100vh;
-    background-color: var(--masclaro);
-    color: var(--masoscuro);
+    height: 100vh;
+    background-color: var(--claro);
+    color: var(--oscuro);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -17,7 +17,7 @@
 }
 /*CONTENEDOR DE TARJETA DE REGISTRO*/
 #contenido-registro{
-    width: 75vw;
+    width: 80vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -25,10 +25,8 @@
     justify-content: space-evenly;
 }
 /* H2 DE REGISTRO */
-#cuadro-registro h2{
-    color: var(--masoscuro);
-    align-self: center;
-    margin: 1em 0 0 1em;
+#contenido-registro h2{
+    font-size: 2em;
 }
 /*CONTENEDOR DE REGISTRO*/
 #cuadro-registro{
@@ -38,23 +36,24 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    background-color: var(--claro);
+    background-color: var(--complementario2);
     border-radius: 0.5em;
+    box-shadow: 0px 0px 8px 0.1em var(--oscuro);
 }
 /* INPUT DE REGISTRO */
 #cuadro-registro input{
     all:unset;
     text-align: left;
     border: 2px solid transparent;
-    border-bottom: 2px solid var(--masoscuro);
+    border-bottom: 2px solid var(--oscuro);
     padding: 0.25em;
     width: 90%;
 }
 #cuadro-registro input:focus{
-    border: 2px solid var(--masclaro);
-    background-color: var(--masoscuro);
-    color: var(--neutro);
+    border: 2px solid var(--oscuro);
+    background-color: var(--complementario1);
+    color: var(--oscuro);
 }
 #cuadro-registro input::placeholder {
-    color: var(--oscuro);
+    color: var(--principal);
 }

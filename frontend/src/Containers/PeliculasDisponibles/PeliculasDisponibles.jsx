@@ -20,7 +20,7 @@ const PeliculasDisponibles = (props) =>{
         <div id="container-peliculas">
             <Lateral/>
             <div id="contenido-peliculas">
-                
+                <h2>Listado de películas disponibles para alquilar en {props.datosLogin.usuario.ciudad}</h2>
                 <div id="listado-peliculas">
                     
                     {props.peliculasMostradas.peliculas.map((pelicula)=>{

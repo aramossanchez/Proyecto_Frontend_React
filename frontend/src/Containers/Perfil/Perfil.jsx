@@ -48,7 +48,7 @@ const Perfil = (props) =>{
                     <p><span>Telefono:</span><input autoComplete="off" type="text" name="telefono" onChange={(e)=>actualizarDatos(e, "telefono")} value={props.datosActualizarUsuario.telefono}/></p>
                     <p><span>Fecha de alta:</span><input readOnly type="text" name="createdAt" value={props.datosLogin.usuario.createdAt}/></p>
                 </div>
-                <div className="boton" onClick={()=>actualizarRegistro()}>ACTUALIZAR</div>
+                <div className="boton" onClick={()=>actualizarRegistro()}>ACTUALIZAR DATOS DE USUARIO</div>
             </div>      
         </div>
     )

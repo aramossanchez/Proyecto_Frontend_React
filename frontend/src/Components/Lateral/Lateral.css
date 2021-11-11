@@ -30,6 +30,6 @@
     color:var(--oscuro);
     background-color: var(--complementario1);
 }
-#opciones-admin{
+#opciones-admin, #opciones-user{
     width: 100%;
 }

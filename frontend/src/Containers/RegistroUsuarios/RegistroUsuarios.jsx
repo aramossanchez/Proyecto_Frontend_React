@@ -50,7 +50,7 @@ const RegistroUsuarios = (props) =>{
                     <input autoComplete="off" placeholder="Telefono" type="text" name="telefono" id="telefono-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
                     <input autoComplete="off" placeholder="Rol (usuario o administrador)" type="text" name="rol" id="rol-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
                 </div>
-                <div  className="boton" onClick={()=>registrarUsuario()}>REGISTRAR</div>
+                <div  className="boton" onClick={()=>registrarUsuario()}>CREAR USUARIO NUEVO</div>
             </div>
         </div>
     )

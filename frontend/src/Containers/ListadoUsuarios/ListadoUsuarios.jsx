@@ -26,21 +26,34 @@ const ListadoUsuarios = (props) =>{
     return(
         <div id="container-usuarios">
             <Lateral/>
-            <div id="lista-usuarios">
-                {listaUsuarios?.map((usuario)=>{
-                    return <div key={usuario.id} className="usuario-individual">
-                        <div></div>
-                        <p><span>ID:</span> {usuario.id}</p>
-                        <p><span>Correo:</span> {usuario.correo}</p>
-                        <p><span>DNI:</span> {usuario.dni}</p>
-                        <p><span>Nombre:</span> {usuario.nombre}</p>
-                        <p><span>Apellidos:</span> {usuario.apellidos}</p>
-                        <p><span>Direccion:</span> {usuario.direccion}</p>
-                        <p><span>Ciudad:</span> {usuario.ciudad}</p>
-                        <p><span>Telefono:</span> {usuario.telefono}</p>
-                        <p><span>Fecha de alta:</span> {usuario.createdAt}</p>                        
-                    </div>
-                })}
+            <div id="contenido-usuarios">
+                <h2>Listado de usuarios dados de alta</h2>
+                <div id="nombres-columnas-usuarios">
+                    <div>ID de usuario</div>
+                    <div>Correo</div>
+                    <div>DNI</div>
+                    <div>Nombre</div>
+                    <div>Apellidos</div>
+                    <div>Direccion</div>
+                    <div>Ciudad</div>
+                    <div>Telefono</div>
+                    <div>Fecha de alta</div>       
+                </div>
+                <div id="lista-usuarios">
+                    {listaUsuarios?.map((usuario)=>{
+                        return <div key={usuario.id} className="usuario-individual">
+                            <p>{usuario.id}</p>
+                            <p>{usuario.correo}</p>
+                            <p>{usuario.dni}</p>
+                            <p>{usuario.nombre}</p>
+                            <p>{usuario.apellidos}</p>
+                            <p>{usuario.direccion}</p>
+                            <p>{usuario.ciudad}</p>
+                            <p>{usuario.telefono}</p>
+                            <p>{usuario.createdAt}</p>                        
+                        </div>
+                    })}
+                </div>
             </div>
             
         </div>

@@ -5,38 +5,81 @@
     --oscuro: #090909;
     --claro: #EEEEEE;
 }
-/* CONTENEDOR DE LISTADO Y FILTROS DE PELICULAS */
+/* CONTENEDOR DE LATERAL Y PEDIDOS */
 #container-pedidos{
     height: 100vh;
-    background-color: var(--masclaro);
-    color: var(--masoscuro);
+    background-color: var(--claro);
+    color: var(--oscuro);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
-#lista-pedidos{
-    width: 75em;
+/*CONTENEDOR DE H2, NOMBRES DE COLUMNAS Y LISTADO DE PEDIDOS*/
+#contenido-pedidos{
+    width: 80em;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: scroll;
+}
+/*H2 DE CONTENIDO pedidos*/
+#contenido-pedidos h2{
+    font-size: 2em;
+    margin: 1em 0;
+}
+/*CONTENEDOR DE NOMBRES DE COLUMNAS*/
+#contenido-pedidos #nombres-columnas-pedidos{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-bottom: 0.75em;
+}
+#contenido-pedidos #nombres-columnas-pedidos div{
+    width: 19%;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+/*LISTA DE pedidos*/
+#lista-pedidos{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+/*UN UNICO PEDIDO*/
+.pedido-individual{
+    font-size: 1.25em;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-evenly;
-    flex-wrap: wrap;
-    overflow-y: scroll;
+    width: 100%;
+    background-color: var(--complementario2);
+    margin: 0.25em 0;
+    transition: 0.3s;
+    overflow: hidden;
+    border-top: 2px solid var(--oscuro);
+    border-bottom: 2px solid var(--oscuro);
 }
-.pedido-individual{
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-evenly;
-    width: 30%;
-    background-color: var(--claro);
-    margin: 1em 0;
-    padding: 0.5em;
-    border-radius: 0.5em;
+.pedido-individual p{
+    font-size: 0.8em;
+    text-align: center;
+    width: 19%;
 }
 .pedido-individual span{
     font-weight: bold;
+}
+.pedido-individual:hover{
+    background-color: var(--principal);
+    color: var(--claro);
+    cursor: pointer;
+    border-top: 2px solid var(--complementario1);
+    border-bottom: 2px solid var(--complementario1);
 }

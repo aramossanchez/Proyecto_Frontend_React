@@ -42,6 +42,7 @@ const Peliculas = (props) =>{
         <div id="container-peliculas">
             <Lateral/>
             <div id="contenido-peliculas">
+                <h2>Listado completo de películas de nuestro videoclub</h2>
                 <div id="filtros-peliculas">
                     {/* BUSQUEDA POR TITULO */}
                     <div id="busqueda-pelicula-titulo">
@@ -74,6 +75,7 @@ const Peliculas = (props) =>{
                     {props.peliculasMostradas.peliculas.map((pelicula)=>{
                         return <div key={pelicula.id} className="pelicula-individual">
                             <div></div>
+                            <p><span>ID de película:</span> {pelicula.id}</p>
                             <p><span>Título:</span> {pelicula.titulo}</p>
                             <p><span>Género:</span> {pelicula.genero}</p>
                             <p><span>Protagonista:</span> {pelicula.actor_principal}</p>

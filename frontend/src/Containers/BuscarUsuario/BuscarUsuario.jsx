@@ -68,8 +68,8 @@ const BuscarUsuario = (props) =>{
                     <p><span>Fecha de alta:</span><input readOnly type="text" name="createdAt" value={usuarioBuscado.createdAt}/></p>
                 </div>
                 <div id="botones-buscar-usuario">
-                    <div className="boton" onClick={()=>actualizarRegistro()}>ACTUALIZAR</div>
-                    <div className="boton" onClick={()=>borrarRegistro()}>BORRAR</div>
+                    <div className="boton" onClick={()=>actualizarRegistro()}>ACTUALIZAR DATOS DE USUARIO</div>
+                    <div className="boton" onClick={()=>borrarRegistro()}>BORRAR USUARIO</div>
                 </div>
                 
             </div>

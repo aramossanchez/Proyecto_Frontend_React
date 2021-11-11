@@ -26,17 +26,27 @@ const ListadoPedidos = (props) =>{
     return(
         <div id="container-pedidos">
             <Lateral/>
-            <div id="lista-pedidos">
-                {listaPedidos?.map((pedido)=>{
-                    return <div key={pedido.id} className="pedido-individual">
-                        <div></div>
-                        <p><span>ID:</span> {pedido.id}</p>
-                        <p><span>ID de película:</span> {pedido.peliculaId}</p>
-                        <p><span>ID de usuario:</span> {pedido.usuarioId}</p>
-                        <p><span>Fecha de alquiler:</span> {pedido.fecha_alquiler}</p>
-                        <p><span>Fecha de devolución:</span> {pedido.fecha_devolucion}</p>                    
-                    </div>
-                })}
+            <div id="contenido-pedidos">
+                <h2>Listado de pedidos realizados</h2>
+                <div id="nombres-columnas-pedidos">
+                    <div>ID de pedido</div>
+                    <div>ID de película</div>
+                    <div>ID de usuario</div>
+                    <div>Fecha de alquiler</div>
+                    <div>Fecha de devolución</div>       
+                </div>
+                <div id="lista-pedidos">
+                    {listaPedidos?.map((pedido)=>{
+                        return <div key={pedido.id} className="pedido-individual">
+                            <div></div>
+                            <p>{pedido.id}</p>
+                            <p>{pedido.peliculaId}</p>
+                            <p>{pedido.usuarioId}</p>
+                            <p>{pedido.fecha_alquiler}</p>
+                            <p>{pedido.fecha_devolucion}</p>                    
+                        </div>
+                    })}
+                </div>
             </div>
             
         </div>

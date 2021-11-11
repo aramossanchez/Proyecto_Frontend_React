@@ -9,8 +9,8 @@
 #container-buscar-usuario{
     width: 100vw;
     height: 100vh;
-    background-color: var(--masclaro);
-    color: var(--masoscuro);
+    background-color: var(--claro);
+    color: var(--oscuro);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -18,7 +18,7 @@
 }
 /*CONTENEDOR DE USUARIO POR ID*/
 #cuadro-usuario-id{
-    width: 75em;
+    width: 80em;
     height: 80%;
     display: flex;
     flex-direction: column;
@@ -28,7 +28,8 @@
 }
 /*H2 DE VISTA DE BUSQUEDA DE USUARIO*/
 #cuadro-usuario-id h2{
-
+    font-size: 2em;
+    margin-bottom: 0.5em;
 }
 /*BARRA DE BUSQUEDA Y LUPA DE USUARIO POR ID*/
 .barra-busqueda-usuario{
@@ -39,13 +40,17 @@
 }
 .barra-busqueda-usuario input{
     all: unset;
-    width: 3em;
+    width: 9em;
     font-size: 1em;
-    background-color: var(--claro);
-    color: var(--masoscuro);
-    border: 2px solid var(--masoscuro);
+    background-color: var(--complementario2);
+    color: var(--oscuro);
+    border: 2px solid var(--oscuro);
     text-align: left;
     padding: 0 0.25em;
+    margin-bottom: 1em;
+}
+.barra-busqueda-usuario input:focus{
+    background-color: var(--complementario1);
 }
 /*CONTENEDOR DE DATOS DE USUARIO POR ID*/
 #datos-usuario-id{
@@ -54,10 +59,11 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-start;
-    background-color: var(--claro);
+    justify-content: space-evenly;
+    background-color: var(--complementario2);
     border-radius: 0.5em;
     padding: 0.5em;
+    box-shadow: 0px 0px 8px 0.1em var(--oscuro);
 }
 #datos-usuario-id span{
     font-weight: bold;
@@ -68,19 +74,19 @@
 /* INPUT DE USUARIO ID PARA ACTUALIZAR CAMPOS */
 #datos-usuario-id input{
     all:unset;
-    margin: 0 1em;
     text-align: left;
     border: 2px solid transparent;
-    border-bottom: 2px solid var(--masoscuro);
-    background-color: var(--claro);
+    border-bottom: 2px solid var(--oscuro);
+    background-color: var(--complementario2);
     padding: 0.25em;
-    width: 40em;
-    color: var(--masoscuro);
+    width: 60em;
+    margin-left: 1em;
+    color: var(--oscuro);
 }
 #datos-usuario-id input:focus{
-    border: 2px solid var(--masclaro);
-    background-color: var(--masoscuro);
-    color: var(--neutro);
+    border: 2px solid var(--oscuro);
+    background-color: var(--complementario1);
+    color: var(--oscuro);
 }
 /* INPUT NO MODIFICABLES */
 #datos-usuario-id input:read-only{
@@ -89,9 +95,9 @@
     margin: 0 1em;
     text-align: left;
     border: 2px solid transparent;
-    background-color: var(--claro);
+    background-color: var(--complementario2);
     padding: 0.25em;
-    color: var(--masoscuro);
+    color: var(--oscuro);
 }
 /*BOTONES*/
 #botones-buscar-usuario{
