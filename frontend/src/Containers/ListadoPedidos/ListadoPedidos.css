@@ -1,0 +1,42 @@
+:root {
+    --masoscuro: #401708;
+    --oscuro: #8C2703;
+    --neutro: #D93D04;
+    --claro: #F27405;
+    --masclaro: #F2AA6B;
+}
+/* CONTENEDOR DE LISTADO Y FILTROS DE PELICULAS */
+#container-pedidos{
+    height: 100vh;
+    background-color: var(--masclaro);
+    color: var(--masoscuro);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+#lista-pedidos{
+    width: 75em;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+.pedido-individual{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    width: 30%;
+    background-color: var(--claro);
+    margin: 1em 0;
+    padding: 0.5em;
+    border-radius: 0.5em;
+}
+.pedido-individual span{
+    font-weight: bold;
+}
