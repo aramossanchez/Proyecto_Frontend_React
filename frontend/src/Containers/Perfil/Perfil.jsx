@@ -43,7 +43,7 @@ const Perfil = (props) =>{
                     <p><span>DNI:</span><input autoComplete="off" type="text" name="dni" onChange={(e)=>actualizarDatos(e, "dni")} value={props.datosActualizarUsuario.dni}/></p>
                     <p><span>Nombre:</span><input autoComplete="off" type="text" name="nombre" onChange={(e)=>actualizarDatos(e, "nombre")} value={props.datosActualizarUsuario.nombre}/></p>
                     <p><span>Apellidos:</span><input autoComplete="off" type="text" name="apellidos" onChange={(e)=>actualizarDatos(e, "apellidos")} value={props.datosActualizarUsuario.apellidos}/></p>
-                    <p><span>Direccion:</span><input autoComplete="off" type="text" name="direccion" onChange={(e)=>actualizarDatos(e, "direcccion")} value={props.datosActualizarUsuario.direccion}/></p>
+                    <p><span>Direccion:</span><input autoComplete="off" type="text" name="direccion" onChange={(e)=>actualizarDatos(e, "direccion")} value={props.datosActualizarUsuario.direccion}/></p>
                     <p><span>Ciudad:</span><input autoComplete="off" type="text" name="ciudad" onChange={(e)=>actualizarDatos(e, "ciudad")} value={props.datosActualizarUsuario.ciudad}/></p>
                     <p><span>Telefono:</span><input autoComplete="off" type="text" name="telefono" onChange={(e)=>actualizarDatos(e, "telefono")} value={props.datosActualizarUsuario.telefono}/></p>
                     <p><span>Fecha de alta:</span><input readOnly type="text" name="createdAt" value={props.datosLogin.usuario.createdAt}/></p>

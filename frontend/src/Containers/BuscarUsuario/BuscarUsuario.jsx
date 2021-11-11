@@ -29,12 +29,12 @@ const BuscarUsuario = (props) =>{
         setUsuarioBuscado(res.data);
     }
 
-    const cambiarDatosParaActualizar = () =>{
-
+    const cambiarDatosParaActualizar = (e) =>{
+        setUsuarioBuscado({...usuarioBuscado, [e.target.name]: e.target.value})
     }
 
-    const actualizarRegistro = () =>{
-
+    const actualizarRegistro = async () =>{
+        await axios.put(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${IDbusqueda}`, usuarioBuscado, config)
     }
 
     const borrarRegistro = () =>{

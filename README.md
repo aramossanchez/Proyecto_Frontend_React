@@ -57,9 +57,10 @@ El directorio **src** es donde está almacenada toda la aplicación. En este dir
 
 * **Redux**: En este directorio guardamos toda la configuración de redux de la aplicación.
     * **store.js**: En este archivo se encuentra el estado general de la aplicación.
-    * **types.js**: En este archivo se encuentran los nombres de los actions.
+    * **types.js**: En este archivo se encuentran los nombres de los types que pasamos por action al reducer.
     * **reducers**: En este directorio se encuentran todos los reducers que modifican el estado:
         * **index**: En este archivo combinamos todos los reducers, para conseguir la centralización deseada de estados con redux.
+        * **datosLogin-reducer**: En este archivo tenemos las funciones que editan el estado de redux para los types LOGIN, LOGOUT y ACTUALIZA_DATOS_LOGIN.
 
 * **Containers**: En este directorio es donde se guardarán las diferentes vistas:
     * **Inicio**: Es la página principal, donde se ve un pequeño mensaje de bienvenida, el header y la ventana de login.
@@ -67,6 +68,9 @@ El directorio **src** es donde está almacenada toda la aplicación. En este dir
     * **Tu Zona**: Es la página de gestión, donde el usuario podrá acceder a las diferentes funcionalidades de la aplicación.
     * **Perfil**: Es la página en la que el usuario podrá consultar sus datos guardados en la base de datos, actualizarlos o borrar su perfil.
     * **Películas**: Es la página donde se pueden ver todas las películas de la base de datos. Se pueden filtrarlas por ciudades, hacer búsqueda por título, por género y por protagonista.
+    * **PeliculasDisponibles**: Es la página donde se mostrarán las películas que se encuentran en la ciudad del usuario logueado, y además que no estén alquiladas.
+    * **RegistroUsuarios**: Es la página donde se crea nuevos usuarios (solo para usuario con permisos de administrador).
+    * **BuscarUsuario**: Es la página en la que se puede buscar usuario por ID. Además, se puede modificar los datos de ese usuario en la base de datos y también se puede borrar el registro de la base de datos. 
     
     * **Admin**: Es la página donde se puede acceder únicamente cuando se inicia sesión como administrador. Se puede registrar usuarios, buscar usuarios por id, actualizarlos, borrarlos, ver listado completo de usuarios.
 * **Components**: En este directorio es donde se guardan todos los componentes que se usarán en todas las vistas:
