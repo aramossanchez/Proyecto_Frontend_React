@@ -1,9 +1,9 @@
 :root {
-    --masoscuro: #401708;
-    --oscuro: #8C2703;
-    --neutro: #D93D04;
-    --claro: #F27405;
-    --masclaro: #F2AA6B;
+    --principal: #114358;
+    --complementario1: #F2AA1F;
+    --complementario2: #F1ECE7;
+    --oscuro: #090909;
+    --claro: #EEEEEE;
 }
 /* CONTENEDOR DE LISTADO Y FILTROS DE PELICULAS */
 #container-usuarios{

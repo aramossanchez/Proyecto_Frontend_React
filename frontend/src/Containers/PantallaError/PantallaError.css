@@ -1,15 +1,15 @@
 :root {
-    --masoscuro: #401708;
-    --oscuro: #8C2703;
-    --neutro: #D93D04;
-    --claro: #F27405;
-    --masclaro: #F2AA6B;
+    --principal: #114358;
+    --complementario1: #F2AA1F;
+    --complementario2: #F1ECE7;
+    --oscuro: #090909;
+    --claro: #EEEEEE;
 }
 /* CONTENEDOR DE PANTALLA DE ERROR*/
 #container-error{
     height: 100vh;
-    background-color: var(--masclaro);
-    color: var(--masoscuro);
+    background-color: var(--principal);
+    color: var(--claro);
     display: flex;
     flex-direction: column;
     align-items: center;
