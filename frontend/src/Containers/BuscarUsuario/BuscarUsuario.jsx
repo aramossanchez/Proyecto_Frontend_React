@@ -34,11 +34,16 @@ const BuscarUsuario = (props) =>{
     }
 
     const actualizarRegistro = async () =>{
-        await axios.put(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${IDbusqueda}`, usuarioBuscado, config)
+        await axios.put(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${IDbusqueda}`, usuarioBuscado, config);
     }
 
-    const borrarRegistro = () =>{
-
+    const borrarRegistro = async () =>{
+        await axios.delete(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${IDbusqueda}`, config);
+        let parrafos = document.getElementById("datos-usuario-id").childNodes
+        for (let i = 0; i < parrafos.length; i++) {
+            parrafos[i].childNodes[1].value = "";
+        }
+        setUsuarioBuscado({});
     }
 
 

@@ -122,26 +122,7 @@ const Admin = () =>{
 
     return(
         <div id="container-admin">
-            {/* BUSQUEDA DE USUARIO POR ID */}
-            <div id="cuadro-usuario-id">
-                <h2>Buscar usuario por ID</h2>
-                <div className="barra-busqueda-usuario">
-                    <input type="text" name="busqueda" id="busqueda-usuario-id" autoComplete="off" onChange={(e)=>guardarID(e)}/>
-                    <div className="boton-lupa"><img onClick={()=>obtenerUsuarioPorID()} src={lupa} alt="Lupa" /></div>                    
-                </div>
-                <div id="datos-usuario-id">
-                    <p><span>Correo electrónico:</span><input readOnly type="text" name="correo" value={usuarioID.correo}/></p>
-                    <p><span>DNI:</span><input autoComplete="off" type="text" name="dni" onChange={(e)=>cambiarDatosParaActualizar(e, "dni")} value={datosParaActualizar.dni}/></p>
-                    <p><span>Nombre:</span><input autoComplete="off" type="text" name="nombre" onChange={(e)=>cambiarDatosParaActualizar(e, "nombre")} value={datosParaActualizar.nombre}/></p>
-                    <p><span>Apellidos:</span><input autoComplete="off" type="text" name="apellidos" onChange={(e)=>cambiarDatosParaActualizar(e, "apellidos")} value={datosParaActualizar.apellidos}/></p>
-                    <p><span>Direccion:</span><input autoComplete="off" type="text" name="direccion" onChange={(e)=>cambiarDatosParaActualizar(e, "direcccion")} value={datosParaActualizar.direccion}/></p>
-                    <p><span>Ciudad:</span><input autoComplete="off" type="text" name="ciudad" onChange={(e)=>cambiarDatosParaActualizar(e, "ciudad")} value={datosParaActualizar.ciudad}/></p>
-                    <p><span>Telefono:</span><input autoComplete="off" type="text" name="telefono" onChange={(e)=>cambiarDatosParaActualizar(e, "telefono")} value={datosParaActualizar.telefono}/></p>
-                    <p><span>Fecha de alta:</span><input readOnly type="text" name="createdAt" value={usuarioID.createdAt}/></p>
-                </div>
-                <div className="boton" onClick={()=>actualizarRegistro()}>ACTUALIZAR</div>
-                <div className="boton" onClick={()=>borrarRegistro()}>BORRAR</div>
-            </div>
+            
             {/* LISTADO DE TODOS LOS USUARIOS */}
             {datosTodosUsuarios[1]?.nombre
             ? 
