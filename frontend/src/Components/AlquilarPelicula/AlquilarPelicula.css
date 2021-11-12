@@ -1,0 +1,52 @@
+:root {
+    --principal: #114358;
+    --complementario1: #F2AA1F;
+    --complementario2: #F1ECE7;
+    --complementario2-transparente: #f1ece7de;
+    --oscuro: #090909;
+    --claro: #EEEEEE;
+}
+/* CONTENEDOR DE MENSAJE Y DE PANTALLA INHABILITADORA */
+#container-mensaje-alquilar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--complementario2-transparente);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+/*CUADOR MENSAJE ALQUILAR*/
+#cuador-mensaje-alquilar{
+    color: var(--claro);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 40em;
+    height: 12em;
+    background-color: var(--principal);
+    border: 2px solid var(--complementario1)
+}
+/*X PARA CERRAR MENSAJER PARA ALQUILAR*/
+#cerrar-mensaje-alquilar{
+    font-size: 1.25em;
+    font-weight: bold;
+    position: absolute;
+    top:0.5em;
+    right: 1em;
+    cursor: pointer;
+}
+/*PRECIOS DE ALQUILER*/
+#opciones-alquiler{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
