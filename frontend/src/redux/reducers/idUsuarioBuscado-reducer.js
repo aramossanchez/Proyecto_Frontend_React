@@ -4,7 +4,7 @@ const initialState = {};
 
 const idUsuarioBuscadoReducer = (state = initialState, action) => {
     switch(action.type){
-        //GUARDO EN EL ESTADO LOS DATOS DEL USUARIO LOGUEADO
+        //GUARDO EN EL ESTADO EL ID DEL USUARIO CLICKADO EN LISTA DE USUARIOS
         case GUARDAR_ID_USUARIO :
             return action.payload;
             

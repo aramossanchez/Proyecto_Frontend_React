@@ -11,6 +11,7 @@ import RegistroUsuarios from './Containers/RegistroUsuarios/RegistroUsuarios';
 import BuscarUsuario from './Containers/BuscarUsuario/BuscarUsuario';
 import ListadoUsuarios from './Containers/ListadoUsuarios/ListadoUsuarios';
 import ListadoPedidos from './Containers/ListadoPedidos/ListadoPedidos';
+import PerfilPelicula from './Containers/PerfilPelicula/PerfilPelicula';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/peliculas" element={<Peliculas />} />
           <Route path="/peliculasdisponibles" element={<PeliculasDisponibles />} />
+          <Route path="/detallespelicula" element={<PerfilPelicula />} />
           <Route path="/registrousuarios" element={<RegistroUsuarios />} />
           <Route path="/buscarusuario" element={<BuscarUsuario />} />
           <Route path="/listadousuarios" element={<ListadoUsuarios />} />

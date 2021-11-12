@@ -9,8 +9,8 @@
 #container-perfil{
     width: 100vw;
     height: 100vh;
-    background-color: var(--masclaro);
-    color: var(--masoscuro);
+    background-color: var(--claro);
+    color: var(--oscuro);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -25,7 +25,7 @@
     align-items: center;
     justify-content: flex-start;
     background-color:var(--claro);
-    color: var(--masoscuro);
+    color: var(--oscuro);
     font-size: 1.25em;
 }
 #container-usuario h2{

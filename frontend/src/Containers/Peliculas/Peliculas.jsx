@@ -4,9 +4,12 @@ import axios from 'axios';
 import lupa from '../../img/lupa.png';
 import Lateral from '../../Components/Lateral/Lateral';
 import { connect } from 'react-redux';
-import { GUARDAR_PELICULAS } from '../../redux/types';
+import { GUARDAR_PELICULAS, GUARDAR_ID_PELICULA } from '../../redux/types';
+import { useNavigate } from 'react-router';
 
 const Peliculas = (props) =>{
+
+    const navigate = useNavigate();
 
     //GUARDA TODO EL LISTADO DE LAS PELICULAS DE LA BASE DE DATOS
     useEffect(()=>{
@@ -36,6 +39,13 @@ const Peliculas = (props) =>{
         let valorBusqueda = document.getElementById("busqueda-protagonista").value;
         let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas/actor_principal/${valorBusqueda}`)
         props.dispatch({type:GUARDAR_PELICULAS, payload: res.data});
+    }
+
+    //ACCEDER A DETALLES DE PELICULA CLICKADA
+    const verDetallesPelicula = (id) =>{
+        console.log(id);
+        props.dispatch({type:GUARDAR_ID_PELICULA, payload: id});
+        navigate("/detallespelicula");
     }
 
     return(
@@ -73,7 +83,7 @@ const Peliculas = (props) =>{
                 <div id="listado-peliculas">
                     
                     {props.peliculasMostradas.peliculas.map((pelicula)=>{
-                        return <div key={pelicula.id} className="pelicula-individual">
+                        return <div key={pelicula.id} className="pelicula-individual" onClick={()=>verDetallesPelicula(pelicula.id)}>
                             <div></div>
                             <p><span>ID de película:</span> {pelicula.id}</p>
                             <p><span>Título:</span> {pelicula.titulo}</p>
