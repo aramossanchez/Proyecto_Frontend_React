@@ -25,6 +25,7 @@ const BuscarUsuario = (props) =>{
             document.getElementById("busqueda-usuario-id").value = props.idUsuarioBuscado;
             let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${props.idUsuarioBuscado}`, config);
             setUsuarioBuscado(res.data);
+            setIDbusqueda(props.idUsuarioBuscado)
             }
             buscarUsuarioDesdeListado();
         }
@@ -52,6 +53,7 @@ const BuscarUsuario = (props) =>{
     }
 
     const borrarRegistro = async () =>{
+        console.log(IDbusqueda);
         await axios.delete(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${IDbusqueda}`, config);
         let parrafos = document.getElementById("datos-usuario-id").childNodes
         for (let i = 0; i < parrafos.length; i++) {

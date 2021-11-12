@@ -92,7 +92,7 @@
 }
 #datos-usuario input:focus:read-only{
     border: 2px solid transparent;
-    background-color: var(--claro);
+    background-color: var(--complementario2);
 }
 /*BOTON DE ACTUALIZAR*/
 #container-usuario .boton{

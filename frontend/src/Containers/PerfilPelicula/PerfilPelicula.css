@@ -1,5 +1,6 @@
 :root {
     --principal: #114358;
+    --principal-transparente: #114358ec;
     --complementario1: #F2AA1F;
     --complementario2: #F1ECE7;
     --oscuro: #090909;
@@ -10,36 +11,44 @@
     width: 100vw;
     height: 100vh;
     background-color: var(--claro);
+    background-size: cover;
     color: var(--oscuro);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
 }
-/*FLECHA PARA PODER VOLVER AL LISTADO DE PELICULAS*/
-#flecha-regreso{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2em;
-    height: 2em;
-    background-color: var(--complementario2);
-}
-/*CONTENEDOR DE LA CARATULA Y DE LOS DATOS*/
-#contenedor-caratula-datos{
-    background-color: var(--principal);
+/*CONTENEDOR DE LA CARATULA, DE LOS DATOS Y DE LOS BOTONES*/
+#contenido-perfil-pelicula{
+    background-color: var(--principal-transparente);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     width: 100vw;
     height: 100vh;
 }
+#contenido-perfil-pelicula h2{
+    font-size: 3em;
+    color: var(--claro);
+}
+/*CONTENEDOR DE LA CARATULA Y DE LOS DATOS*/
+#informacion-pelicula{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+}
 #caratula-pelicula{
     border: 2px solid var(--complementario1);
-    width: 28vw;
-    height: 80vh;
+    width: 20vw;
+    height: 60vh;
     margin: 0 2em;
+}
+#caratula-pelicula img{
+    width: 20vw;
+    height: 60vh;
 }
 #datos-pelicula{
     display: flex;
@@ -47,13 +56,35 @@
     align-items: flex-start;
     justify-content: flex-start;
     font-size: 1.25em;
-    height: 80vh;
     color: var(--claro);
-    margin-top: 2em;
+    height: 60vh;
 }
 #datos-pelicula div{
     margin-bottom: 1em;
 }
 #datos-pelicula span{
     font-weight: bold;
+}
+/*CONTENEDOR DE LOS BOTONES*/
+#botones-perfil-pelicula{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+/*FLECHA PARA PODER VOLVER AL LISTADO DE PELICULAS*/
+#flecha-regreso{
+    cursor: pointer;
+    color: var(--claro);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25em;
+}
+#flecha-regreso img{
+    width: 3em;
+    height: 2em;
+    margin-right: 1em;
 }

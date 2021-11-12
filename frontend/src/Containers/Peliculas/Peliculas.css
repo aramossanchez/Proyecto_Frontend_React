@@ -97,6 +97,10 @@
     height: 10em;
     margin-bottom: 1em;
 }
+.pelicula-individual div img{
+    width: 8em;
+    height: 10em;
+}
 .pelicula-individual span{
     font-weight: bold;
 }

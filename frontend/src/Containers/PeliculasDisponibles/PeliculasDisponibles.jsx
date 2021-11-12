@@ -25,7 +25,7 @@ const PeliculasDisponibles = (props) =>{
                     
                     {props.peliculasMostradas.peliculas.map((pelicula)=>{
                         return <div key={pelicula.id} className="pelicula-individual">
-                            <div></div>
+                            <div><img src={pelicula.caratula} alt="Caratula" /></div>
                             <p><span>Título:</span> {pelicula.titulo}</p>
                             <p><span>Género:</span> {pelicula.genero}</p>
                             <p><span>Protagonista:</span> {pelicula.actor_principal}</p>                   

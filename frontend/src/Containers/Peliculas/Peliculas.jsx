@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router';
 
 const Peliculas = (props) =>{
 
+    console.log(parseInt(Math.random() * (500 - 1)));
+
     const navigate = useNavigate();
 
     //GUARDA TODO EL LISTADO DE LAS PELICULAS DE LA BASE DE DATOS
@@ -83,8 +85,7 @@ const Peliculas = (props) =>{
                     
                     {props.peliculasMostradas.peliculas.map((pelicula)=>{
                         return <div key={pelicula.id} className="pelicula-individual" onClick={()=>verDetallesPelicula(pelicula.id)}>
-                            <div></div>
-                            <p><span>ID de película:</span> {pelicula.id}</p>
+                            <div><img src={pelicula.caratula} alt="Caratula" /></div>
                             <p><span>Título:</span> {pelicula.titulo}</p>
                             <p><span>Género:</span> {pelicula.genero}</p>
                             <p><span>Protagonista:</span> {pelicula.actor_principal}</p>
