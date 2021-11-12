@@ -18,7 +18,8 @@ const PerfilPelicula = (props) =>{
 
     return(
         <div id="container-perfil-pelicula">
-            <div id="contenedor-caratula">
+            <div id="flecha-regreso"></div>
+            <div id="contenedor-caratula-datos">
                 <div id="caratula-pelicula"></div>
                 <div id="datos-pelicula">
                     <div><span>Titulo: </span>{peliculaBuscada.titulo}</div>

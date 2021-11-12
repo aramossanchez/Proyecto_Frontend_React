@@ -43,7 +43,6 @@ const Peliculas = (props) =>{
 
     //ACCEDER A DETALLES DE PELICULA CLICKADA
     const verDetallesPelicula = (id) =>{
-        console.log(id);
         props.dispatch({type:GUARDAR_ID_PELICULA, payload: id});
         navigate("/detallespelicula");
     }

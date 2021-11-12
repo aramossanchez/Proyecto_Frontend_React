@@ -16,7 +16,17 @@
     align-items: center;
     justify-content: flex-start;
 }
-#contenedor-caratula{
+/*FLECHA PARA PODER VOLVER AL LISTADO DE PELICULAS*/
+#flecha-regreso{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2em;
+    height: 2em;
+    background-color: var(--complementario2);
+}
+/*CONTENEDOR DE LA CARATULA Y DE LOS DATOS*/
+#contenedor-caratula-datos{
     background-color: var(--principal);
     display: flex;
     flex-direction: row;
