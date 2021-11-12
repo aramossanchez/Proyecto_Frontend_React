@@ -3,8 +3,12 @@ import './ListadoUsuarios.css';
 import axios from 'axios';
 import Lateral from '../../Components/Lateral/Lateral';
 import { connect } from 'react-redux';
+import { useNavigate } from 'react-router';
+import { GUARDAR_ID_USUARIO } from '../../redux/types';
 
 const ListadoUsuarios = (props) =>{
+
+    const navigate = useNavigate();
 
     //CREAMOS LA CONFIGURACIÓN DEL HEADER QUE SE VA A MANDAR
     let config = {
@@ -22,6 +26,12 @@ const ListadoUsuarios = (props) =>{
         }
         guardarListaUsuarios();
     },[]);
+
+    //REDIRECCIONAMOS HACIA BUSQUEDA POR ID DEL USUARIO CLICKADO
+    const buscarUsuario = (id) =>{
+        props.dispatch({type:GUARDAR_ID_USUARIO, payload: id});
+        navigate("/buscarusuario");
+    };
 
     return(
         <div id="container-usuarios">
@@ -41,7 +51,7 @@ const ListadoUsuarios = (props) =>{
                 </div>
                 <div id="lista-usuarios">
                     {listaUsuarios?.map((usuario)=>{
-                        return <div key={usuario.id} className="usuario-individual">
+                        return <div key={usuario.id} className="usuario-individual" onClick={()=>buscarUsuario(usuario.id)}>
                             <p>{usuario.id}</p>
                             <p>{usuario.correo}</p>
                             <p>{usuario.dni}</p>

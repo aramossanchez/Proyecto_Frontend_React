@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Lateral from '../../Components/Lateral/Lateral';
 import './BuscarUsuario.css';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import lupa from '../../img/lupa.png';
+import { GUARDAR_ID_USUARIO } from '../../redux/types';
 
 const BuscarUsuario = (props) =>{
 
@@ -17,6 +18,19 @@ const BuscarUsuario = (props) =>{
 
     //DATOS DEL USUARIO BUSCADO
     const [usuarioBuscado, setUsuarioBuscado] = useState({});
+
+    useEffect(()=>{
+        if (props.idUsuarioBuscado !== 0) {
+            const buscarUsuarioDesdeListado = async () => {
+            document.getElementById("busqueda-usuario-id").value = props.idUsuarioBuscado;
+            let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${props.idUsuarioBuscado}`, config);
+            setUsuarioBuscado(res.data);
+            }
+            buscarUsuarioDesdeListado();
+        }
+        console.log(props.idUsuarioBuscado);
+        props.dispatch({type:GUARDAR_ID_USUARIO, payload: 0});
+    }, [])
 
     //GUARDO ID DE USUARIO AL ACTUALIZAR EL INPUT
     const guardarID = (e) =>{
@@ -78,5 +92,6 @@ const BuscarUsuario = (props) =>{
 };
 
 export default connect((state)=>({
-    datosLogin: state.datosLogin
+    datosLogin: state.datosLogin,
+    idUsuarioBuscado: state.idUsuarioBuscado
 }))(BuscarUsuario);

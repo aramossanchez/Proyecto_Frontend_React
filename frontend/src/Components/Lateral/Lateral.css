@@ -33,3 +33,8 @@
 #opciones-admin, #opciones-user{
     width: 100%;
 }
+#logout-lateral{
+    width: 16.4em;
+    position: absolute;
+    bottom: 1em;
+}

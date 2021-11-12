@@ -48,7 +48,7 @@ const Lateral = (props) =>{
             :
             ""
             }
-            <div className="enlace-lateral" onClick={()=>{logout(); redireccionar("/")}}>Logout</div>
+            <div id ="logout-lateral" className="enlace-lateral" onClick={()=>{logout(); redireccionar("/")}}>Logout</div>
         </div>
     )
 }

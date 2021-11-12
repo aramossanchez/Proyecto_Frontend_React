@@ -59,8 +59,9 @@ El directorio **src** es donde está almacenada toda la aplicación. En este dir
     * **store.js**: En este archivo se encuentra el estado general de la aplicación.
     * **types.js**: En este archivo se encuentran los nombres de los types que pasamos por action al reducer.
     * **reducers**: En este directorio se encuentran todos los reducers que modifican el estado:
-        * **index**: En este archivo combinamos todos los reducers, para conseguir la centralización deseada de estados con redux.
-        * **datosLogin-reducer**: En este archivo tenemos las funciones que editan el estado de redux para los types LOGIN, LOGOUT y ACTUALIZA_DATOS_LOGIN.
+        * **index.js**: En este archivo combinamos todos los reducers, para conseguir la centralización deseada de estados con redux.
+        * **datosLogin-reducer.js**: En este archivo tenemos las funciones que editan el estado de redux para los types LOGIN, LOGOUT y ACTUALIZA_DATOS_LOGIN.
+        * **idUsuarioBuscado-reducer.js**: 
 
 * **Containers**: En este directorio es donde se guardarán las diferentes vistas:
     * **Inicio**: Es la página principal, donde se ve un pequeño mensaje de bienvenida, el header y la ventana de login.
