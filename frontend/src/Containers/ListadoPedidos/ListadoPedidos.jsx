@@ -15,13 +15,21 @@ const ListadoPedidos = (props) =>{
     const [listaPedidos, setListaPedidos] = useState([])
 
     //HACEMOS LA CONSULTA DE TODOS LOS PEDIDOS A LA BASE DE DATOS Y LA GUARDAMOS EN EL HOOK
+    const guardarlistaPedidos = async () =>{
+        let res = await axios.get("https://aramossanchez-videoclub-api.herokuapp.com/pedidos",config);
+        setListaPedidos(res.data);
+    }
+
+    //CADA VEZ QUE CARGUEMOS EL COMPONENTE POR PRIMERA VEZ, SE HARÁ LA CONSULTA
     useEffect(()=>{
-        const guardarlistaPedidos = async () =>{
-            let res = await axios.get("https://aramossanchez-videoclub-api.herokuapp.com/pedidos",config);
-            setListaPedidos(res.data);
-        }
         guardarlistaPedidos();
     },[]);
+
+    const borrarPedido = async (pedido, pelicula) =>{
+        await axios.delete(`https://aramossanchez-videoclub-api.herokuapp.com/pedidos/${pedido}/pelicula/${pelicula}`, config);
+        guardarlistaPedidos();
+    }
+
 
     return(
         <div id="container-pedidos">
@@ -33,7 +41,8 @@ const ListadoPedidos = (props) =>{
                     <div>ID de película</div>
                     <div>ID de usuario</div>
                     <div>Fecha de alquiler</div>
-                    <div>Fecha de devolución</div>       
+                    <div>Fecha de devolución</div>
+                    <div></div>
                 </div>
                 <div id="lista-pedidos">
                     {listaPedidos?.map((pedido)=>{
@@ -43,7 +52,8 @@ const ListadoPedidos = (props) =>{
                             <p>{pedido.peliculaId}</p>
                             <p>{pedido.usuarioId}</p>
                             <p>{pedido.fecha_alquiler}</p>
-                            <p>{pedido.fecha_devolucion}</p>                    
+                            <p>{pedido.fecha_devolucion}</p>
+                            <p><div className="boton" onClick={()=>borrarPedido(pedido.id, pedido.peliculaId)}>BORRAR PEDIDO</div> </p>               
                         </div>
                     })}
                 </div>

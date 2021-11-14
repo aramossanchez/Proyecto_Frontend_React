@@ -34,6 +34,8 @@ export const GUARDAR_ID_USUARIO = 'guardar_id_usuario';
 export const GUARDAR_ID_PELICULA = 'guardar_id_pelicula';
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//CONTROLAR SI SE HA PULSADO EL BOTÓN DE ALQUILAR PELICULA Y EL DE CERRAR MENSAJE DE ALQUILER DE PELÍCULA//
+//CONTROLAR SI SE HA PULSADO EL BOTÓN DE ALQUILAR PELICULA Y EL DE CERRAR MENSAJE DE ALQUILER DE PELÍCULA, Y //
+//SABER LOS DATOS DE LA PELÍCULA BUSCADA, PARA PODER AÑADIRLA AL PEDIDO//
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const MENSAJE_ALQUILAR = 'mensaje_alquilar';
+export const PELICULA_ALQUILADA = 'pelicula_alquilada';

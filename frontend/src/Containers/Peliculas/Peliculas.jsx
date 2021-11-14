@@ -9,8 +9,6 @@ import { useNavigate } from 'react-router';
 
 const Peliculas = (props) =>{
 
-    console.log(parseInt(Math.random() * (500 - 1)));
-
     const navigate = useNavigate();
 
     //GUARDA TODO EL LISTADO DE LAS PELICULAS DE LA BASE DE DATOS
