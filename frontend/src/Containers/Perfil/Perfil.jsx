@@ -8,6 +8,9 @@ import { COPIA_DATOS_LOGIN, GUARDA_CAMBIOS_ACTUALIZAR, ACTUALIZA_DATOS_LOGIN } f
 
 const Perfil = (props) =>{
 
+    //HOOK
+    const [mensajeError, setmensajeError] = useState("");
+
     //LA PRIMERA VEZ QUE CARGA EL COMPONENTE, CREO UNA COPIA DE LOS DATOS DEL USUARIO LOGUEADO EN REDUX
     useEffect(()=>{
         props.dispatch({type:COPIA_DATOS_LOGIN, payload: props.datosLogin.usuario});
@@ -25,17 +28,43 @@ const Perfil = (props) =>{
             headers: { Authorization: `Bearer ${props.datosLogin.token}` }
         };
 
-        //MODIFICO USUARIO EN LA BASE DE DATOS
-        await axios.put(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${props.datosLogin.usuario.id}`, props.datosActualizarUsuario, config)
+        try {
+            //MODIFICO USUARIO EN LA BASE DE DATOS
+            let res = await axios.put(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${props.datosLogin.usuario.id}`, props.datosActualizarUsuario, config)
+            
+            //CAMBIO LOS DATOS DE USUARIO LOGUEADO GUARDADOS POR LOS DATOS ACTUALES DEL USUARIO, TRAS ACTUALIZARLOS
+            props.dispatch({type:ACTUALIZA_DATOS_LOGIN, payload: props.datosActualizarUsuario});
+
+            //SETEAMOS MENSAJE INDICANDO QUE EL CAMBIO SE HA EFECTUADO CORRECTAMENTE
+            setmensajeError("Datos actualizados correctamente.");
+
+            //TRAS 4 SEGUNDOS, HAGO DESAPARECER EL MENSAJE
+            setTimeout(() => {
+                setmensajeError("");
+            }, 4000);            
+        } catch (error) {
+            //SETEO MENSAJE DE ERROR
+            setmensajeError("Ha habido un error al intentar cambiar los datos del usuario.");
+
+            //TRAS 4 SEGUNDOS, HAGO DESAPARECER EL MENSAJE
+            setTimeout(() => {
+                setmensajeError("");
+            }, 4000);
+        }
         
-        //CAMBIO LOS DATOS DE USUARIO LOGUEADO GUARDADOS POR LOS DATOS ACTUALES DEL USUARIO, TRAS ACTUALIZARLOS
-        props.dispatch({type:ACTUALIZA_DATOS_LOGIN, payload: props.datosActualizarUsuario});
     }
 
     return(
         <div id="container-perfil">
             <Lateral/>
             <div id="container-usuario">
+                {/* SI mensajeError ESTÁ VACIO NO MUESTRA NADA. SI TIENE ALGO, MUESTRA EL MENSAJE */}
+                {!mensajeError
+                ?
+                ""
+                :
+                <div className="mensaje-error">{mensajeError}</div>    
+                }
                 <h2>Tus Datos</h2>
                 <div id="datos-usuario">
                     <div id="foto-usuario"><img src={FotoUsuario} alt="Foto de usuario" /></div>

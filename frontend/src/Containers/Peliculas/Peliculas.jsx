@@ -6,18 +6,49 @@ import Lateral from '../../Components/Lateral/Lateral';
 import { connect } from 'react-redux';
 import { GUARDAR_PELICULAS, GUARDAR_ID_PELICULA } from '../../redux/types';
 import { useNavigate } from 'react-router';
+import loading from '../../img/loading.svg';
 
 const Peliculas = (props) =>{
 
     const navigate = useNavigate();
 
-    //GUARDA TODO EL LISTADO DE LAS PELICULAS DE LA BASE DE DATOS
-    useEffect(()=>{
-        const cargarPeliculas = async () =>{
-            let res = await axios.get("https://aramossanchez-videoclub-api.herokuapp.com/peliculas/");
-            props.dispatch({type:GUARDAR_PELICULAS, payload: res.data});
-        }
+    //HOOK
+    //CREADO PARA MOSTRAR ICONO CARGANDO
+    const [cargando, setCargando] = useState(false);
+
+    //CREADO PARA SABER SI ESTOY MOSTRANDO RESULTADOS DE BUSQUEDA
+    const [mostrandoBusqueda, setMostrandoBusqueda] = useState(false);
+
+    //OBTIENE LAS PELICULAS DE LA BASE DE DATOS Y LAS GUARDA EN REDUX
+    const cargarPeliculas = async () =>{
+        let res = await axios.get("https://aramossanchez-videoclub-api.herokuapp.com/peliculas/");
+        props.dispatch({type:GUARDAR_PELICULAS, payload: res.data});
+    }
+    
+    //HACE QUE SE VEA EL ICONO DE CARGANDO DURANTE 1.25 SEGUNDOS
+    const mostrarLoading = () =>{
+        setCargando(true);
+        setTimeout(() => {
+            setCargando(false);
+        }, 1250);
+    }
+
+    //HACE QUE SE MUESTRE EL MENSAJE DE RESULTADOS DE BUSQUEDA
+    const mensajeBusqueda = () =>{
+        setMostrandoBusqueda(true)
+    }
+
+    //HACE DESAPARECER EL MENSAJE DE RESULTADOS DE BUSQUEDA Y BUSCA TODAS LAS PELICULAS DE NUEVO
+    const cerrarBusqueda = () =>{
+        setMostrandoBusqueda(false);
+        mostrarLoading();
         cargarPeliculas();
+    }
+
+    //GUARDA TODO EL LISTADO DE LAS PELICULAS DE LA BASE DE DATOS AL CARGAR EL COMPONENTE
+    useEffect(()=>{
+        mostrarLoading();
+        cargarPeliculas();        
     }, [])
 
     //BUSQUEDA POR TITULO
@@ -25,6 +56,8 @@ const Peliculas = (props) =>{
         let valorBusqueda = document.getElementById("busqueda-titulo").value;
         let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas/titulo/${valorBusqueda}`)
         props.dispatch({type:GUARDAR_PELICULAS, payload: res.data});
+        mostrarLoading();
+        mensajeBusqueda();
     }
 
     //BUSQUEDA POR GÉNERO
@@ -32,6 +65,8 @@ const Peliculas = (props) =>{
         let valorBusqueda = document.getElementById("busqueda-genero").value;
         let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas/genero/${valorBusqueda}`)
         props.dispatch({type:GUARDAR_PELICULAS, payload: res.data});
+        mostrarLoading();
+        mensajeBusqueda();
     }
 
     //BUSQUEDA POR PROTAGONISTA
@@ -39,6 +74,8 @@ const Peliculas = (props) =>{
         let valorBusqueda = document.getElementById("busqueda-protagonista").value;
         let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas/actor_principal/${valorBusqueda}`)
         props.dispatch({type:GUARDAR_PELICULAS, payload: res.data});
+        mostrarLoading();
+        mensajeBusqueda();
     }
 
     //ACCEDER A DETALLES DE PELICULA CLICKADA
@@ -78,9 +115,18 @@ const Peliculas = (props) =>{
                         </div>
                     </div>
                 </div>
-                {/* MOSTRAR LAS PELICULAS */}
+                {/* MUESTRO MENSAJE SI ESTAMOS MOSTRANDO RESULTADOS DE UNA BUSQUEDA */}
+                {mostrandoBusqueda
+                ?
+                <div className="mensaje-resultado-busqueda">Resultado de la búsqueda <span onClick={()=>cerrarBusqueda()}>❌</span></div>
+                :
+                ""}
+                {/* MOSTRAR LAS PELICULAS O ICONO DE CARGANDO*/}
+                {cargando
+                ?
+                <img src={loading} alt="loading" />
+                :
                 <div id="listado-peliculas">
-                    
                     {props.peliculasMostradas.peliculas.map((pelicula)=>{
                         return <div key={pelicula.id} className="pelicula-individual" onClick={()=>verDetallesPelicula(pelicula.id)}>
                             <div><img src={pelicula.caratula} alt="Caratula" /></div>
@@ -92,6 +138,7 @@ const Peliculas = (props) =>{
                     })}
 
                 </div>
+                }
             </div>
         </div>
     )

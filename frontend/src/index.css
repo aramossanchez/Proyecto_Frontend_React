@@ -10,8 +10,8 @@
   margin: 0;
 }
 *::selection{
-  color: var(--complementario2);
-  background-color: var(--principal);
+  color: var(--complementario1);
+  background-color: var(--complementario2);
 }
 body {
   margin: 0;
@@ -48,4 +48,36 @@ code {
 .boton-lupa img{
   width: 1.5em;
   height: 1.5em;
+}
+.mensaje-error{
+  width: 20em;
+  font-size: 1.5em;
+  position: absolute;
+  opacity: 0;
+  top: 80%;
+  left: calc(50% - 20em/2);
+  color: var(--claro);
+  border: 2px solid var(--complementario1);
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  transition: 0.3s;
+  background-color: var(--principal);
+  border-radius: 0.5em;
+  animation: subir 4s infinite;
+  z-index: 10;
+}
+
+@keyframes subir {
+  0% {
+    top: 80%;
+    opacity: 0
+  }
+  40% {
+    top: 40%;
+    opacity: 1
+  }
+  100% {
+    top: 40%;
+    opacity: 0
+  }
 }

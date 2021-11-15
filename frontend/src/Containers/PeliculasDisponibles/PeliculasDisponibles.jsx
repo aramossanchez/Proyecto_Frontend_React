@@ -5,10 +5,23 @@ import Lateral from '../../Components/Lateral/Lateral';
 import { connect } from 'react-redux';
 import { GUARDAR_PELICULAS, GUARDAR_ID_PELICULA } from '../../redux/types';
 import { useNavigate } from 'react-router';
+import loading from '../../img/loading.svg';
 
 const PeliculasDisponibles = (props) =>{
 
     const navigate = useNavigate();
+
+    //HOOK
+    //CREADO PARA MOSTRAR ICONO CARGANDO
+    const [cargando, setCargando] = useState(false);
+
+    //HACE QUE SE VEA EL ICONO DE CARGANDO DURANTE 1.25 SEGUNDOS
+    const mostrarLoading = () =>{
+        setCargando(true);
+        setTimeout(() => {
+            setCargando(false);
+        }, 1250);
+    }
 
     //GUARDA TODO EL LISTADO DE LAS PELICULAS DE LA BASE DE DATOS
     useEffect(()=>{
@@ -17,6 +30,7 @@ const PeliculasDisponibles = (props) =>{
             props.dispatch({type:GUARDAR_PELICULAS, payload: res.data});
         }
         cargarPeliculas();
+        mostrarLoading()
     }, [])
 
     //ACCEDER A DETALLES DE PELICULA CLICKADA
@@ -30,6 +44,11 @@ const PeliculasDisponibles = (props) =>{
             <Lateral/>
             <div id="contenido-peliculas">
                 <h2>Listado de películas disponibles para alquilar en {props.datosLogin.usuario.ciudad}</h2>
+                {/* MOSTRAR LAS PELICULAS O ICONO DE CARGANDO*/}
+                {cargando
+                ?
+                <img src={loading} alt="loading" />
+                :
                 <div id="listado-peliculas">
                     
                     {props.peliculasMostradas.peliculas.map((pelicula)=>{
@@ -42,6 +61,7 @@ const PeliculasDisponibles = (props) =>{
                     })}
 
                 </div>
+                }
             </div>
         </div>
     )

@@ -15,10 +15,13 @@ const BuscarUsuario = (props) =>{
     //HOOKS
     //ID CON EL QUE BUSCAREMOS AL USUARIO
     const [IDbusqueda, setIDbusqueda] = useState(0);
+    const [mensajeError, setmensajeError] = useState("");
 
     //DATOS DEL USUARIO BUSCADO
     const [usuarioBuscado, setUsuarioBuscado] = useState({});
 
+
+    //AL CARGAR EL COMPONENTE COMPRUEBO SI idUsuarioBuscado TIENE VALOR DISTINTO DE 0. SI LO TIENE, QUE BUSQUE UN USUARIO CON ESE ID    
     useEffect(()=>{
         if (props.idUsuarioBuscado !== 0) {
             const buscarUsuarioDesdeListado = async () => {
@@ -28,8 +31,9 @@ const BuscarUsuario = (props) =>{
             setIDbusqueda(props.idUsuarioBuscado)
             }
             buscarUsuarioDesdeListado();
+        } else{
+            document.getElementById("busqueda-usuario-id").value = "";
         }
-        console.log(props.idUsuarioBuscado);
         props.dispatch({type:GUARDAR_ID_USUARIO, payload: 0});
     }, [])
 
@@ -44,22 +48,65 @@ const BuscarUsuario = (props) =>{
         setUsuarioBuscado(res.data);
     }
 
+    //LOS CAMBIOS EN LOS INPUTS CAMBIAN EL HOOK DONDE GUARDAMOS LOS DATOS QUE VAMOS A ACTUALIZAR DEL USUARIO
     const cambiarDatosParaActualizar = (e) =>{
         setUsuarioBuscado({...usuarioBuscado, [e.target.name]: e.target.value})
     }
 
     const actualizarRegistro = async () =>{
-        await axios.put(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${IDbusqueda}`, usuarioBuscado, config);
+        try {
+            let res = await axios.put(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${IDbusqueda}`, usuarioBuscado, config);            
+            //SETEAMOS MENSAJE INDICANDO QUE EL CAMBIO SE HA EFECTUADO CORRECTAMENTE
+            setmensajeError("Datos actualizados correctamente.");
+
+            //TRAS 4 SEGUNDOS, HAGO DESAPARECER EL MENSAJE
+            setTimeout(() => {
+                setmensajeError("");
+            }, 4000);
+        } catch (error) {
+            //SETEO MENSAJE DE ERROR
+            setmensajeError("Ha habido un error al intentar cambiar los datos del usuario.");
+
+            //TRAS 4 SEGUNDOS, HAGO DESAPARECER EL MENSAJE
+            setTimeout(() => {
+                setmensajeError("");
+            }, 4000);
+        }
     }
 
     const borrarRegistro = async () =>{
-        console.log(IDbusqueda);
-        await axios.delete(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${IDbusqueda}`, config);
-        let parrafos = document.getElementById("datos-usuario-id").childNodes
-        for (let i = 0; i < parrafos.length; i++) {
-            parrafos[i].childNodes[1].value = "";
+        try {
+            //BORRO USUARIO EN BASE DE DATOS
+            await axios.delete(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${IDbusqueda}`, config);
+            
+            //BORRO CONTENIDO DE TODOS LOS INPUTS
+            let parrafos = document.getElementById("datos-usuario-id").childNodes            
+            for (let i = 0; i < parrafos.length; i++) {
+                parrafos[i].childNodes[1].value = "";
+            }
+
+            //SETEO A VACIO EL USUARIO BUSCADO
+            setUsuarioBuscado({});
+
+            //SETEAMOS MENSAJE INDICANDO QUE EL CAMBIO SE HA EFECTUADO CORRECTAMENTE
+            setmensajeError("Usuario borrado correctamente.");
+
+            //TRAS 4 SEGUNDOS, HAGO DESAPARECER EL MENSAJE
+            setTimeout(() => {
+                setmensajeError("");
+            }, 4000);
+
+            
+        } catch (error) {
+            //SETEO MENSAJE DE ERROR
+            setmensajeError("Ha habido un error al intentar borrar el usuario.");
+
+            //TRAS 4 SEGUNDOS, HAGO DESAPARECER EL MENSAJE
+            setTimeout(() => {
+                setmensajeError("");
+            }, 4000);            
         }
-        setUsuarioBuscado({});
+        
     }
 
 
@@ -69,6 +116,13 @@ const BuscarUsuario = (props) =>{
             {/* BUSQUEDA DE USUARIO POR ID */}
             <div id="cuadro-usuario-id">
                 <h2>Buscar usuario por ID</h2>
+                {/* SI mensajeError ESTÁ VACIO NO MUESTRA NADA. SI TIENE ALGO, MUESTRA EL MENSAJE */}
+                {!mensajeError
+                ?
+                ""
+                :
+                <div className="mensaje-error">{mensajeError}</div>    
+                }
                 <div className="barra-busqueda-usuario">
                     <input type="text" name="busqueda" id="busqueda-usuario-id" autoComplete="off" onChange={(e)=>guardarID(e)}/>
                     <div className="boton-lupa"><img onClick={()=>obtenerUsuarioPorID()} src={lupa} alt="Lupa" /></div>                    

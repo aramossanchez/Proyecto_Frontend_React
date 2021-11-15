@@ -6,6 +6,12 @@
     --oscuro: #090909;
     --claro: #EEEEEE;
 }
+/*LOADING*/
+img[alt="loading-pelicula-perfil"]{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--principal);
+}
 /* CONTENEDOR PERFIL */
 #container-perfil-pelicula{
     width: 100vw;

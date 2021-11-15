@@ -13,24 +13,41 @@ const RegistroUsuarios = (props) =>{
     //HOOKS
     //REGISTRO DE USUARIOS
     const [datosRegistro, setDatosRegistro] = useState ({});
+    const [mensajeError, setmensajeError] = useState("");
 
     const guardarDatosRegistro = (e) =>{
         setDatosRegistro({...datosRegistro, [e.target.name]: e.target.value})
     }
 
     const registrarUsuario = async () =>{
-        
-        //CREO USUARIO NUEVO
-        await axios.post("https://aramossanchez-videoclub-api.herokuapp.com/usuarios/registro", datosRegistro, config);
-        
-        //DEJO VACIOS LOS DATOS EN EL HOOK
-        setDatosRegistro(({}));
 
-        //VACIO LOS INPUTS
-        let inputs = document.getElementById("cuadro-registro").childNodes
-        for (let i = 0; i < inputs.length; i++) {
-            inputs[i].value = "";
+        try {
+            //CREO USUARIO NUEVO
+            let res = await axios.post("https://aramossanchez-videoclub-api.herokuapp.com/usuarios/registro", datosRegistro, config);
+            
+            //DEJO VACIOS LOS DATOS EN EL HOOK
+            setDatosRegistro(({}));
+
+            //VACIO LOS INPUTS
+            let inputs = document.getElementById("cuadro-registro").childNodes
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].value = "";
+            }
+
+            //SETEO MENSAJE DE USUARIO CREADO CORRECTAMENTE, Y DESPUES LO DEJO VACÍO
+            setmensajeError("Usuario creado correctamente.");
+            setTimeout(() => {
+                setmensajeError("");
+            }, 4000);
+        } catch (error) {
+            //SETEO MENSAJE DE ERROR, Y LO DEJO VACIO TRAS 4 SEGUNDOS
+            setmensajeError("Ha habido un error al intentar crear un usuario nuevo.");
+            setTimeout(() => {
+                setmensajeError("");
+            }, 4000);
         }
+        
+        
 
     }
 
@@ -39,6 +56,13 @@ const RegistroUsuarios = (props) =>{
             <Lateral/>
             <div id="contenido-registro">
                 <h2>Registrar Usuario</h2>
+                {/* SI mensajeError ESTÁ VACIO NO MUESTRA NADA. SI TIENE ALGO, MUESTRA EL MENSAJE */}
+                {!mensajeError
+                ?
+                ""
+                :
+                <div className="mensaje-error">{mensajeError}</div>    
+                }
                 <div id="cuadro-registro">
                     <input autoComplete="off" placeholder="Correo electrónico" type="email" name="correo" id="correo-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
                     <input autoComplete="off" placeholder="Contraseña" type="password" name="clave" id="clave-registro" onChange={(e)=>guardarDatosRegistro(e)}/>

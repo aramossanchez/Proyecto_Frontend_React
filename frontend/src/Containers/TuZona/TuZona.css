@@ -21,3 +21,40 @@
     background-color:var(--masclaro);
     color: var(--masoscuro);
 }
+/*H2 DE TU ZONA*/
+#contenido-tuzona h2{
+    font-size: 3em;
+    margin: 1em;
+}
+/*H3 DE TU ZONA*/
+#contenido-tuzona h3{
+    font-weight: normal;
+    font-size: 1.5em;
+    margin: 1em;
+    text-align: left;
+}
+/*PARRAFOS DE TU ZONA*/
+#contenido-tuzona p{
+    font-size: 1.5em;
+    margin: 1em;
+    text-align: left;
+    transition: 0.25s;
+    animation-name: aparecer;
+    animation-duration: 4s;
+    cursor: default;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    background-color: var(--principal);
+    color: var(--claro);
+}
+#opciones-tuzona{
+    margin-left: 2.5em;
+}
+@keyframes aparecer {
+    0% {
+      opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+  }

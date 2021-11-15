@@ -20,6 +20,10 @@
     width: 80vw;
     height: 100vh;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 /*H2 DE CATALOGO DE PELICULAS*/
 #contenido-peliculas h2{
@@ -61,6 +65,18 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
+}
+/*MENSAJE DE RESULTADO DE BUSQUEDAS*/
+.mensaje-resultado-busqueda{
+    margin: 1em;
+    width: 50%;
+    font-size: 2em;
+    font-weight: bold;
+    border-bottom: 3px solid var(--principal);
+}
+.mensaje-resultado-busqueda span{
+    margin-left: 3em;
+    cursor: pointer;
 }
 /* CONTENEDOR DEL LISTADO DE PELICULAS */
 #listado-peliculas{

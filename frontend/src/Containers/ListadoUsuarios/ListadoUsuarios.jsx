@@ -5,6 +5,7 @@ import Lateral from '../../Components/Lateral/Lateral';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { GUARDAR_ID_USUARIO } from '../../redux/types';
+import loading from '../../img/loading.svg';
 
 const ListadoUsuarios = (props) =>{
 
@@ -17,6 +18,16 @@ const ListadoUsuarios = (props) =>{
 
     //HOOKS
     const [listaUsuarios, setListaUsuarios] = useState([])
+    //CREADO PARA MOSTRAR ICONO CARGANDO
+    const [cargando, setCargando] = useState(false);
+    
+    //HACE QUE SE VEA EL ICONO DE CARGANDO DURANTE 1.25 SEGUNDOS
+    const mostrarLoading = () =>{
+        setCargando(true);
+        setTimeout(() => {
+            setCargando(false);
+        }, 1250);
+    }
 
     //HACEMOS LA CONSULTA DE TODOS LOS USUARIOS A LA BASE DE DATOS Y LA GUARDAMOS EN EL HOOK
     useEffect(()=>{
@@ -25,6 +36,7 @@ const ListadoUsuarios = (props) =>{
             setListaUsuarios(res.data);
         }
         guardarListaUsuarios();
+        mostrarLoading();
     },[]);
 
     //REDIRECCIONAMOS HACIA BUSQUEDA POR ID DEL USUARIO CLICKADO
@@ -49,6 +61,11 @@ const ListadoUsuarios = (props) =>{
                     <div>Telefono</div>
                     <div>Fecha de alta</div>       
                 </div>
+                {/* MOSTRAR LAS PELICULAS O ICONO DE CARGANDO*/}
+                {cargando
+                ?
+                <img src={loading} alt="loading" />
+                :
                 <div id="lista-usuarios">
                     {listaUsuarios?.map((usuario)=>{
                         return <div key={usuario.id} className="usuario-individual" onClick={()=>buscarUsuario(usuario.id)}>
@@ -64,8 +81,8 @@ const ListadoUsuarios = (props) =>{
                         </div>
                     })}
                 </div>
-            </div>
-            
+                }
+            </div>    
         </div>
     )
 }
