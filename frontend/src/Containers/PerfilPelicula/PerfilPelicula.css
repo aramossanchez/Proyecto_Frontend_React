@@ -64,6 +64,8 @@ img[alt="loading-pelicula-perfil"]{
     font-size: 1.25em;
     color: var(--claro);
     height: 60vh;
+    width: 40%;
+    text-align: left;
 }
 #datos-pelicula div{
     margin-bottom: 1em;

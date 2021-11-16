@@ -65,7 +65,7 @@ const PerfilPelicula = (props) =>{
                             <div><span>ID de película: </span>{props.controlarMensajeAlquiler.peliculaBuscada.id}</div>
                             <div><span>Género: </span>{props.controlarMensajeAlquiler.peliculaBuscada.genero}</div>
                             <div><span>Protagonista: </span>{props.controlarMensajeAlquiler.peliculaBuscada.actor_principal}</div>
-                            <div><span>Sinopsis: </span></div>
+                            <div><span>Sinopsis: </span>{props.controlarMensajeAlquiler.peliculaBuscada.sinopsis}</div>
                         </div>
                     </div>
                     <div id="botones-perfil-pelicula">

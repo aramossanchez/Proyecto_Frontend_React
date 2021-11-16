@@ -21,7 +21,7 @@ const BuscarUsuario = (props) =>{
     const [usuarioBuscado, setUsuarioBuscado] = useState({});
 
 
-    //AL CARGAR EL COMPONENTE COMPRUEBO SI idUsuarioBuscado TIENE VALOR DISTINTO DE 0. SI LO TIENE, QUE BUSQUE UN USUARIO CON ESE ID    
+    //AL CARGAR EL COMPONENTE COMPRUEBO SI idUsuarioBuscado TIENE VALOR DISTINTO DE 0. SI LO TIENE, QUE BUSQUE UN USUARIO CON ESE ID. CUANDO TERMINE TODAS LAS COMPROBACIONES, GUARDARÁ EN REDUX EL VALOR 0  
     useEffect(()=>{
         if (props.idUsuarioBuscado !== 0) {
             const buscarUsuarioDesdeListado = async () => {

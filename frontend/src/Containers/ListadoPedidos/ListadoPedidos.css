@@ -41,7 +41,7 @@
 }
 #contenido-pedidos #nombres-columnas-pedidos div{
     width: 19%;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bold;
 }
 /*LISTA DE pedidos*/
@@ -75,13 +75,6 @@
 }
 .pedido-individual span{
     font-weight: bold;
-}
-.pedido-individual:hover{
-    background-color: var(--principal);
-    color: var(--claro);
-    cursor: pointer;
-    border-top: 2px solid var(--complementario1);
-    border-bottom: 2px solid var(--complementario1);
 }
 /*BOTON DE BORRAR PEDIDO*/
 .pedido-individual p .boton{

@@ -12,6 +12,8 @@ import BuscarUsuario from './Containers/BuscarUsuario/BuscarUsuario';
 import ListadoUsuarios from './Containers/ListadoUsuarios/ListadoUsuarios';
 import ListadoPedidos from './Containers/ListadoPedidos/ListadoPedidos';
 import PerfilPelicula from './Containers/PerfilPelicula/PerfilPelicula';
+import Alquileres from './Containers/Alquileres/Alquileres';
+import BuscarPedido from './Containers/BuscarPedido/BuscarPedido';
 
 function App() {
   return (
@@ -24,12 +26,14 @@ function App() {
           <Route path="/" element={<Inicio />} />
           <Route path="/tuzona" element={<TuZona />} />
           <Route path="/perfil" element={<Perfil />} />
+          <Route path="/alquileres" element={<Alquileres />} />
           <Route path="/peliculas" element={<Peliculas />} />
           <Route path="/peliculasdisponibles" element={<PeliculasDisponibles />} />
           <Route path="/detallespelicula" element={<PerfilPelicula />} />
           <Route path="/registrousuarios" element={<RegistroUsuarios />} />
           <Route path="/buscarusuario" element={<BuscarUsuario />} />
           <Route path="/listadousuarios" element={<ListadoUsuarios />} />
+          <Route path="/buscarpedido" element={<BuscarPedido />} />
           <Route path="/listadopedidos" element={<ListadoPedidos />} />
 
 

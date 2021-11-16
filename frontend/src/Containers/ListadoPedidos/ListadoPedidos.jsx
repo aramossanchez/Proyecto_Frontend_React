@@ -79,6 +79,7 @@ const ListadoPedidos = (props) =>{
                     <div>ID de usuario</div>
                     <div>Fecha de alquiler</div>
                     <div>Fecha de devolución</div>
+                    <div>Precio</div>
                     <div></div>
                 </div>
                 {/* MOSTRAR LAS PELICULAS O ICONO DE CARGANDO*/}
@@ -95,6 +96,7 @@ const ListadoPedidos = (props) =>{
                             <p>{pedido.usuarioId}</p>
                             <p>{pedido.fecha_alquiler}</p>
                             <p>{pedido.fecha_devolucion}</p>
+                            <p>{pedido.precio}€</p>
                             <p><div className="boton" onClick={()=>borrarPedido(pedido.id, pedido.peliculaId)}>BORRAR PEDIDO</div> </p>               
                         </div>
                     })}

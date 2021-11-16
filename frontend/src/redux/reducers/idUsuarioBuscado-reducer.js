@@ -1,6 +1,6 @@
 import {GUARDAR_ID_USUARIO} from '../types';
 
-const initialState = {};
+const initialState = 0;
 
 const idUsuarioBuscadoReducer = (state = initialState, action) => {
     switch(action.type){

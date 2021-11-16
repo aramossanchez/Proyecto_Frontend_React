@@ -1,0 +1,53 @@
+:root {
+    --principal: #114358;
+    --complementario1: #F2AA1F;
+    --complementario2: #F1ECE7;
+    --oscuro: #090909;
+    --claro: #EEEEEE;
+}
+/* CONTENEDOR BUSCAR PEDIDO */
+#container-buscar-pedido{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--claro);
+    color: var(--oscuro);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+#contenido-buscar-pedido{
+    width: 80em;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+/*H2 DE VISTA DE BUSQUEDA DE USUARIO*/
+#contenido-buscar-pedido h2{
+    font-size: 2.5em;
+    margin: 1em 0;
+}
+/*BARRA DE BUSQUEDA Y LUPA DE USUARIO POR ID*/
+.barra-busqueda-pedido{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+.barra-busqueda-pedido input{
+    all: unset;
+    width: 9em;
+    font-size: 1em;
+    background-color: var(--complementario2);
+    color: var(--oscuro);
+    border: 2px solid var(--oscuro);
+    text-align: left;
+    padding: 0 0.25em;
+    margin-bottom: 1em;
+}
+.barra-busqueda-pedido input:focus{
+    background-color: var(--complementario1);
+}
