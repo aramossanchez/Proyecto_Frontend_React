@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { LOGIN } from '../../redux/types';
+import logo from '../../img/logo.png';
 
 const Inicio = (props) =>{
     
@@ -60,6 +61,7 @@ const Inicio = (props) =>{
     return(
         <div id="container-inicio">
             <div id="mensaje-inicio">
+                <div id="logo"><img src={logo} alt="Logo" /></div>
                 <h2>Alquila tu película <span>DESDE LA WEB</span></h2>
                 <h2>Espera a que te la llevemos <span>A TU CASA</span></h2>
                 <h2>Disfruta del <span>CINE</span> </h2>

@@ -39,6 +39,17 @@
     width: 60%;
     height: 70vh;
 }
+#mensaje-inicio #logo{
+    position: absolute;
+    top:2em;
+    left: 2em;
+    width: 5em;
+    height: 4em;
+}
+#mensaje-inicio #logo img{
+    width: 5em;
+    height: 4em;
+}
 /*H2 DE MENSAJE DE INICIO IZQUIERDA*/
 #mensaje-inicio h2{
     font-size: 2.5em;

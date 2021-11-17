@@ -18,7 +18,7 @@
 }
 /*CONTENEDOR DE H2, NOMBRES DE COLUMNAS Y LISTADO DE USUARIOS*/
 #contenido-usuarios{
-    width: 80em;
+    width: 80vw;
     height: 100vh;
     display: flex;
     flex-direction: column;

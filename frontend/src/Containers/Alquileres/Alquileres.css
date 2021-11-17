@@ -55,6 +55,7 @@
     border: 2px solid var(--oscuro);
     width: 8em;
     height: 10em;
+    margin-bottom: 0.5em;
 }
 #alquiler div img{
     width: 8em;

@@ -17,7 +17,7 @@
 }
 /*CONTENEDOR DE H2, NOMBRES DE COLUMNAS Y LISTADO DE PEDIDOS*/
 #contenido-pedidos{
-    width: 80em;
+    width: 80vw;
     height: 100vh;
     display: flex;
     flex-direction: column;

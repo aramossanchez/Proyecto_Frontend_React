@@ -3,6 +3,7 @@ import './Lateral.css';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { LOGOUT } from '../../redux/types';
+import logo from '../../img/logo.png';
 
 const Lateral = (props) =>{
 
@@ -23,6 +24,7 @@ const Lateral = (props) =>{
 
     return(
         <div id="container-lateral">
+            <div id="logo-lateral"><img src={logo} alt="Logo" /></div>
             {/* ENLACES SOLO PARA USUARIO */}
             {props.datosLogin.usuario.rol === "usuario"
             ?
