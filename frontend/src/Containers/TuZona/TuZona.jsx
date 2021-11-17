@@ -23,7 +23,7 @@ const TuZona = (props) =>{
                         <p>📕 Consultar tus alquileres (actuales y pasados).</p>
                         <p>📼 Ver todo nuestro catálogo de películas al completo.</p>
                         <p>💲 Comprobar las películas que tenemos en tu ciudad y que están disponibles para alquilar.</p>
-                        <p>📋 Mientras ves el listado de las películas, puedes clickar en cada una de ellas para poder ver sus detalles. Si esta película está disponible para alquilar en tu zona, podrás hacerlo pulsando el botón "Alquilar".</p>
+                        <p>📋 Mientras ves el listado de las películas, puedes clickar en cada una de ellas para poder ver sus detalles. Si esa película está disponible para alquilar en tu zona, podrás hacerlo pulsando el botón "Alquilar".</p>
                     </div>
                 </div>
             </div>

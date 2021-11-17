@@ -39,9 +39,10 @@ const Alquileres = (props) => {
                     {listaAlquileres?.map((alquiler)=>{
                         return(
                             <div id="alquiler">
+                                <div><img src={alquiler.pelicula.caratula} alt="Caratula" /></div>
                                 <p><span>Titulo de la película:</span> {alquiler.pelicula.titulo}</p>
                                 <p><span>Fecha de alquiler:</span> {alquiler.fecha_alquiler}</p>
-                                <p><span>fecha de devolución:</span> {alquiler.fecha_devolucion}</p>
+                                <p><span>Fecha de devolución:</span> {alquiler.fecha_devolucion}</p>
                                 <p><span>Precio:</span> {alquiler.precio}</p>
                             </div>
                         )

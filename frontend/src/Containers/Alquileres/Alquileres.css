@@ -19,6 +19,7 @@
 #contenido-alquileres{
     width: 80vw;
     height: 100vh;
+    overflow-y: scroll;
 }
 /*H2 DE CONTENIDO ALQUILERES*/
 #contenido-alquileres h2{
@@ -49,4 +50,13 @@
 }
 #alquiler span{
     font-weight: bold;
+}
+#alquiler div{
+    border: 2px solid var(--oscuro);
+    width: 8em;
+    height: 10em;
+}
+#alquiler div img{
+    width: 8em;
+    height: 10em;
 }
