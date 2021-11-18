@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { GUARDAR_PELICULAS, GUARDAR_ID_PELICULA } from '../../redux/types';
 import { useNavigate } from 'react-router';
 import loading from '../../img/loading.svg';
+import PantallaError from '../PantallaError/PantallaError';
 
 const Peliculas = (props) =>{
 
@@ -84,66 +85,73 @@ const Peliculas = (props) =>{
         navigate("/detallespelicula");
     }
 
-    return(
-        <div id="container-peliculas">
-            <Lateral/>
-            <div id="contenido-peliculas">
-                <h2>Listado completo de películas de nuestro videoclub</h2>
-                <div id="filtros-peliculas">
-                    {/* BUSQUEDA POR TITULO */}
-                    <div id="busqueda-pelicula-titulo">
-                        <h2>Búsqueda de películas por título</h2>
-                        <div className="barra-busqueda-peliculas">
-                            <input type="text" name="busqueda" id="busqueda-titulo" autoComplete="off"/>
-                            <div className="boton-lupa" onClick={()=>buscarTitulo()}><img src={lupa} alt="Lupa" /></div>
+    if (props.datosLogin.usuario.rol !== "usuario") {
+        return(
+            <PantallaError/>
+        )
+    } else{
+        return(
+            <div id="container-peliculas">
+                <Lateral/>
+                <div id="contenido-peliculas">
+                    <h2>Listado completo de películas de nuestro videoclub</h2>
+                    <div id="filtros-peliculas">
+                        {/* BUSQUEDA POR TITULO */}
+                        <div id="busqueda-pelicula-titulo">
+                            <h2>Búsqueda de películas por título</h2>
+                            <div className="barra-busqueda-peliculas">
+                                <input type="text" name="busqueda" id="busqueda-titulo" autoComplete="off"/>
+                                <div className="boton-lupa" onClick={()=>buscarTitulo()}><img src={lupa} alt="Lupa" /></div>
+                            </div>
+                        </div>
+                        {/* BUSQUEDA POR GENERO */}
+                        <div id="busqueda-pelicula-genero">
+                            <h2>Búsqueda de películas por género</h2>
+                            <div className="barra-busqueda-peliculas">
+                                <input type="text" name="busqueda" id="busqueda-genero" autoComplete="off"/>
+                                <div className="boton-lupa" onClick={()=>buscarGenero()}><img src={lupa} alt="Lupa" /></div>
+                            </div>
+                        </div>
+                        {/* BUSQUEDA POR PROTAGONISTA */}
+                        <div id="busqueda-pelicula-protagonista">
+                            <h2>Búsqueda de películas por actor principal</h2>
+                            <div className="barra-busqueda-peliculas">
+                                <input type="text" name="busqueda" id="busqueda-protagonista" autoComplete="off"/>
+                                <div className="boton-lupa" onClick={()=>buscarProtagonista()}><img src={lupa} alt="Lupa"/></div>
+                            </div>
                         </div>
                     </div>
-                    {/* BUSQUEDA POR GENERO */}
-                    <div id="busqueda-pelicula-genero">
-                        <h2>Búsqueda de películas por género</h2>
-                        <div className="barra-busqueda-peliculas">
-                            <input type="text" name="busqueda" id="busqueda-genero" autoComplete="off"/>
-                            <div className="boton-lupa" onClick={()=>buscarGenero()}><img src={lupa} alt="Lupa" /></div>
-                        </div>
-                    </div>
-                    {/* BUSQUEDA POR PROTAGONISTA */}
-                    <div id="busqueda-pelicula-protagonista">
-                        <h2>Búsqueda de películas por actor principal</h2>
-                        <div className="barra-busqueda-peliculas">
-                            <input type="text" name="busqueda" id="busqueda-protagonista" autoComplete="off"/>
-                            <div className="boton-lupa" onClick={()=>buscarProtagonista()}><img src={lupa} alt="Lupa"/></div>
-                        </div>
-                    </div>
-                </div>
-                {/* MUESTRO MENSAJE SI ESTAMOS MOSTRANDO RESULTADOS DE UNA BUSQUEDA */}
-                {mostrandoBusqueda
-                ?
-                <div className="mensaje-resultado-busqueda">Resultado de la búsqueda <span onClick={()=>cerrarBusqueda()}>❌</span></div>
-                :
-                ""}
-                {/* MOSTRAR LAS PELICULAS O ICONO DE CARGANDO*/}
-                {cargando
-                ?
-                <img src={loading} alt="loading" />
-                :
-                <div id="listado-peliculas">
-                    {props.peliculasMostradas.peliculas.map((pelicula)=>{
-                        return <div key={pelicula.id} className="pelicula-individual" onClick={()=>verDetallesPelicula(pelicula.id)}>
-                            <div><img src={pelicula.caratula} alt="Caratula" /></div>
-                            <p><span>Título:</span> {pelicula.titulo}</p>
-                            <p><span>Género:</span> {pelicula.genero}</p>
-                            <p><span>Protagonista:</span> {pelicula.actor_principal}</p>
-                            <p><span>Ciudad disponible:</span> {pelicula.ciudad}</p>                        
-                        </div>
-                    })}
+                    {/* MUESTRO MENSAJE SI ESTAMOS MOSTRANDO RESULTADOS DE UNA BUSQUEDA */}
+                    {mostrandoBusqueda
+                    ?
+                    <div className="mensaje-resultado-busqueda">Resultado de la búsqueda <span onClick={()=>cerrarBusqueda()}>❌</span></div>
+                    :
+                    ""}
+                    {/* MOSTRAR LAS PELICULAS O ICONO DE CARGANDO*/}
+                    {cargando
+                    ?
+                    <img src={loading} alt="loading" />
+                    :
+                    <div id="listado-peliculas">
+                        {props.peliculasMostradas.peliculas.map((pelicula)=>{
+                            return <div key={pelicula.id} className="pelicula-individual" onClick={()=>verDetallesPelicula(pelicula.id)}>
+                                <div><img src={pelicula.caratula} alt="Caratula" /></div>
+                                <p><span>Título:</span> {pelicula.titulo}</p>
+                                <p><span>Género:</span> {pelicula.genero}</p>
+                                <p><span>Protagonista:</span> {pelicula.actor_principal}</p>
+                                <p><span>Ciudad disponible:</span> {pelicula.ciudad}</p>                        
+                            </div>
+                        })}
 
+                    </div>
+                    }
                 </div>
-                }
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default connect((state)=>({
     peliculasMostradas: state.peliculasMostradas,
+    datosLogin: state.datosLogin
 }))(Peliculas);

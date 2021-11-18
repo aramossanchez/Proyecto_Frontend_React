@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import lupa from '../../img/lupa.png';
 import { GUARDAR_ID_USUARIO } from '../../redux/types';
+import PantallaError from '../PantallaError/PantallaError';
 
 const BuscarUsuario = (props) =>{
 
@@ -109,42 +110,47 @@ const BuscarUsuario = (props) =>{
         
     }
 
-
-    return(
-        <div id="container-buscar-usuario">
-            <Lateral/>
-            {/* BUSQUEDA DE USUARIO POR ID */}
-            <div id="cuadro-usuario-id">
-                <h2>Buscar usuario por ID</h2>
-                {/* SI mensajeError ESTÁ VACIO NO MUESTRA NADA. SI TIENE ALGO, MUESTRA EL MENSAJE */}
-                {!mensajeError
-                ?
-                ""
-                :
-                <div className="mensaje-error">{mensajeError}</div>    
-                }
-                <div className="barra-busqueda-usuario">
-                    <input type="text" name="busqueda" id="busqueda-usuario-id" autoComplete="off" onChange={(e)=>guardarID(e)}/>
-                    <div className="boton-lupa"><img onClick={()=>obtenerUsuarioPorID()} src={lupa} alt="Lupa" /></div>                    
+    if (props.datosLogin.usuario.rol !== "administrador") {
+        return(
+            <PantallaError/>
+        )
+    } else{
+        return(
+            <div id="container-buscar-usuario">
+                <Lateral/>
+                {/* BUSQUEDA DE USUARIO POR ID */}
+                <div id="cuadro-usuario-id">
+                    <h2>Buscar usuario por ID</h2>
+                    {/* SI mensajeError ESTÁ VACIO NO MUESTRA NADA. SI TIENE ALGO, MUESTRA EL MENSAJE */}
+                    {!mensajeError
+                    ?
+                    ""
+                    :
+                    <div className="mensaje-error">{mensajeError}</div>    
+                    }
+                    <div className="barra-busqueda-usuario">
+                        <input type="text" name="busqueda" id="busqueda-usuario-id" autoComplete="off" onChange={(e)=>guardarID(e)}/>
+                        <div className="boton-lupa"><img onClick={()=>obtenerUsuarioPorID()} src={lupa} alt="Lupa" /></div>                    
+                    </div>
+                    <div id="datos-usuario-id">
+                        <p><span>Correo electrónico:</span><input readOnly type="text" name="correo" value={usuarioBuscado.correo}/></p>
+                        <p><span>DNI:</span><input autoComplete="off" type="text" name="dni" onChange={(e)=>cambiarDatosParaActualizar(e, "dni")} value={usuarioBuscado.dni}/></p>
+                        <p><span>Nombre:</span><input autoComplete="off" type="text" name="nombre" onChange={(e)=>cambiarDatosParaActualizar(e, "nombre")} value={usuarioBuscado.nombre}/></p>
+                        <p><span>Apellidos:</span><input autoComplete="off" type="text" name="apellidos" onChange={(e)=>cambiarDatosParaActualizar(e, "apellidos")} value={usuarioBuscado.apellidos}/></p>
+                        <p><span>Direccion:</span><input autoComplete="off" type="text" name="direccion" onChange={(e)=>cambiarDatosParaActualizar(e, "direcccion")} value={usuarioBuscado.direccion}/></p>
+                        <p><span>Ciudad:</span><input autoComplete="off" type="text" name="ciudad" onChange={(e)=>cambiarDatosParaActualizar(e, "ciudad")} value={usuarioBuscado.ciudad}/></p>
+                        <p><span>Telefono:</span><input autoComplete="off" type="text" name="telefono" onChange={(e)=>cambiarDatosParaActualizar(e, "telefono")} value={usuarioBuscado.telefono}/></p>
+                        <p><span>Fecha de alta:</span><input readOnly type="text" name="createdAt" value={usuarioBuscado.createdAt}/></p>
+                    </div>
+                    <div id="botones-buscar-usuario">
+                        <div className="boton" onClick={()=>actualizarRegistro()}>ACTUALIZAR DATOS DE USUARIO</div>
+                        <div className="boton" onClick={()=>borrarRegistro()}>BORRAR USUARIO</div>
+                    </div>
+                    
                 </div>
-                <div id="datos-usuario-id">
-                    <p><span>Correo electrónico:</span><input readOnly type="text" name="correo" value={usuarioBuscado.correo}/></p>
-                    <p><span>DNI:</span><input autoComplete="off" type="text" name="dni" onChange={(e)=>cambiarDatosParaActualizar(e, "dni")} value={usuarioBuscado.dni}/></p>
-                    <p><span>Nombre:</span><input autoComplete="off" type="text" name="nombre" onChange={(e)=>cambiarDatosParaActualizar(e, "nombre")} value={usuarioBuscado.nombre}/></p>
-                    <p><span>Apellidos:</span><input autoComplete="off" type="text" name="apellidos" onChange={(e)=>cambiarDatosParaActualizar(e, "apellidos")} value={usuarioBuscado.apellidos}/></p>
-                    <p><span>Direccion:</span><input autoComplete="off" type="text" name="direccion" onChange={(e)=>cambiarDatosParaActualizar(e, "direcccion")} value={usuarioBuscado.direccion}/></p>
-                    <p><span>Ciudad:</span><input autoComplete="off" type="text" name="ciudad" onChange={(e)=>cambiarDatosParaActualizar(e, "ciudad")} value={usuarioBuscado.ciudad}/></p>
-                    <p><span>Telefono:</span><input autoComplete="off" type="text" name="telefono" onChange={(e)=>cambiarDatosParaActualizar(e, "telefono")} value={usuarioBuscado.telefono}/></p>
-                    <p><span>Fecha de alta:</span><input readOnly type="text" name="createdAt" value={usuarioBuscado.createdAt}/></p>
-                </div>
-                <div id="botones-buscar-usuario">
-                    <div className="boton" onClick={()=>actualizarRegistro()}>ACTUALIZAR DATOS DE USUARIO</div>
-                    <div className="boton" onClick={()=>borrarRegistro()}>BORRAR USUARIO</div>
-                </div>
-                
             </div>
-        </div>
-    )
+        )
+    }
 };
 
 export default connect((state)=>({

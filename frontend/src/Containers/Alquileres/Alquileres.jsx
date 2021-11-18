@@ -4,6 +4,7 @@ import axios from 'axios';
 import Lateral from '../../Components/Lateral/Lateral';
 import { connect } from 'react-redux';
 import loading from '../../img/loading.svg';
+import PantallaError from '../PantallaError/PantallaError';
 
 const Alquileres = (props) => {
 
@@ -30,27 +31,33 @@ const Alquileres = (props) => {
         mostrarAlquileres();
     }, [])
 
-    return(
-        <div id="container-alquileres">
-            <Lateral/>
-            <div id="contenido-alquileres">
-                <h2>Listado de alquileres</h2>
-                <div id="listado-alquileres">
-                    {listaAlquileres?.map((alquiler)=>{
-                        return(
-                            <div id="alquiler">
-                                <div><img src={alquiler.pelicula.caratula} alt="Caratula" /></div>
-                                <p><span>Titulo de la película:</span> {alquiler.pelicula.titulo}</p>
-                                <p><span>Fecha de alquiler:</span> {alquiler.fecha_alquiler}</p>
-                                <p><span>Fecha de devolución:</span> {alquiler.fecha_devolucion}</p>
-                                <p><span>Precio:</span> {alquiler.precio}</p>
-                            </div>
-                        )
-                    })}
+    if (props.datosLogin.usuario.rol !== "usuario") {
+        return(
+            <PantallaError/>
+        )
+    } else{
+        return(
+            <div id="container-alquileres">
+                <Lateral/>
+                <div id="contenido-alquileres">
+                    <h2>Listado de alquileres</h2>
+                    <div id="listado-alquileres">
+                        {listaAlquileres?.map((alquiler)=>{
+                            return(
+                                <div id="alquiler">
+                                    <div><img src={alquiler.pelicula.caratula} alt="Caratula" /></div>
+                                    <p><span>Titulo de la película:</span> {alquiler.pelicula.titulo}</p>
+                                    <p><span>Fecha de alquiler:</span> {alquiler.fecha_alquiler}</p>
+                                    <p><span>Fecha de devolución:</span> {alquiler.fecha_devolucion}</p>
+                                    <p><span>Precio:</span> {alquiler.precio}</p>
+                                </div>
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
 };
 
 export default connect((state)=>({

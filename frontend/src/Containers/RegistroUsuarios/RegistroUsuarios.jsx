@@ -3,6 +3,7 @@ import Lateral from '../../Components/Lateral/Lateral';
 import './RegistroUsuarios.css';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import PantallaError from '../PantallaError/PantallaError';
 
 const RegistroUsuarios = (props) =>{
 
@@ -51,33 +52,39 @@ const RegistroUsuarios = (props) =>{
 
     }
 
-    return(
-        <div id="container-registro">
-            <Lateral/>
-            <div id="contenido-registro">
-                <h2>Registrar Usuario</h2>
-                {/* SI mensajeError ESTÁ VACIO NO MUESTRA NADA. SI TIENE ALGO, MUESTRA EL MENSAJE */}
-                {!mensajeError
-                ?
-                ""
-                :
-                <div className="mensaje-error">{mensajeError}</div>    
-                }
-                <div id="cuadro-registro">
-                    <input autoComplete="off" placeholder="Correo electrónico" type="email" name="correo" id="correo-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
-                    <input autoComplete="off" placeholder="Contraseña" type="password" name="clave" id="clave-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
-                    <input autoComplete="off" placeholder="DNI de usuario" type="text" name="dni" id="dni-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
-                    <input autoComplete="off" placeholder="Nombre de usuario" type="text" name="nombre" id="nombre-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
-                    <input autoComplete="off" placeholder="Apellidos de usuario" type="text" name="apellidos" id="apellidos-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
-                    <input autoComplete="off" placeholder="Dirección (calle, portal y piso)" type="text" name="direccion" id="direccion-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
-                    <input autoComplete="off" placeholder="Ciudad (Valencia, Getafe o Albacete)" type="text" name="ciudad" id="ciudad-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
-                    <input autoComplete="off" placeholder="Telefono" type="text" name="telefono" id="telefono-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
-                    <input autoComplete="off" placeholder="Rol (usuario o administrador)" type="text" name="rol" id="rol-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
+    if (props.datosLogin.usuario.rol !== "administrador") {
+        return(
+            <PantallaError/>
+        )
+    } else{
+        return(
+            <div id="container-registro">
+                <Lateral/>
+                <div id="contenido-registro">
+                    <h2>Registrar Usuario</h2>
+                    {/* SI mensajeError ESTÁ VACIO NO MUESTRA NADA. SI TIENE ALGO, MUESTRA EL MENSAJE */}
+                    {!mensajeError
+                    ?
+                    ""
+                    :
+                    <div className="mensaje-error">{mensajeError}</div>    
+                    }
+                    <div id="cuadro-registro">
+                        <input autoComplete="off" placeholder="Correo electrónico" type="email" name="correo" id="correo-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
+                        <input autoComplete="off" placeholder="Contraseña" type="password" name="clave" id="clave-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
+                        <input autoComplete="off" placeholder="DNI de usuario" type="text" name="dni" id="dni-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
+                        <input autoComplete="off" placeholder="Nombre de usuario" type="text" name="nombre" id="nombre-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
+                        <input autoComplete="off" placeholder="Apellidos de usuario" type="text" name="apellidos" id="apellidos-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
+                        <input autoComplete="off" placeholder="Dirección (calle, portal y piso)" type="text" name="direccion" id="direccion-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
+                        <input autoComplete="off" placeholder="Ciudad (Valencia, Getafe o Albacete)" type="text" name="ciudad" id="ciudad-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
+                        <input autoComplete="off" placeholder="Telefono" type="text" name="telefono" id="telefono-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
+                        <input autoComplete="off" placeholder="Rol (usuario o administrador)" type="text" name="rol" id="rol-registro" onChange={(e)=>guardarDatosRegistro(e)}/>
+                    </div>
+                    <div  className="boton" onClick={()=>registrarUsuario()}>CREAR USUARIO NUEVO</div>
                 </div>
-                <div  className="boton" onClick={()=>registrarUsuario()}>CREAR USUARIO NUEVO</div>
             </div>
-        </div>
-    )
+        )
+    }
 };
 
 export default connect((state)=>({

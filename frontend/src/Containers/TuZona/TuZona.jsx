@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 const TuZona = (props) =>{
 
     if (props.datosLogin.usuario.rol === undefined) {
-        console.log("Maquina")
         return(
             <PantallaError/>
         )

@@ -1,18 +1,167 @@
 :root {
     --principal: #114358;
+    --fondo: #11435898;
     --complementario1: #F2AA1F;
     --complementario2: #F1ECE7;
     --oscuro: #090909;
     --claro: #EEEEEE;
 }
-/* CONTENEDOR CONTACTO */
+/* CONTENEDOR INICIO */
 #container-contacto{
     width: 100vw;
-    height: calc(100vh - 3.5em);
-    background-color: var(--masclaro);
-    color: var(--masoscuro);
+    height: 100vh;
+    background-color: var(--claro);
+    background-image: url(../../img/fondo-contacto.jpg);
+    background-size: cover;
+    color: var(--claro);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
+/*DEGRADADO DE COLOR EN IMAGEN DE FONDO*/
+#container-contacto::before{
+    background-color: var(--fondo);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+/*FLECHA PARA VOLVER A INICIO*/
+#flecha-inicio{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3em;
+    height: 2em;
+    cursor: pointer;
+    margin: 1em;
+}
+#flecha-inicio img{
+    width: 3em;
+    height: 2em;
+}
+/*CONTENIDO DE LA PAGINA CONTACTO*/
+#contenido-contacto{
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+#contenido-contacto h2{
+    margin-top: 1em;
+    font-size: 3em;
+}
+#contenido-contacto span{
+    font-weight: bold;
+    color: var(--complementario1);
+    cursor: pointer;
+}
+#contacto-inicial p{
+    font-size: 1.25em;
+}
+/*CONTENEDOR DE FORMULARIOS*/
+#formularios{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    margin-top: 3em;
+}
+#contacto-inicial{  
+    width: 50%;
+    height: 70vh;
+    text-align: left;
+    font-size: 1.5em;
+    margin: 0.5em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    transition: 0.2s;
+}
+#formulario-cuenta, #formulario-pregunta{
+    position: absolute;
+    top: 5em;
+    opacity: 1;
+    width: 50%;
+    background-color: var(--principal);
+    padding: 1em;
+    border-radius: 0.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    animation-name: mostrar;
+    animation-duration: 1s;
+}
+#formulario-cuenta h3, #formulario-pregunta h3{
+    font-size: 2em;
+    margin: 0.5em 0;
+}
+/*INPUT DE CONTACTO*/
+#contenido-contacto input{
+    all:unset;
+    text-align: left;
+    border: 2px solid transparent;
+    border-bottom: 2px solid var(--oscuro);
+    padding: 0.25em;
+    width: 80%;
+    margin: 0.5em 0;
+}
+#contenido-contacto input:focus{
+    color: var(--oscuro);
+    border: 2px solid var(--claro);
+    background-color: var(--complementario1);
+}
+#contenido-contacto input::placeholder {
+    color: var(--oscuro);
+}
+#contenido-contacto textarea{
+    all: unset;
+    background-color: var(--principal);
+    border: 2px solid var(--oscuro);
+    width: 80%;
+    height: 10em;
+    text-align: left;
+    padding: 0.5em;
+    margin: 1em 0;
+    color: var(--oscuro);
+}
+#contenido-contacto textarea:focus{
+    color: var(--oscuro);
+    border: 2px solid var(--claro);
+    background-color: var(--complementario1);
+}
+#contenido-contacto textarea::placeholder {
+    color: var(--oscuro);
+}
+
+/*BOTONES*/
+#formularios .boton{
+    width: 15em;
+    margin-top: 1em;
+}
+#formularios .cerrar-formulario{
+    font-weight: bold;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    cursor: pointer;
+}
+/*ANIMACION PARA LOS FORMULARIOS AL APARECER*/
+@keyframes mostrar {
+    0% {
+        opacity: 0;
+        top: 7em;
+    }
+    100% {
+        opacity: 1;
+        top: 5em;
+    }
+  }

@@ -23,6 +23,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    overflow-y: scroll;
 }
 /*H2 DE VISTA DE BUSQUEDA DE USUARIO*/
 #contenido-buscar-pedido h2{
@@ -39,7 +40,7 @@
 }
 .barra-busqueda-pedido input{
     all: unset;
-    width: 9em;
+    width: 5em;
     font-size: 1em;
     background-color: var(--complementario2);
     color: var(--oscuro);
@@ -50,4 +51,84 @@
 }
 .barra-busqueda-pedido input:focus{
     background-color: var(--complementario1);
+}
+/*H3 DEL CONTENEDOR*/
+#contenido-buscar-pedido h3{
+    align-self: center;
+}
+/*DATOS DE PEDIDO*/
+#datos-pedido-id{
+    font-size: 1.2em;
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    background-color: var(--complementario2);
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+    box-shadow: 0px 0px 8px 0.1em var(--oscuro);
+    margin: 1em 0;
+}
+#contenido-buscar-pedido span{
+    font-weight: bold;
+}
+#datos-pedido-id p{
+    margin: 1em 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+/* INPUT NO MODIFICABLES */
+#contenido-buscar-pedido input:read-only{
+    all:unset;
+    width: 10em;
+    margin: 0 0.25em;
+    text-align: left;
+    border: 2px solid transparent;
+    background-color: var(--complementario2);
+    padding: 0.25em;
+    color: var(--oscuro);
+}
+#datos-pedido-id .desplegable{
+    cursor: pointer;
+    position: relative;
+}
+/*DATOS DE USUARIO Y DE PELICULA*/
+#contenedor-usuario-pelicula{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+/*DATOS DE USUARIO Y PEDIDO*/
+#datos-usuario-pedido, #datos-pelicula-pedido{
+    font-size: 1.2em;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    background-color: var(--complementario2);
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+    box-shadow: 0px 0px 8px 0.1em var(--oscuro);
+    margin: 1em 0;
+}
+#datos-usuario-pedido input:read-only, #datos-pelicula-pedido input:read-only{
+    width: 15em;
+}
+/*CARATULA DE PELICULA*/
+#datos-pelicula-pedido div{
+    border: 2px solid var(--oscuro);
+    width: 8em;
+    height: 10em;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+}
+#datos-pelicula-pedido div img{
+    width: 8em;
+    height: 10em;
 }

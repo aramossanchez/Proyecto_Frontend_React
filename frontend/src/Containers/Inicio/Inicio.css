@@ -27,7 +27,7 @@
     height: 100%;
     position: absolute;
     width: 100%;
-  }
+}
 /* BLOQUE IZQUIERDA INICIO */
 #mensaje-inicio{
     display: flex;

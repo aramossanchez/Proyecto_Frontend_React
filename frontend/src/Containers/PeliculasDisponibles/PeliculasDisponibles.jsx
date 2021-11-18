@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { GUARDAR_PELICULAS, GUARDAR_ID_PELICULA } from '../../redux/types';
 import { useNavigate } from 'react-router';
 import loading from '../../img/loading.svg';
+import PantallaError from '../PantallaError/PantallaError';
 
 const PeliculasDisponibles = (props) =>{
 
@@ -39,32 +40,38 @@ const PeliculasDisponibles = (props) =>{
         navigate("/detallespelicula");
     }
 
-    return(
-        <div id="container-peliculas">
-            <Lateral/>
-            <div id="contenido-peliculas">
-                <h2>Listado de películas disponibles para alquilar en {props.datosLogin.usuario.ciudad}</h2>
-                {/* MOSTRAR LAS PELICULAS O ICONO DE CARGANDO*/}
-                {cargando
-                ?
-                <img src={loading} alt="loading" />
-                :
-                <div id="listado-peliculas">
-                    
-                    {props.peliculasMostradas.peliculas.map((pelicula)=>{
-                        return <div key={pelicula.id} className="pelicula-individual" onClick={()=>verDetallesPelicula(pelicula.id)}>
-                            <div><img src={pelicula.caratula} alt="Caratula" /></div>
-                            <p><span>Título:</span> {pelicula.titulo}</p>
-                            <p><span>Género:</span> {pelicula.genero}</p>
-                            <p><span>Protagonista:</span> {pelicula.actor_principal}</p>                   
-                        </div>
-                    })}
+    if (props.datosLogin.usuario.rol !== "usuario") {
+        return(
+            <PantallaError/>
+        )
+    } else{
+        return(
+            <div id="container-peliculas">
+                <Lateral/>
+                <div id="contenido-peliculas">
+                    <h2>Listado de películas disponibles para alquilar en {props.datosLogin.usuario.ciudad}</h2>
+                    {/* MOSTRAR LAS PELICULAS O ICONO DE CARGANDO*/}
+                    {cargando
+                    ?
+                    <img src={loading} alt="loading" />
+                    :
+                    <div id="listado-peliculas">
+                        
+                        {props.peliculasMostradas.peliculas.map((pelicula)=>{
+                            return <div key={pelicula.id} className="pelicula-individual" onClick={()=>verDetallesPelicula(pelicula.id)}>
+                                <div><img src={pelicula.caratula} alt="Caratula" /></div>
+                                <p><span>Título:</span> {pelicula.titulo}</p>
+                                <p><span>Género:</span> {pelicula.genero}</p>
+                                <p><span>Protagonista:</span> {pelicula.actor_principal}</p>                   
+                            </div>
+                        })}
 
+                    </div>
+                    }
                 </div>
-                }
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default connect((state)=>({

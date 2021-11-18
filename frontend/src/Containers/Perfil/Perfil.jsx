@@ -5,6 +5,7 @@ import Lateral from '../../Components/Lateral/Lateral';
 import FotoUsuario from '../../img/usuario.png';
 import { connect } from 'react-redux';
 import { COPIA_DATOS_LOGIN, GUARDA_CAMBIOS_ACTUALIZAR, ACTUALIZA_DATOS_LOGIN } from '../../redux/types';
+import PantallaError from '../PantallaError/PantallaError';
 
 const Perfil = (props) =>{
 
@@ -54,33 +55,39 @@ const Perfil = (props) =>{
         
     }
 
-    return(
-        <div id="container-perfil">
-            <Lateral/>
-            <div id="container-usuario">
-                {/* SI mensajeError ESTÁ VACIO NO MUESTRA NADA. SI TIENE ALGO, MUESTRA EL MENSAJE */}
-                {!mensajeError
-                ?
-                ""
-                :
-                <div className="mensaje-error">{mensajeError}</div>    
-                }
-                <h2>Tus Datos</h2>
-                <div id="datos-usuario">
-                    <div id="foto-usuario"><img src={FotoUsuario} alt="Foto de usuario" /></div>
-                    <p><span>Correo electrónico:</span><input readOnly type="text" name="correo" value={props.datosLogin.usuario.correo}/></p>
-                    <p><span>DNI:</span><input autoComplete="off" type="text" name="dni" onChange={(e)=>actualizarDatos(e, "dni")} value={props.datosActualizarUsuario.dni}/></p>
-                    <p><span>Nombre:</span><input autoComplete="off" type="text" name="nombre" onChange={(e)=>actualizarDatos(e, "nombre")} value={props.datosActualizarUsuario.nombre}/></p>
-                    <p><span>Apellidos:</span><input autoComplete="off" type="text" name="apellidos" onChange={(e)=>actualizarDatos(e, "apellidos")} value={props.datosActualizarUsuario.apellidos}/></p>
-                    <p><span>Direccion:</span><input autoComplete="off" type="text" name="direccion" onChange={(e)=>actualizarDatos(e, "direccion")} value={props.datosActualizarUsuario.direccion}/></p>
-                    <p><span>Ciudad:</span><input autoComplete="off" type="text" name="ciudad" onChange={(e)=>actualizarDatos(e, "ciudad")} value={props.datosActualizarUsuario.ciudad}/></p>
-                    <p><span>Telefono:</span><input autoComplete="off" type="text" name="telefono" onChange={(e)=>actualizarDatos(e, "telefono")} value={props.datosActualizarUsuario.telefono}/></p>
-                    <p><span>Fecha de alta:</span><input readOnly type="text" name="createdAt" value={props.datosLogin.usuario.createdAt}/></p>
-                </div>
-                <div className="boton" onClick={()=>actualizarRegistro()}>ACTUALIZAR TUS DATOS</div>
-            </div>      
-        </div>
-    )
+    if (props.datosLogin.usuario.rol !== "usuario") {
+        return(
+            <PantallaError/>
+        )
+    } else{
+        return(
+            <div id="container-perfil">
+                <Lateral/>
+                <div id="container-usuario">
+                    {/* SI mensajeError ESTÁ VACIO NO MUESTRA NADA. SI TIENE ALGO, MUESTRA EL MENSAJE */}
+                    {!mensajeError
+                    ?
+                    ""
+                    :
+                    <div className="mensaje-error">{mensajeError}</div>    
+                    }
+                    <h2>Tus Datos</h2>
+                    <div id="datos-usuario">
+                        <div id="foto-usuario"><img src={FotoUsuario} alt="Foto de usuario" /></div>
+                        <p><span>Correo electrónico:</span><input readOnly type="text" name="correo" value={props.datosLogin.usuario.correo}/></p>
+                        <p><span>DNI:</span><input autoComplete="off" type="text" name="dni" onChange={(e)=>actualizarDatos(e, "dni")} value={props.datosActualizarUsuario.dni}/></p>
+                        <p><span>Nombre:</span><input autoComplete="off" type="text" name="nombre" onChange={(e)=>actualizarDatos(e, "nombre")} value={props.datosActualizarUsuario.nombre}/></p>
+                        <p><span>Apellidos:</span><input autoComplete="off" type="text" name="apellidos" onChange={(e)=>actualizarDatos(e, "apellidos")} value={props.datosActualizarUsuario.apellidos}/></p>
+                        <p><span>Direccion:</span><input autoComplete="off" type="text" name="direccion" onChange={(e)=>actualizarDatos(e, "direccion")} value={props.datosActualizarUsuario.direccion}/></p>
+                        <p><span>Ciudad:</span><input autoComplete="off" type="text" name="ciudad" onChange={(e)=>actualizarDatos(e, "ciudad")} value={props.datosActualizarUsuario.ciudad}/></p>
+                        <p><span>Telefono:</span><input autoComplete="off" type="text" name="telefono" onChange={(e)=>actualizarDatos(e, "telefono")} value={props.datosActualizarUsuario.telefono}/></p>
+                        <p><span>Fecha de alta:</span><input readOnly type="text" name="createdAt" value={props.datosLogin.usuario.createdAt}/></p>
+                    </div>
+                    <div className="boton" onClick={()=>actualizarRegistro()}>ACTUALIZAR TUS DATOS</div>
+                </div>      
+            </div>
+        )
+    }
 }
 
 export default connect((state)=>({

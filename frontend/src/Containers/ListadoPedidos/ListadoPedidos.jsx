@@ -4,8 +4,13 @@ import axios from 'axios';
 import Lateral from '../../Components/Lateral/Lateral';
 import { connect } from 'react-redux';
 import loading from '../../img/loading.svg';
+import PantallaError from '../PantallaError/PantallaError';
+import { GUARDAR_ID_PEDIDO } from '../../redux/types';
+import { useNavigate } from 'react-router';
 
 const ListadoPedidos = (props) =>{
+
+    const navigate = useNavigate();
 
     //CREAMOS LA CONFIGURACIÓN DEL HEADER QUE SE VA A MANDAR
     let config = {
@@ -38,6 +43,11 @@ const ListadoPedidos = (props) =>{
         mostrarLoading();
     },[]);
 
+    const buscarPedido = (id) =>{
+        props.dispatch({type:GUARDAR_ID_PEDIDO, payload: id});
+        navigate("/buscarpedido");
+    };
+
     const borrarPedido = async (pedido, pelicula) =>{
         try {
             await axios.delete(`https://aramossanchez-videoclub-api.herokuapp.com/pedidos/${pedido}/pelicula/${pelicula}`, config);
@@ -60,52 +70,57 @@ const ListadoPedidos = (props) =>{
         }
     }
 
-
-    return(
-        <div id="container-pedidos">
-            <Lateral/>
-            <div id="contenido-pedidos">
-                <h2>Listado de pedidos realizados</h2>
-                {/* SI mensajeError ESTÁ VACIO NO MUESTRA NADA. SI TIENE ALGO, MUESTRA EL MENSAJE */}
-                {!mensajeError
-                ?
-                ""
-                :
-                <div className="mensaje-error">{mensajeError}</div>    
-                }
-                <div id="nombres-columnas-pedidos">
-                    <div>ID de pedido</div>
-                    <div>ID de película</div>
-                    <div>ID de usuario</div>
-                    <div>Fecha de alquiler</div>
-                    <div>Fecha de devolución</div>
-                    <div>Precio</div>
-                    <div></div>
+    if (props.datosLogin.usuario.rol !== "administrador") {
+        return(
+            <PantallaError/>
+        )
+    } else{
+        return(
+            <div id="container-pedidos">
+                <Lateral/>
+                <div id="contenido-pedidos">
+                    <h2>Listado de pedidos realizados</h2>
+                    {/* SI mensajeError ESTÁ VACIO NO MUESTRA NADA. SI TIENE ALGO, MUESTRA EL MENSAJE */}
+                    {!mensajeError
+                    ?
+                    ""
+                    :
+                    <div className="mensaje-error">{mensajeError}</div>    
+                    }
+                    <div id="nombres-columnas-pedidos">
+                        <div>ID de pedido</div>
+                        <div>ID de película</div>
+                        <div>ID de usuario</div>
+                        <div>Fecha de alquiler</div>
+                        <div>Fecha de devolución</div>
+                        <div>Precio</div>
+                        <div></div>
+                    </div>
+                    {/* MOSTRAR LAS PELICULAS O ICONO DE CARGANDO*/}
+                    {cargando
+                    ?
+                    <img src={loading} alt="loading" />
+                    :
+                    <div id="lista-pedidos">
+                        {listaPedidos?.map((pedido)=>{
+                            return <div key={pedido.id} className="pedido-individual" onClick={()=>buscarPedido(pedido.id)}>
+                                <div></div>
+                                <p>{pedido.id}</p>
+                                <p>{pedido.peliculaId}</p>
+                                <p>{pedido.usuarioId}</p>
+                                <p>{pedido.fecha_alquiler}</p>
+                                <p>{pedido.fecha_devolucion}</p>
+                                <p>{pedido.precio}€</p>
+                                <p><div className="boton" onClick={()=>borrarPedido(pedido.id, pedido.peliculaId)}>BORRAR PEDIDO</div> </p>               
+                            </div>
+                        })}
+                    </div>
+                    }
                 </div>
-                {/* MOSTRAR LAS PELICULAS O ICONO DE CARGANDO*/}
-                {cargando
-                ?
-                <img src={loading} alt="loading" />
-                :
-                <div id="lista-pedidos">
-                    {listaPedidos?.map((pedido)=>{
-                        return <div key={pedido.id} className="pedido-individual">
-                            <div></div>
-                            <p>{pedido.id}</p>
-                            <p>{pedido.peliculaId}</p>
-                            <p>{pedido.usuarioId}</p>
-                            <p>{pedido.fecha_alquiler}</p>
-                            <p>{pedido.fecha_devolucion}</p>
-                            <p>{pedido.precio}€</p>
-                            <p><div className="boton" onClick={()=>borrarPedido(pedido.id, pedido.peliculaId)}>BORRAR PEDIDO</div> </p>               
-                        </div>
-                    })}
-                </div>
-                }
+                
             </div>
-            
-        </div>
-    )
+        )
+    }
 }
 
 export default connect((state)=>({
