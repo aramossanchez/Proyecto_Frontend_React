@@ -53,6 +53,14 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
+/*CONTENEDOR DE PEDIDO Y BOTON*/
+.contenedor-pedido-individual{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
 /*UN UNICO PEDIDO*/
 .pedido-individual{
     font-size: 1.25em;
@@ -67,6 +75,7 @@
     overflow: hidden;
     border-top: 2px solid var(--oscuro);
     border-bottom: 2px solid var(--oscuro);
+    border-right: 2px solid var(--oscuro);
 }
 .pedido-individual p{
     font-size: 0.8em;
@@ -77,9 +86,10 @@
     font-weight: bold;
 }
 /*BOTON DE BORRAR PEDIDO*/
-.pedido-individual p .boton{
+.contenedor-pedido-individual .boton{
     padding: 0;
     margin: 0.25em;
+    width: 10em;
 }
 .pedido-individual:hover{
     background-color: var(--principal);

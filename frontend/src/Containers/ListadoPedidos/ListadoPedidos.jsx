@@ -117,16 +117,17 @@ const ListadoPedidos = (props) =>{
                     :
                     <div id="lista-pedidos">
                         {listaPedidos?.map((pedido)=>{
-                            return <div key={pedido.id} className="pedido-individual" onClick={()=>buscarPedido(pedido.id)}>
-                                <div></div>
-                                <p>{pedido.id}</p>
-                                <p>{pedido.peliculaId}</p>
-                                <p>{pedido.usuarioId}</p>
-                                <p>{calcularFechaAlquiler(pedido.fecha_alquiler)}</p>
-                                <p>{calcularFechaDevolucion(pedido.fecha_devolucion)}</p>
-                                <p>{pedido.precio}€</p>
-                                <p><div className="boton" onClick={()=>borrarPedido(pedido.id, pedido.peliculaId)}>BORRAR PEDIDO</div> </p>               
-                            </div>
+                            return <div key={pedido.id} className="contenedor-pedido-individual">
+                                        <div className="pedido-individual" onClick={()=>buscarPedido(pedido.id)}>
+                                            <p>{pedido.id}</p>
+                                            <p>{pedido.peliculaId}</p>
+                                            <p>{pedido.usuarioId}</p>
+                                            <p>{calcularFechaAlquiler(pedido.fecha_alquiler)}</p>
+                                            <p>{calcularFechaDevolucion(pedido.fecha_devolucion)}</p>
+                                            <p>{pedido.precio}€</p>
+                                        </div>
+                                        <p><div className="boton" onClick={()=>borrarPedido(pedido.id, pedido.peliculaId)}>BORRAR PEDIDO</div> </p>               
+                                    </div>
                         })}
                     </div>
                     }
