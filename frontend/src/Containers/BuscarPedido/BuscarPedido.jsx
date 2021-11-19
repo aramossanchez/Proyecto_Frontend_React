@@ -25,7 +25,6 @@ const BuscarPedido = (props) =>{
     const encontrarPedido = async () =>{
         let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/pedidos/${idPedido}`, config);
         setPedidoEncontrado(res.data);
-        console.log(res.data);
     }
 
     //AL CARGAR EL COMPONENTE COMPRUEBO SI idPedidoBuscado TIENE VALOR DISTINTO DE 0. SI LO TIENE, QUE BUSQUE UN PEDIDO CON ESE ID. CUANDO TERMINE TODAS LAS COMPROBACIONES, GUARDARÁ EN REDUX EL VALOR 0  
@@ -34,17 +33,29 @@ const BuscarPedido = (props) =>{
             const buscarPedidoDesdeListado = async () => {
             document.getElementById("busqueda-pedido-id").value = props.idPedidoBuscado;
             let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/pedidos/${props.idPedidoBuscado}`, config);
-            console.log(res.data);
             setPedidoEncontrado(res.data);
             setIdPedido(props.idPedidoBuscado)
+            }
+            buscarPedidoDesdeListado();
+        } else{
+            document.getElementById("busqueda-pedido-id").value = "";
         }
-        buscarPedidoDesdeListado();
-    } else{
-        document.getElementById("busqueda-pedido-id").value = "";
+        props.dispatch({type:GUARDAR_ID_PEDIDO, payload: 0});        
+    }, []);
+
+    //TRADUCE FECHA DE ALQUILER DE FORMATO BBDD A FORMATO ESPAÑOL
+    const calcularFechaAlquiler = (fecha) =>{
+        let fechaBBDD = fecha.split(/[- : T .]/);
+        let fechaProvisional = [fechaBBDD[2], fechaBBDD[1], fechaBBDD[0]];
+        return fechaProvisional.join('-');
     }
-    props.dispatch({type:GUARDAR_ID_PEDIDO, payload: 0});
-        
-    }, [])
+
+    //TRADUCE FECHA DE DEVOLUCION DE FORMATO BBDD A FORMATO ESPAÑOL
+    const calcularFechaDevolucion = (fecha) =>{
+        let fechaBBDD = fecha.split(/[- : T .]/);
+        let fechaProvisional = [fechaBBDD[2], fechaBBDD[1], fechaBBDD[0]];
+        return fechaProvisional.join('-');
+    }
 
     if (props.datosLogin.usuario.rol !== "administrador") {
         return(
@@ -62,8 +73,9 @@ const BuscarPedido = (props) =>{
                     </div>
                         <div id="datos-pedido-id">
                             <h3>Datos del pedido</h3>
-                            <p><span>Fecha de alquiler:</span><input readOnly value={pedidoEncontrado.fecha_alquiler}/></p>
-                            <p><span>Fecha de devolución:</span><input readOnly value={pedidoEncontrado.fecha_devolucion}/></p>
+                            {/* INDICO QUE SI AUN NO SE HA CARGADO pedidoEncontrado MAS EL CAMPO CORRESPONDIENTE, QUE NO HAGA NADA. SI SE CARGA, INDICO QUE EJECUTE LA FUNCION DE CONVERSION DE FORMATO DE FECHA */}
+                            <p><span>Fecha de alquiler:</span><input readOnly value={pedidoEncontrado.fecha_alquiler !== undefined ? calcularFechaAlquiler(pedidoEncontrado.fecha_alquiler):""}/></p>
+                            <p><span>Fecha de devolución:</span><input readOnly value={pedidoEncontrado.fecha_devolucion !== undefined ? calcularFechaDevolucion(pedidoEncontrado.fecha_devolucion):""}/></p>
                             <p><span>Precio:</span><input readOnly value={pedidoEncontrado.precio}/></p>
                         </div>
                         {pedidoEncontrado.usuario

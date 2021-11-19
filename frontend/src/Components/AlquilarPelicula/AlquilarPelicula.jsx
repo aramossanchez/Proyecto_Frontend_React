@@ -18,7 +18,7 @@ const AlquilarPelicula = (props) =>{
     }
 
     //CREAMOS PEDIDO EN LA BASE DE DATOS
-    const crearPedido = async (precio) =>{
+    const crearPedido = async (precio, dias) =>{
         
 
         //CREAMOS LA CABECERA PARA HACER EL PUT, CON EL TOKEN
@@ -30,8 +30,9 @@ const AlquilarPelicula = (props) =>{
         let body = {
             peliculaId: props.controlarMensajeAlquiler.peliculaBuscada.id,
             usuarioId: props.datosLogin.usuario.id,
-            fecha_alquiler: "2021/10/10",
-            fecha_devolucion: "2021/10/20",
+            fecha_alquiler: new Date,
+            //GENERAMOS UNA FECHA NUEVA, PASANDO COMO PARAMETRO LOS MILISEGUNDOS DE LA FECHA ACTUAL Y SUMANDO LOS MILISEGUNDOS CORRESPONDIENTES AL NUMERO DE DÍAS QUE DURA EL ALQUILER
+            fecha_devolucion: new Date(new Date().getTime() + (dias * 24 * 60 * 60 * 1000)),
             precio: precio
         }
         
@@ -73,9 +74,9 @@ const AlquilarPelicula = (props) =>{
                 <div className="mensaje-error">{mensajeError}</div>    
                 }
                 <div id="opciones-alquiler">
-                    <div className="boton" onClick={()=>crearPedido(3.95)}>2 días (3,95€)</div>
-                    <div className="boton" onClick={()=>crearPedido(4.95)}>3 días (4,95€)</div>
-                    <div className="boton" onClick={()=>crearPedido(6.95)}>7 días (6.95€)</div>
+                    <div className="boton" onClick={()=>crearPedido(3.95, 2)}>2 días (3,95€)</div>
+                    <div className="boton" onClick={()=>crearPedido(4.95, 3)}>3 días (4,95€)</div>
+                    <div className="boton" onClick={()=>crearPedido(6.95, 7)}>7 días (6.95€)</div>
                 </div>
             </div>
         </div>

@@ -46,6 +46,13 @@ const ListadoUsuarios = (props) =>{
         navigate("/buscarusuario");
     };
 
+    //TRADUCE FECHA DE ALTA DE FORMATO BBDD A FORMATO ESPAÑOL
+    const calcularFechaAlta = (fecha) =>{
+        let fechaBBDD = fecha.split(/[- : T .]/);
+        let fechaProvisional = [fechaBBDD[2], fechaBBDD[1], fechaBBDD[0]];
+        return fechaProvisional.join('-');
+    }
+
     if (props.datosLogin.usuario.rol !== "administrador") {
         return(
             <PantallaError/>
@@ -83,7 +90,7 @@ const ListadoUsuarios = (props) =>{
                                 <p>{usuario.direccion}</p>
                                 <p>{usuario.ciudad}</p>
                                 <p>{usuario.telefono}</p>
-                                <p>{usuario.createdAt}</p>                        
+                                <p>{calcularFechaAlta(usuario.createdAt)}</p>                        
                             </div>
                         })}
                     </div>

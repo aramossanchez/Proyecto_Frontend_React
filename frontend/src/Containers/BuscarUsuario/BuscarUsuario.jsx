@@ -29,7 +29,7 @@ const BuscarUsuario = (props) =>{
             document.getElementById("busqueda-usuario-id").value = props.idUsuarioBuscado;
             let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${props.idUsuarioBuscado}`, config);
             setUsuarioBuscado(res.data);
-            setIDbusqueda(props.idUsuarioBuscado)
+            setIDbusqueda(props.idUsuarioBuscado);
             }
             buscarUsuarioDesdeListado();
         } else{
@@ -110,6 +110,13 @@ const BuscarUsuario = (props) =>{
         
     }
 
+    //TRADUCE FECHA DE FORMATO BBDD A FORMATO ESPAÑOL
+    const calcularFecha = (fecha) =>{
+        let fechaBBDD = fecha.split(/[- : T .]/);
+        let fechaProvisional = [fechaBBDD[2], fechaBBDD[1], fechaBBDD[0]];
+        return fechaProvisional.join('-');
+    }
+
     if (props.datosLogin.usuario.rol !== "administrador") {
         return(
             <PantallaError/>
@@ -140,7 +147,8 @@ const BuscarUsuario = (props) =>{
                         <p><span>Direccion:</span><input autoComplete="off" type="text" name="direccion" onChange={(e)=>cambiarDatosParaActualizar(e, "direcccion")} value={usuarioBuscado.direccion}/></p>
                         <p><span>Ciudad:</span><input autoComplete="off" type="text" name="ciudad" onChange={(e)=>cambiarDatosParaActualizar(e, "ciudad")} value={usuarioBuscado.ciudad}/></p>
                         <p><span>Telefono:</span><input autoComplete="off" type="text" name="telefono" onChange={(e)=>cambiarDatosParaActualizar(e, "telefono")} value={usuarioBuscado.telefono}/></p>
-                        <p><span>Fecha de alta:</span><input readOnly type="text" name="createdAt" value={usuarioBuscado.createdAt}/></p>
+                        {/* INDICO QUE SI AUN NO SE HA CARGADO usuarioBuscado, NO HAGA NADA. SI SE CARGA, INDICO QUE EJECUTE LA FUNCION DE CONVERSION DE FORMATO DE FECHA */}
+                        <p><span>Fecha de alta:</span><input readOnly type="text" name="createdAt" value={usuarioBuscado.createdAt !== undefined ? calcularFecha(usuarioBuscado.createdAt) : ""}/></p>
                     </div>
                     <div id="botones-buscar-usuario">
                         <div className="boton" onClick={()=>actualizarRegistro()}>ACTUALIZAR DATOS DE USUARIO</div>

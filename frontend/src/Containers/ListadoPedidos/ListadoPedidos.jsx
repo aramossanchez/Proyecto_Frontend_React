@@ -70,6 +70,20 @@ const ListadoPedidos = (props) =>{
         }
     }
 
+    //TRADUCE FECHA DE ALQUILER DE FORMATO BBDD A FORMATO ESPAÑOL
+    const calcularFechaAlquiler = (fecha) =>{
+        let fechaBBDD = fecha.split(/[- : T .]/);
+        let fechaProvisional = [fechaBBDD[2], fechaBBDD[1], fechaBBDD[0]];
+        return fechaProvisional.join('-');
+    }
+
+    //TRADUCE FECHA DE DEVOLUCION DE FORMATO BBDD A FORMATO ESPAÑOL
+    const calcularFechaDevolucion = (fecha) =>{
+        let fechaBBDD = fecha.split(/[- : T .]/);
+        let fechaProvisional = [fechaBBDD[2], fechaBBDD[1], fechaBBDD[0]];
+        return fechaProvisional.join('-');
+    }
+
     if (props.datosLogin.usuario.rol !== "administrador") {
         return(
             <PantallaError/>
@@ -108,8 +122,8 @@ const ListadoPedidos = (props) =>{
                                 <p>{pedido.id}</p>
                                 <p>{pedido.peliculaId}</p>
                                 <p>{pedido.usuarioId}</p>
-                                <p>{pedido.fecha_alquiler}</p>
-                                <p>{pedido.fecha_devolucion}</p>
+                                <p>{calcularFechaAlquiler(pedido.fecha_alquiler)}</p>
+                                <p>{calcularFechaDevolucion(pedido.fecha_devolucion)}</p>
                                 <p>{pedido.precio}€</p>
                                 <p><div className="boton" onClick={()=>borrarPedido(pedido.id, pedido.peliculaId)}>BORRAR PEDIDO</div> </p>               
                             </div>

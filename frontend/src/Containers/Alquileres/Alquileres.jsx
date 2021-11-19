@@ -7,6 +7,7 @@ import loading from '../../img/loading.svg';
 import PantallaError from '../PantallaError/PantallaError';
 
 const Alquileres = (props) => {
+    
 
     //CREAMOS LA CONFIGURACIÓN DEL HEADER QUE SE VA A MANDAR
     let config = {
@@ -14,6 +15,7 @@ const Alquileres = (props) => {
     };
 
     //HOOKS
+    //GUARDO EL LISTADO DE ALQUILERES
     const [listaAlquileres, setListaAlquileres] = useState();
 
     //BUSCAMOS EN LA BASE DE DATOS TODOS LOS ALQUILERES QUE TENGA EL USUARIO QUE SE HA LOGADO
@@ -22,9 +24,18 @@ const Alquileres = (props) => {
         setListaAlquileres(res.data);
     }
 
-    const buscarDatosPelicula = (id) =>{
-        // let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas/${id}`);
-        return "hola";
+    //TRADUCE FECHA DE ALQUILER DE FORMATO BBDD A FORMATO ESPAÑOL
+    const calcularFechaAlquiler = (fecha) =>{
+        let fechaBBDD = fecha.split(/[- : T .]/);
+        let fechaProvisional = [fechaBBDD[2], fechaBBDD[1], fechaBBDD[0]];
+        return fechaProvisional.join('-');
+    }
+
+    //TRADUCE FECHA DE DEVOLUCION DE FORMATO BBDD A FORMATO ESPAÑOL
+    const calcularFechaDevolucion = (fecha) =>{
+        let fechaBBDD = fecha.split(/[- : T .]/);
+        let fechaProvisional = [fechaBBDD[2], fechaBBDD[1], fechaBBDD[0]];
+        return fechaProvisional.join('-');
     }
 
     useEffect(()=>{
@@ -47,8 +58,8 @@ const Alquileres = (props) => {
                                 <div id="alquiler">
                                     <div><img src={alquiler.pelicula.caratula} alt="Caratula" /></div>
                                     <p><span>Titulo de la película:</span> {alquiler.pelicula.titulo}</p>
-                                    <p><span>Fecha de alquiler:</span> {alquiler.fecha_alquiler}</p>
-                                    <p><span>Fecha de devolución:</span> {alquiler.fecha_devolucion}</p>
+                                    <p><span>Fecha de alquiler:</span> {calcularFechaAlquiler(alquiler.fecha_alquiler)}</p>
+                                    <p><span>Fecha de devolución:</span> {calcularFechaDevolucion(alquiler.fecha_devolucion)}</p>
                                     <p><span>Precio:</span> {alquiler.precio}</p>
                                 </div>
                             )
