@@ -51,16 +51,17 @@ const Contacto = () =>{
                     <div id="formulario-cuenta">
                         <h3>Datos para crear una cuenta</h3>
                         <div className="cerrar-formulario" onClick={()=>cerrarFormulario()}>X</div>
-                        <input autoComplete="off" placeholder="Correo electrónico" type="email" name="correo" id="correo-registro-contacto"/>
-                        <input autoComplete="off" placeholder="Contraseña" type="password" name="clave" id="clave-registro-contacto"/>
-                        <input autoComplete="off" placeholder="DNI de usuario" type="text" name="dni" id="dni-registro-contacto"/>
-                        <input autoComplete="off" placeholder="Nombre de usuario" type="text" name="nombre" id="nombre-registro-contacto"/>
-                        <input autoComplete="off" placeholder="Apellidos de usuario" type="text" name="apellidos" id="apellidos-registro-contacto"/>
-                        <input autoComplete="off" placeholder="Dirección (calle, portal y piso)" type="text" name="direccion" id="direccion-registro-contacto"/>
-                        <input autoComplete="off" placeholder="Ciudad (Valencia, Getafe o Albacete)" type="text" name="ciudad" id="ciudad-registro-contacto"/>
-                        <input autoComplete="off" placeholder="Telefono" type="text" name="telefono" id="telefono-registro-contacto"/>
-                        <input autoComplete="off" placeholder="Rol (usuario o administrador)" type="text" name="rol" id="rol-registro-contacto"/>
-                        <div className="boton">Enviar datos</div>
+                        <form action="mailto:armandoramossanchez@gmail.com?subject=Alta Nueva" method="post" enctype="text/plain">
+                        <input autoComplete="off" placeholder="Tu correo electrónico" type="email" name="correo" id="correo-registro-contacto"/>
+                        <input autoComplete="off" placeholder="Contraseña (mínimo 8 caracteres)" type="password" name="clave" id="clave-registro-contacto"/>
+                        <input autoComplete="off" placeholder="Tu DNI" type="text" name="dni" id="dni-registro-contacto"/>
+                        <input autoComplete="off" placeholder="Tu nombre" type="text" name="nombre" id="nombre-registro-contacto"/>
+                        <input autoComplete="off" placeholder="Tus apellidos" type="text" name="apellidos" id="apellidos-registro-contacto"/>
+                        <input autoComplete="off" placeholder="Tu dirección (calle, portal y piso)" type="text" name="direccion" id="direccion-registro-contacto"/>
+                        <input autoComplete="off" placeholder="Tu ciudad (Valencia, Getafe o Albacete)" type="text" name="ciudad" id="ciudad-registro-contacto"/>
+                        <input autoComplete="off" placeholder="Tu telefono" type="text" name="telefono" id="telefono-registro-contacto"/>
+                        <button className="boton">Enviar datos</button>
+                        </form>
                     </div>
                     :
                     ""
@@ -70,10 +71,12 @@ const Contacto = () =>{
                     <div id="formulario-pregunta">
                         <h3>Datos para mandar pregunta o sugerencia</h3>
                         <div className="cerrar-formulario" onClick={()=>cerrarFormulario()}>X</div>
+                        <form action="mailto:armandoramossanchez@gmail.com?subject=Pregunta" method="post" enctype="text/plain">
                         <input autoComplete="off" placeholder="Nombre" type="text" name="nombre" id="nombre-contacto"/>
                         <input autoComplete="off" placeholder="Correo electrónico" type="email" name="correo" id="correo-contacto"/>
                         <textarea name="pregunta" id="pregunta-contacto" placeholder="Escribe aquí tu mensaje"></textarea>
-                        <div className="boton">Enviar una pregunta o sugerencia</div>
+                        <button className="boton">Enviar una pregunta o sugerencia</button>
+                        </form>
                     </div>
                     :
                     ""

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Lateral.css';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -22,6 +22,16 @@ const Lateral = (props) =>{
         props.dispatch({type:LOGOUT, payload: datosBorradosLogin});
     }
 
+    useEffect(()=>{
+        //OBTENGO RUTA COMPLETA, Y GUARDO EN LA POSICION 3 DEL ARRAY rutaEnArray EL FINAL DE LA URL ACTUAL, COINCIDIENDO CON LOS IDS DE LOS ENLACES
+        let rutaCompleta = window.location.href;
+        let rutaEnArray = rutaCompleta.split(/[/]/);
+        let componente = document.getElementById(rutaEnArray[3]);
+        if(componente!==null){
+            componente.classList.add("enlace-actual");
+        }
+    }, [])
+
     return(
         <div id="container-lateral">
             <div id="logo-lateral"><img src={logo} alt="Logo" /></div>
@@ -29,10 +39,10 @@ const Lateral = (props) =>{
             {props.datosLogin.usuario.rol === "usuario"
             ?
             <div id="opciones-user">
-                <div className="enlace-lateral" onClick={()=>redireccionar("/perfil")}>Tu Perfil</div>
-                <div className="enlace-lateral" onClick={()=>redireccionar("/alquileres")}>Tus alquileres</div>
-                <div className="enlace-lateral" onClick={()=>redireccionar("/peliculas")}>Catálogo de películas</div>
-                <div className="enlace-lateral" onClick={()=>redireccionar("/peliculasdisponibles")}>Películas disponibles para alquilar en tu ciudad</div>
+                <div id="perfil" className="enlace-lateral" onClick={()=>redireccionar("/perfil")}>Tu Perfil</div>
+                <div id="alquileres" className="enlace-lateral" onClick={()=>redireccionar("/alquileres")}>Tus alquileres</div>
+                <div id="peliculas" className="enlace-lateral" onClick={()=>redireccionar("/peliculas")}>Catálogo de películas</div>
+                <div id="peliculasdisponibles" className="enlace-lateral" onClick={()=>redireccionar("/peliculasdisponibles")}>Películas disponibles para alquilar en tu ciudad</div>
             </div>
             :
             ""
@@ -41,11 +51,11 @@ const Lateral = (props) =>{
             {props.datosLogin.usuario.rol === "administrador"
             ?
             <div id="opciones-admin">
-                <div className="enlace-lateral" onClick={()=>redireccionar("/registrousuarios")}>Registro de usuarios</div>
-                <div className="enlace-lateral" onClick={()=>redireccionar("/buscarusuario")}>Buscar usuario por ID</div>
-                <div className="enlace-lateral" onClick={()=>redireccionar("/listadousuarios")}>Listado de todos los usuarios</div>
-                <div className="enlace-lateral" onClick={()=>redireccionar("/buscarpedido")}>Buscar pedido por ID</div>
-                <div className="enlace-lateral" onClick={()=>redireccionar("/listadopedidos")}>Listado de todos los pedidos</div>
+                <div id="registrousuarios" className="enlace-lateral" onClick={()=>redireccionar("/registrousuarios")}>Registro de usuarios</div>
+                <div id="buscarusuario" className="enlace-lateral" onClick={()=>redireccionar("/buscarusuario")}>Buscar usuario por ID</div>
+                <div id="listadousuarios" className="enlace-lateral" onClick={()=>redireccionar("/listadousuarios")}>Listado de todos los usuarios</div>
+                <div id="buscarpedido" className="enlace-lateral" onClick={()=>redireccionar("/buscarpedido")}>Buscar pedido por ID</div>
+                <div id="listadopedidos" className="enlace-lateral" onClick={()=>redireccionar("/listadopedidos")}>Listado de todos los pedidos</div>
             </div>
             :
             ""

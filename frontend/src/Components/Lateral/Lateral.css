@@ -42,6 +42,11 @@
     color:var(--oscuro);
     background-color: var(--complementario1);
 }
+.enlace-actual{
+    text-shadow: 0px 0px 5px var(--complementario2);
+    color:var(--oscuro);
+    background-color: var(--complementario1);
+}
 #opciones-admin, #opciones-user{
     width: 100%;
 }

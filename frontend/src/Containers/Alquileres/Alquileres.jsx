@@ -16,7 +16,7 @@ const Alquileres = (props) => {
 
     //HOOKS
     //GUARDO EL LISTADO DE ALQUILERES
-    const [listaAlquileres, setListaAlquileres] = useState();
+    const [listaAlquileres, setListaAlquileres] = useState([]);
 
     //BUSCAMOS EN LA BASE DE DATOS TODOS LOS ALQUILERES QUE TENGA EL USUARIO QUE SE HA LOGADO
     const mostrarAlquileres = async () =>{
@@ -42,6 +42,10 @@ const Alquileres = (props) => {
         mostrarAlquileres();
     }, [])
 
+    useEffect(()=>{
+        console.log(listaAlquileres);
+    }, [listaAlquileres])
+
     if (props.datosLogin.usuario.rol !== "usuario") {
         return(
             <PantallaError/>
@@ -52,6 +56,10 @@ const Alquileres = (props) => {
                 <Lateral/>
                 <div id="contenido-alquileres">
                     <h2>Listado de alquileres</h2>
+                    {listaAlquileres[0] === undefined
+                    ?
+                    <div>No has hecho aún ningún alquiler.</div>
+                    :
                     <div id="listado-alquileres">
                         {listaAlquileres?.map((alquiler)=>{
                             return(
@@ -65,6 +73,7 @@ const Alquileres = (props) => {
                             )
                         })}
                     </div>
+                    }
                 </div>
             </div>
         )
