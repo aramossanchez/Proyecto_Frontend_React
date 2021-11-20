@@ -14,6 +14,7 @@ const Perfil = (props) =>{
     const [mensajeError, setmensajeError] = useState("");
     //GUARDO FECHA CONVERTIDA A FORMATO ESPAÑOL 
     const [fechaReal, setFechaReal] = useState("");
+    
     //TODOS LOS CAMPOS SE HAN INTRODUCIDO CORRECTAMENTE
     const [datosCorrectos, setDatosCorrectos] = useState(false);
     //COMPROBAR DNI INTRODUCIDO
