@@ -24,13 +24,17 @@ const Inicio = (props) =>{
         setdatosUsuario({...datosUsuario, [e.target.name]: e.target.value})
     }
 
-    //FUNCION PARA CONTROLAR ENTRADA DE EMAIL
+    //FUNCION PARA CONTROLAR ENTRADA DE EMAIL. SI EL CORREO ESTA OK SETEA HOOK A TRUE
     const entradaEmail = (e) =>{
         let er = /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/;
-        setControlEmail(er.test(e.target.value));
+        if(er.test(e.target.value)){
+            setControlEmail(true);
+        }else{
+            setControlEmail(false);
+        }
     }
 
-    //FUNCION PARA CONTROLAR ENTRADA DE CONTRASEÑA
+    //FUNCION PARA CONTROLAR ENTRADA DE CONTRASEÑA. SI LA CONTRASEÑA ESTA OK SETEA HOOK A TRUE
     const entradaContraseña = (e) =>{
         if (e.target.value.length < 8) {
             setControlContraseña(false);
@@ -95,10 +99,10 @@ const Inicio = (props) =>{
             </div>
             <div id="login-inicio">
                 <h2>Login</h2>
-                <input required pattern="^[^@]+@[^@]+\.[a-zA-Z]{2,}$" type="email" name="correo" id="correo" title="correo" placeholder="Correo Electrónico" autoComplete="off" onChange={(e)=>{rellenarDatos(e); entradaEmail(e)}}/>
-                <input required type="password" name="clave" id="clave" title="clave" placeholder="Contraseña" autoComplete="off" onChange={(e)=>{rellenarDatos(e); entradaContraseña(e)}}/>
+                <input type="email" name="correo" id="correo" title="correo" placeholder="Correo Electrónico" autoComplete="off" onChange={(e)=>{rellenarDatos(e); entradaEmail(e)}}/>
+                <input type="password" name="clave" id="clave" title="clave" placeholder="Contraseña" autoComplete="off" onChange={(e)=>{rellenarDatos(e); entradaContraseña(e)}}/>
+                {/* EL BOTON SOLO SERÁ USABEL SI HOOKS DE EMAIL Y CONTRASEÑA ESTÁN A TRUE */}
                 <button className={controlEmail && controlContraseña  ? "boton" : "boton deshabilitado"} onClick={()=>loguear()}>LOGIN</button>
-                
                 <div id="enlace-contacto">
                     <p>¿No tienes cuenta? <strong onClick={()=>irContacto()}>Contacta con nosotros</strong></p>
                 </div>
