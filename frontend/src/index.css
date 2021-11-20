@@ -66,6 +66,11 @@ code {
   animation: subir 4s infinite;
   z-index: 10;
 }
+/*USADO PARA BOTONES EN LOS QUE SUS INPUTS NO ESTÁN TODOS RELLENOS CORRECTAMENTE*/
+.deshabilitado{
+  pointer-events: none;
+  opacity: 0.5;
+}
 
 @keyframes subir {
   0% {

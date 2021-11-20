@@ -26,6 +26,18 @@
     font-size: 2em;
     margin: 1em 0;
 }
+/*AVISO DE LISTADO DE ALQUILERES VACÍO*/
+#alquileres-vacio{
+    font-size: 1.5em;
+    margin: 9em;
+}
+#alquileres-vacio p{
+    margin: 1em;
+}
+#alquileres-vacio span{
+    color: var(--principal);
+    font-weight: bold;
+}
 /*LISTADO DE ALQUILERES*/
 #listado-alquileres{
     display: flex;

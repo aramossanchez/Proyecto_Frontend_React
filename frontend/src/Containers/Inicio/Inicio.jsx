@@ -13,10 +13,30 @@ const Inicio = (props) =>{
     //HOOKS
     const [datosUsuario, setdatosUsuario] = useState({correo:"", clave:""});
     const [mensajeError, setmensajeError] = useState("");
+    //CONTROLA QUE EL INPUT DE EMAIL TENGA DATOS CORRECTOS
+    const [controlEmail , setControlEmail] = useState(false);
+    
+    //CONTROLA QUE EL INPUT DE CONTRASEÑA TENGA DATOS CORRECTOS
+    const [controlContraseña , setControlContraseña] = useState(false);
 
     //HANDLERS
     const rellenarDatos = (e) =>{
         setdatosUsuario({...datosUsuario, [e.target.name]: e.target.value})
+    }
+
+    //FUNCION PARA CONTROLAR ENTRADA DE EMAIL
+    const entradaEmail = (e) =>{
+        let er = /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/;
+        setControlEmail(er.test(e.target.value));
+    }
+
+    //FUNCION PARA CONTROLAR ENTRADA DE CONTRASEÑA
+    const entradaContraseña = (e) =>{
+        if (e.target.value.length < 8) {
+            setControlContraseña(false);
+        }else{
+            setControlContraseña(true);
+        }
     }
 
     //FUNCIÓN PARA LOGUEAR USUARIO
@@ -75,9 +95,9 @@ const Inicio = (props) =>{
             </div>
             <div id="login-inicio">
                 <h2>Login</h2>
-                <input type="email" name="correo" id="correo" title="correo" placeholder="Correo Electrónico" autoComplete="off" onChange={(e)=>rellenarDatos(e)}/>
-                <input type="password" name="clave" id="clave" title="clave" placeholder="Contraseña" autoComplete="off" onChange={(e)=>rellenarDatos(e)}/>
-                <div className="boton" onClick={()=>loguear()}>LOGIN</div>
+                <input required pattern="^[^@]+@[^@]+\.[a-zA-Z]{2,}$" type="email" name="correo" id="correo" title="correo" placeholder="Correo Electrónico" autoComplete="off" onChange={(e)=>{rellenarDatos(e); entradaEmail(e)}}/>
+                <input required type="password" name="clave" id="clave" title="clave" placeholder="Contraseña" autoComplete="off" onChange={(e)=>{rellenarDatos(e); entradaContraseña(e)}}/>
+                <button className={controlEmail && controlContraseña  ? "boton" : "boton deshabilitado"} onClick={()=>loguear()}>LOGIN</button>
                 
                 <div id="enlace-contacto">
                     <p>¿No tienes cuenta? <strong onClick={()=>irContacto()}>Contacta con nosotros</strong></p>

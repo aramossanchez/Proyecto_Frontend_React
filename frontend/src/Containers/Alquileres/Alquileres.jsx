@@ -58,7 +58,10 @@ const Alquileres = (props) => {
                     <h2>Listado de alquileres</h2>
                     {listaAlquileres[0] === undefined
                     ?
-                    <div>No has hecho aún ningún alquiler.</div>
+                    <div id="alquileres-vacio">
+                        <p>Aún no has hecho ningún alquiler.</p>
+                        <p>Prueba a buscar en nuestro catálogo de películas <span>¡y alquila la que más te guste!</span> </p>
+                    </div>
                     :
                     <div id="listado-alquileres">
                         {listaAlquileres?.map((alquiler)=>{
