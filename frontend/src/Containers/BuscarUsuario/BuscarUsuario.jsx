@@ -17,6 +17,23 @@ const BuscarUsuario = (props) =>{
     //ID CON EL QUE BUSCAREMOS AL USUARIO
     const [IDbusqueda, setIDbusqueda] = useState(0);
     const [mensajeError, setmensajeError] = useState("");
+    
+    //TODOS LOS CAMPOS SE HAN INTRODUCIDO CORRECTAMENTE
+    const [datosCorrectos, setDatosCorrectos] = useState(false);
+    //COMPROBAR ID INTRODUCIDO
+    const [comprobarID, setComprobarID] = useState(false);
+    //COMPROBAR DNI INTRODUCIDO
+    const [comprobarDNI, setComprobarDNI] = useState(true);
+    //COMPROBAR NOMBRE INTRODUCIDO
+    const [comprobarNombre, setComprobarNombre] = useState(true);
+    //COMPROBAR APELLIDOS INTRODUCIDO
+    const [comprobarApellidos, setComprobarApellidos] = useState(true);
+    //COMPROBAR DIRECCION INTRODUCIDA
+    const [comprobarDireccion, setComprobarDireccion] = useState(true);
+    //COMPROBAR CIUDAD INTRODUCIDA
+    const [comprobarCiudad, setComprobarCiudad] = useState(true);
+    //COMPROBAR TELEFONO INTRODUCIDO
+    const [comprobarTelefono, setComprobarTelefono] = useState(true);
 
     //DATOS DEL USUARIO BUSCADO
     const [usuarioBuscado, setUsuarioBuscado] = useState({});
@@ -36,8 +53,85 @@ const BuscarUsuario = (props) =>{
             document.getElementById("busqueda-usuario-id").value = "";
         }
         props.dispatch({type:GUARDAR_ID_USUARIO, payload: 0});
-    }, [])
+    }, []);
 
+    useEffect(()=>{
+        if (comprobarDNI && comprobarNombre && comprobarApellidos && comprobarDireccion && comprobarCiudad && comprobarTelefono) {
+            setDatosCorrectos(true);
+        }else{
+            setDatosCorrectos(false);
+        }
+    }, [usuarioBuscado])
+
+    //COMPROBAR CUADRO DE BUSQUEDA
+    const comprobarIdBusqueda = (e) =>{
+        let er = /^[0-9]+$/;
+        if (er.test(e.target.value)) {
+            setComprobarID(true);
+        }else{
+            setComprobarID(false);
+        }
+        console.log(comprobarID)
+    }
+    //COMPROBAR ENTRADA DE DNI
+    const entradaDNI = (e) =>{
+        let er = /^\d{8}[a-zA-Z]$/;
+        if (er.test(e.target.value)) {
+            setComprobarDNI(true);
+        }else{
+            setComprobarDNI(false);
+        }
+    }
+
+    //COMPROBAR ENTRADA DE NOMBRE
+    const entradaNombre = (e) =>{
+        let er = /^([a-z ñáéíóú]{2,60})$/i;
+        if(er.test(e.target.value)){
+            setComprobarNombre(true);
+        }
+        else{
+            setComprobarNombre(false);
+        }
+    }
+
+    //COMPROBAR ENTRADA DE APELLIDOS
+    const entradaApellidos = (e) =>{
+        let er = /^([a-z ñáéíóú]{2,60})$/i;
+        if (er.test(e.target.value)) {
+            setComprobarApellidos(true);
+        }else{
+            setComprobarApellidos(false);
+        }
+    }
+
+    //COMPROBAR ENTRADA DE DIRECCION
+    const entradaDireccion = (e) =>{
+        if (e.target.value.length > 0) {
+            setComprobarDireccion(true);
+        }else{
+            setComprobarDireccion(false);
+        }
+    }
+
+    //COMPROBAR ENTRADA DE CIUDAD
+    const entradaCiudad = (e) =>{
+        let er = /Valencia|Getafe|Albacete/;
+        if (er.test(e.target.value)) {
+            setComprobarCiudad(true);
+        }else{
+            setComprobarCiudad(false);
+        }
+    }
+
+    //COMPROBAR ENTRADA DE TELEFONO
+    const entradaTelefono = (e) =>{
+        let er = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
+        if (er.test(e.target.value) && e.target.value.length > 12) {
+            setComprobarTelefono(true);
+        }else{
+            setComprobarTelefono(false);
+        }
+    }
     //GUARDO ID DE USUARIO AL ACTUALIZAR EL INPUT
     const guardarID = (e) =>{
         setIDbusqueda(e.target.value);
@@ -136,22 +230,22 @@ const BuscarUsuario = (props) =>{
                     <div className="mensaje-error">{mensajeError}</div>    
                     }
                     <div className="barra-busqueda-usuario">
-                        <input type="text" name="busqueda" id="busqueda-usuario-id" autoComplete="off" onChange={(e)=>guardarID(e)}/>
-                        <div className="boton-lupa"><img onClick={()=>obtenerUsuarioPorID()} src={lupa} alt="Lupa" /></div>                    
+                        <input type="text" name="busqueda" id="busqueda-usuario-id" autoComplete="off" onChange={(e)=>{guardarID(e);comprobarIdBusqueda(e)}}/>
+                        <div className={comprobarID ? "boton-lupa": "boton-lupa deshabilitado"}><img onClick={()=>obtenerUsuarioPorID()} src={lupa} alt="Lupa" /></div>                    
                     </div>
                     <div id="datos-usuario-id">
                         <p><span>Correo electrónico:</span><input readOnly type="text" name="correo" value={usuarioBuscado.correo}/></p>
-                        <p><span>DNI:</span><input autoComplete="off" type="text" name="dni" onChange={(e)=>cambiarDatosParaActualizar(e, "dni")} value={usuarioBuscado.dni}/></p>
-                        <p><span>Nombre:</span><input autoComplete="off" type="text" name="nombre" onChange={(e)=>cambiarDatosParaActualizar(e, "nombre")} value={usuarioBuscado.nombre}/></p>
-                        <p><span>Apellidos:</span><input autoComplete="off" type="text" name="apellidos" onChange={(e)=>cambiarDatosParaActualizar(e, "apellidos")} value={usuarioBuscado.apellidos}/></p>
-                        <p><span>Direccion:</span><input autoComplete="off" type="text" name="direccion" onChange={(e)=>cambiarDatosParaActualizar(e, "direcccion")} value={usuarioBuscado.direccion}/></p>
-                        <p><span>Ciudad:</span><input autoComplete="off" type="text" name="ciudad" onChange={(e)=>cambiarDatosParaActualizar(e, "ciudad")} value={usuarioBuscado.ciudad}/></p>
-                        <p><span>Telefono:</span><input autoComplete="off" type="text" name="telefono" onChange={(e)=>cambiarDatosParaActualizar(e, "telefono")} value={usuarioBuscado.telefono}/></p>
+                        <p><span>DNI:</span><input autoComplete="off" type="text" name="dni" onChange={(e)=>{cambiarDatosParaActualizar(e, "dni");entradaDNI(e)}} value={usuarioBuscado.dni}/></p>
+                        <p><span>Nombre:</span><input autoComplete="off" type="text" name="nombre" onChange={(e)=>{cambiarDatosParaActualizar(e, "nombre");entradaNombre(e)}} value={usuarioBuscado.nombre}/></p>
+                        <p><span>Apellidos:</span><input autoComplete="off" type="text" name="apellidos" onChange={(e)=>{cambiarDatosParaActualizar(e, "apellidos");entradaApellidos(e)}} value={usuarioBuscado.apellidos}/></p>
+                        <p><span>Direccion:</span><input autoComplete="off" type="text" name="direccion" onChange={(e)=>{cambiarDatosParaActualizar(e, "direcccion");entradaDireccion(e)}} value={usuarioBuscado.direccion}/></p>
+                        <p><span>Ciudad:</span><input autoComplete="off" type="text" name="ciudad" onChange={(e)=>{cambiarDatosParaActualizar(e, "ciudad");entradaCiudad(e)}} value={usuarioBuscado.ciudad}/></p>
+                        <p><span>Telefono:</span><input autoComplete="off" type="text" name="telefono" onChange={(e)=>{cambiarDatosParaActualizar(e, "telefono");entradaTelefono(e)}} value={usuarioBuscado.telefono}/></p>
                         {/* INDICO QUE SI AUN NO SE HA CARGADO usuarioBuscado, NO HAGA NADA. SI SE CARGA, INDICO QUE EJECUTE LA FUNCION DE CONVERSION DE FORMATO DE FECHA */}
                         <p><span>Fecha de alta:</span><input readOnly type="text" name="createdAt" value={usuarioBuscado.createdAt !== undefined ? calcularFecha(usuarioBuscado.createdAt) : ""}/></p>
                     </div>
                     <div id="botones-buscar-usuario">
-                        <div className="boton" onClick={()=>actualizarRegistro()}>ACTUALIZAR DATOS DE USUARIO</div>
+                        <div className={datosCorrectos ? "boton" : "boton deshabilitado"} onClick={()=>actualizarRegistro()}>ACTUALIZAR DATOS DE USUARIO</div>
                         <div className="boton" onClick={()=>borrarRegistro()}>BORRAR USUARIO</div>
                     </div>
                     
