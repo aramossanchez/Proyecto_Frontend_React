@@ -71,6 +71,10 @@ code {
   pointer-events: none;
   opacity: 0.5;
 }
+/*USADO PARA EL MENSAJE QUE APARECE EN ALQUILERES SI NO HA HECHO NINGUNO AUN*/
+.invisible{
+  opacity: 0;
+}
 
 @keyframes subir {
   0% {

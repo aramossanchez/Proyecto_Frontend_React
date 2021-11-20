@@ -175,7 +175,7 @@ const Contacto = () =>{
                         <input autoComplete="off" placeholder="Tus apellidos" type="text" name="apellidos" id="apellidos-registro-contacto" onChange={(e)=>entradaApellidos(e)}/>
                         <input autoComplete="off" placeholder="Tu dirección (calle, portal y piso)" type="text" name="direccion" id="direccion-registro-contacto" onChange={(e)=>entradaDireccion(e)}/>
                         <input autoComplete="off" placeholder="Tu ciudad (Valencia, Getafe o Albacete)" type="text" name="ciudad" id="ciudad-registro-contacto" onChange={(e)=>entradaCiudad(e)}/>
-                        <input autoComplete="off" placeholder="Tu telefono" type="text" name="telefono" id="telefono-registro-contacto" onChange={(e)=>entradaTelefono(e)}/>
+                        <input autoComplete="off" placeholder="Tu telefono (+XX-XXXXXXXXX)" type="text" name="telefono" id="telefono-registro-contacto" onChange={(e)=>entradaTelefono(e)}/>
                         {/* SI TODOS LOS CAMPOS ESTÁN RELLENOS DE MANERA CORRECTA, HABILITO EL BOTÓN */}
                         <button className={comprobarContraseña && comprobarEmail && comprobarDNI && comprobarNombre && comprobarApellidos && comprobarDireccion && comprobarCiudad && comprobarTelefono ? "boton" : "boton deshabilitado"}>ENVIAR DATOS</button>
                         </form>

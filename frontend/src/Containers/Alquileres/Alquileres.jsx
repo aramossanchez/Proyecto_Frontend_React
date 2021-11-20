@@ -17,6 +17,16 @@ const Alquileres = (props) => {
     //HOOKS
     //GUARDO EL LISTADO DE ALQUILERES
     const [listaAlquileres, setListaAlquileres] = useState([]);
+    //CREADO PARA MOSTRAR ICONO CARGANDO
+    const [cargando, setCargando] = useState(false);
+
+    //HACE QUE SE VEA EL ICONO DE CARGANDO DURANTE 1.25 SEGUNDOS
+    const mostrarLoading = () =>{
+        setCargando(true);
+        setTimeout(() => {
+            setCargando(false);
+        }, 1250);
+    }
 
     //BUSCAMOS EN LA BASE DE DATOS TODOS LOS ALQUILERES QUE TENGA EL USUARIO QUE SE HA LOGADO
     const mostrarAlquileres = async () =>{
@@ -40,6 +50,7 @@ const Alquileres = (props) => {
 
     useEffect(()=>{
         mostrarAlquileres();
+        mostrarLoading();
     }, [])
 
     useEffect(()=>{
@@ -56,12 +67,10 @@ const Alquileres = (props) => {
                 <Lateral/>
                 <div id="contenido-alquileres">
                     <h2>Listado de alquileres</h2>
-                    {listaAlquileres[0] === undefined
+                    {/* MOSTRAR LOS PEDIDOS O ICONO DE CARGANDO*/}
+                    {cargando
                     ?
-                    <div id="alquileres-vacio">
-                        <p>Aún no has hecho ningún alquiler.</p>
-                        <p>Prueba a buscar en nuestro catálogo de películas <span>¡y alquila la que más te guste!</span> </p>
-                    </div>
+                    <img src={loading} alt="loading" />
                     :
                     <div id="listado-alquileres">
                         {listaAlquileres?.map((alquiler)=>{
@@ -76,6 +85,15 @@ const Alquileres = (props) => {
                             )
                         })}
                     </div>
+                    }
+                    {listaAlquileres[0] === undefined
+                    ?
+                    <div id="alquileres-vacio" className={cargando ? "invisible" : ""}>
+                        <p>Aún no has hecho ningún alquiler.</p>
+                        <p>Prueba a buscar en nuestro catálogo de películas <span>¡y alquila la que más te guste!</span> </p>
+                    </div>
+                    :
+                    ""
                     }
                 </div>
             </div>

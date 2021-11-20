@@ -37,6 +37,43 @@ const RegistroUsuarios = (props) =>{
     //COMPROBAR ROL INTRODUCIDO
     const [comprobarRol, setComprobarRol] = useState(false);
 
+    const guardarDatosRegistro = (e) =>{
+        setDatosRegistro({...datosRegistro, [e.target.name]: e.target.value})
+    }
+
+    const registrarUsuario = async () =>{
+
+        try {
+            //CREO USUARIO NUEVO
+            let res = await axios.post("https://aramossanchez-videoclub-api.herokuapp.com/usuarios/registro", datosRegistro, config);
+            
+            //DEJO VACIOS LOS DATOS EN EL HOOK
+            setDatosRegistro(({}));
+
+            //VACIO LOS INPUTS
+            let inputs = document.getElementById("cuadro-registro").childNodes
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].value = "";
+            }
+
+            //SETEO MENSAJE DE USUARIO CREADO CORRECTAMENTE, Y DESPUES LO DEJO VACÍO
+            setmensajeError("Usuario creado correctamente.");
+            setTimeout(() => {
+                setmensajeError("");
+            }, 4000);
+        } catch (error) {
+            //SETEO MENSAJE DE ERROR, Y LO DEJO VACIO TRAS 4 SEGUNDOS
+            setmensajeError("Ha habido un error al intentar crear un usuario nuevo.");
+            setTimeout(() => {
+                setmensajeError("");
+            }, 4000);
+        }
+    }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//CONTROL DE ENTRADA DE DATOS
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     //COMPRUEBA CADA VEZ QUE SE ACTUALIZA ALGUN INPUT SI ESTÁN TODOS LOS INPUTS CORRECTOS REVISANDO LOS HOOKS. SI LO ESTÁN, HABILITA EL BOTON
     useEffect(()=>{
         if (comprobarContraseña && comprobarEmail && comprobarRol && comprobarDNI && comprobarNombre && comprobarApellidos && comprobarDireccion && comprobarCiudad && comprobarTelefono) {
@@ -135,41 +172,9 @@ const RegistroUsuarios = (props) =>{
         }
     }
 
-    const guardarDatosRegistro = (e) =>{
-        setDatosRegistro({...datosRegistro, [e.target.name]: e.target.value})
-    }
-
-    const registrarUsuario = async () =>{
-
-        try {
-            //CREO USUARIO NUEVO
-            let res = await axios.post("https://aramossanchez-videoclub-api.herokuapp.com/usuarios/registro", datosRegistro, config);
-            
-            //DEJO VACIOS LOS DATOS EN EL HOOK
-            setDatosRegistro(({}));
-
-            //VACIO LOS INPUTS
-            let inputs = document.getElementById("cuadro-registro").childNodes
-            for (let i = 0; i < inputs.length; i++) {
-                inputs[i].value = "";
-            }
-
-            //SETEO MENSAJE DE USUARIO CREADO CORRECTAMENTE, Y DESPUES LO DEJO VACÍO
-            setmensajeError("Usuario creado correctamente.");
-            setTimeout(() => {
-                setmensajeError("");
-            }, 4000);
-        } catch (error) {
-            //SETEO MENSAJE DE ERROR, Y LO DEJO VACIO TRAS 4 SEGUNDOS
-            setmensajeError("Ha habido un error al intentar crear un usuario nuevo.");
-            setTimeout(() => {
-                setmensajeError("");
-            }, 4000);
-        }
-        
-        
-
-    }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//RETURN
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     if (props.datosLogin.usuario.rol !== "administrador") {
         return(
@@ -196,7 +201,7 @@ const RegistroUsuarios = (props) =>{
                         <input autoComplete="off" placeholder="Apellidos de usuario" type="text" name="apellidos" id="apellidos-registro" onChange={(e)=>{guardarDatosRegistro(e); entradaApellidos(e)}}/>
                         <input autoComplete="off" placeholder="Dirección (calle, portal y piso)" type="text" name="direccion" id="direccion-registro" onChange={(e)=>{guardarDatosRegistro(e); entradaDireccion(e)}}/>
                         <input autoComplete="off" placeholder="Ciudad (Valencia, Getafe o Albacete)" type="text" name="ciudad" id="ciudad-registro" onChange={(e)=>{guardarDatosRegistro(e); entradaCiudad(e)}}/>
-                        <input autoComplete="off" placeholder="Telefono" type="text" name="telefono" id="telefono-registro" onChange={(e)=>{guardarDatosRegistro(e); entradaTelefono(e)}}/>
+                        <input autoComplete="off" placeholder="Telefono (+XX-XXXXXXXXX)" type="text" name="telefono" id="telefono-registro" onChange={(e)=>{guardarDatosRegistro(e); entradaTelefono(e)}}/>
                         <input autoComplete="off" placeholder="Rol (usuario o administrador)" type="text" name="rol" id="rol-registro" onChange={(e)=>{guardarDatosRegistro(e); entradaRol(e)}}/>
                     </div>
                     <div className={datosCorrectos ? "boton" : "boton deshabilitado"} onClick={()=>registrarUsuario()}>CREAR USUARIO NUEVO</div>
