@@ -16,8 +16,22 @@ const BuscarPedido = (props) =>{
     //HOOK
     const [idPedido, setIdPedido] = useState();
     const [pedidoEncontrado, setPedidoEncontrado] = useState({});
+    
+    //COMPROBAR ID INTRODUCIDO
+    const [comprobarID, setComprobarID] = useState(false);
 
+    //COMPROBAR CUADRO DE BUSQUEDA
+    const comprobarIdBusqueda = (e) =>{
+        let er = /^[0-9]+$/;
+        if (er.test(e.target.value)) {
+            setComprobarID(true);
+        }else{
+            setComprobarID(false);
+        }
+        console.log(comprobarID)
+    }
 
+    //GUARDO EL ID POR EL QUE BUSCAR EL PEDIDO
     const guardarId = (e) =>{
         setIdPedido(e.target.value);
     }
@@ -68,8 +82,8 @@ const BuscarPedido = (props) =>{
                 <div id="contenido-buscar-pedido">
                     <h2>Buscar pedido por ID</h2>
                     <div className="barra-busqueda-pedido">
-                        <input type="text" name="busqueda" id="busqueda-pedido-id" autoComplete="off" onChange={(e)=>guardarId(e)}/>
-                        <div className="boton-lupa"><img onClick={()=>encontrarPedido()} src={lupa} alt="Lupa" /></div>                    
+                        <input type="text" name="busqueda" id="busqueda-pedido-id" autoComplete="off" onChange={(e)=>{guardarId(e); comprobarIdBusqueda(e)}}/>
+                        <div className={comprobarID ? "boton-lupa": "boton-lupa deshabilitado"}><img onClick={()=>encontrarPedido()} src={lupa} alt="Lupa" /></div>                    
                     </div>
                         <div id="datos-pedido-id">
                             <h3>Datos del pedido</h3>

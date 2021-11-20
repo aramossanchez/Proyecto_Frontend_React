@@ -18,10 +18,11 @@ const BuscarUsuario = (props) =>{
     const [IDbusqueda, setIDbusqueda] = useState(0);
     const [mensajeError, setmensajeError] = useState("");
     
-    //TODOS LOS CAMPOS SE HAN INTRODUCIDO CORRECTAMENTE
-    const [datosCorrectos, setDatosCorrectos] = useState(false);
     //COMPROBAR ID INTRODUCIDO
     const [comprobarID, setComprobarID] = useState(false);
+    
+    //TODOS LOS CAMPOS SE HAN INTRODUCIDO CORRECTAMENTE
+    const [datosCorrectos, setDatosCorrectos] = useState(false);
     //COMPROBAR DNI INTRODUCIDO
     const [comprobarDNI, setComprobarDNI] = useState(true);
     //COMPROBAR NOMBRE INTRODUCIDO
