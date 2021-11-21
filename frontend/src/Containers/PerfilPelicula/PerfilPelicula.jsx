@@ -45,6 +45,11 @@ const PerfilPelicula = (props) =>{
         props.dispatch({type:MENSAJE_ALQUILAR, payload: true});
     }
 
+    //PONER IMAGEN DE ERROR SI FALLA AL CARGAR LA CARATULA
+    const cambiarFoto = (e) =>{
+        e.target.src = "https://www.pngitem.com/pimgs/m/119-1190874_warning-icon-png-png-download-icon-transparent-png.png";
+    }
+
     return(
         <div>
             {/* MOSTRAR LAS PELICULAS O ICONO DE CARGANDO*/}
@@ -59,7 +64,7 @@ const PerfilPelicula = (props) =>{
                     <h2>{props.controlarMensajeAlquiler.peliculaBuscada.titulo}</h2>
                     <div id="informacion-pelicula">
                         <div id="caratula-pelicula">
-                            <img src={props.controlarMensajeAlquiler.peliculaBuscada.caratula} alt="Caratula" />
+                            <img src={props.controlarMensajeAlquiler.peliculaBuscada.caratula} alt="Caratula" onError={(e)=>cambiarFoto(e)}/>
                         </div>
                         <div id="datos-pelicula">
                             <div><span>ID de película: </span>{props.controlarMensajeAlquiler.peliculaBuscada.id}</div>

@@ -12,6 +12,9 @@ import BuscarUsuario from './Containers/BuscarUsuario/BuscarUsuario';
 import ListadoUsuarios from './Containers/ListadoUsuarios/ListadoUsuarios';
 import ListadoPedidos from './Containers/ListadoPedidos/ListadoPedidos';
 import PerfilPelicula from './Containers/PerfilPelicula/PerfilPelicula';
+import RegistroPeliculas from './Containers/RegistroPeliculas/RegistroPeliculas';
+import BuscarPelicula from './Containers/BuscarPelicula/BuscarPelicula';
+import ListadoPeliculas from './Containers/ListadoPeliculas/ListadoPeliculas';
 import Alquileres from './Containers/Alquileres/Alquileres';
 import BuscarPedido from './Containers/BuscarPedido/BuscarPedido';
 
@@ -33,6 +36,9 @@ function App() {
           <Route path="/registrousuarios" element={<RegistroUsuarios />} />
           <Route path="/buscarusuario" element={<BuscarUsuario />} />
           <Route path="/listadousuarios" element={<ListadoUsuarios />} />
+          <Route path="/registropeliculas" element={<RegistroPeliculas />} />
+          <Route path="/buscarpelicula" element={<BuscarPelicula/>} />
+          <Route path="/listadopeliculas" element={<ListadoPeliculas />} />
           <Route path="/buscarpedido" element={<BuscarPedido />} />
           <Route path="/listadopedidos" element={<ListadoPedidos />} />
 

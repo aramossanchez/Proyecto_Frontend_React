@@ -16,6 +16,7 @@ const BuscarPedido = (props) =>{
     //HOOK
     const [idPedido, setIdPedido] = useState();
     const [pedidoEncontrado, setPedidoEncontrado] = useState({});
+    const [mensajeError, setmensajeError] = useState("");
     
     //COMPROBAR ID INTRODUCIDO
     const [comprobarID, setComprobarID] = useState(false);
@@ -37,8 +38,16 @@ const BuscarPedido = (props) =>{
     }
 
     const encontrarPedido = async () =>{
-        let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/pedidos/${idPedido}`, config);
-        setPedidoEncontrado(res.data);
+        try {
+            let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/pedidos/${idPedido}`, config);
+            setPedidoEncontrado(res.data);            
+        } catch (error) {
+            //SETEO MENSAJE PARA MOSTRAR ERROR
+            setmensajeError("Ha surgido un error al intentar buscar el pedido.");//TRAS 4 SEGUNDOS, SETEO MENSAJE A STRING VACIO
+            setTimeout(() => {
+                setmensajeError("");
+            }, 4000);
+        }
     }
 
     //AL CARGAR EL COMPONENTE COMPRUEBO SI idPedidoBuscado TIENE VALOR DISTINTO DE 0. SI LO TIENE, QUE BUSQUE UN PEDIDO CON ESE ID. CUANDO TERMINE TODAS LAS COMPROBACIONES, GUARDARÁ EN REDUX EL VALOR 0  
@@ -71,6 +80,11 @@ const BuscarPedido = (props) =>{
         return fechaProvisional.join('-');
     }
 
+    //PONER IMAGEN DE ERROR SI FALLA AL CARGAR LA CARATULA
+    const cambiarFoto = (e) =>{
+        e.target.src = "https://www.pngitem.com/pimgs/m/119-1190874_warning-icon-png-png-download-icon-transparent-png.png";
+    }
+
     if (props.datosLogin.usuario.rol !== "administrador") {
         return(
             <PantallaError/>
@@ -81,6 +95,13 @@ const BuscarPedido = (props) =>{
                 <Lateral/>
                 <div id="contenido-buscar-pedido">
                     <h2>Buscar pedido por ID</h2>
+                    {/* SI mensajeError ESTÁ VACIO NO MUESTRA NADA. SI TIENE ALGO, MUESTRA EL MENSAJE */}
+                    {!mensajeError
+                    ?
+                    ""
+                    :
+                    <div className="mensaje-error">{mensajeError}</div>    
+                    }
                     <div className="barra-busqueda-pedido">
                         <input type="text" name="busqueda" id="busqueda-pedido-id" autoComplete="off" onChange={(e)=>{guardarId(e); comprobarIdBusqueda(e)}}/>
                         <div className={comprobarID ? "boton-lupa": "boton-lupa deshabilitado"}><img onClick={()=>encontrarPedido()} src={lupa} alt="Lupa" /></div>                    
@@ -108,7 +129,7 @@ const BuscarPedido = (props) =>{
                             </div>
                             <div id="datos-pelicula-pedido">
                                 <h3>Datos de la película</h3>
-                                <div><img src={pedidoEncontrado.pelicula.caratula} alt="Caratula" /></div>
+                                <div><img src={pedidoEncontrado.pelicula.caratula} alt="Caratula" onError={(e)=>cambiarFoto(e)}/></div>
                                 <p><span>ID:</span><input readOnly value={pedidoEncontrado.pelicula.id}/></p>
                                 <p><span>Título:</span><input readOnly value={pedidoEncontrado.pelicula.titulo}/></p>
                         </div>

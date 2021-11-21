@@ -54,6 +54,9 @@ const Lateral = (props) =>{
                 <div id="registrousuarios" className="enlace-lateral" onClick={()=>redireccionar("/registrousuarios")}>Registro de usuarios</div>
                 <div id="buscarusuario" className="enlace-lateral" onClick={()=>redireccionar("/buscarusuario")}>Buscar usuario por ID</div>
                 <div id="listadousuarios" className="enlace-lateral" onClick={()=>redireccionar("/listadousuarios")}>Listado de todos los usuarios</div>
+                <div id="registropeliculas" className="enlace-lateral" onClick={()=>redireccionar("/registropeliculas")}>Registro de peliculas</div>
+                <div id="buscarpelicula" className="enlace-lateral" onClick={()=>redireccionar("/buscarpelicula")}>Buscar película por ID</div>
+                <div id="listadopeliculas" className="enlace-lateral" onClick={()=>redireccionar("/listadopeliculas")}>Listado de todas las peliculas</div>
                 <div id="buscarpedido" className="enlace-lateral" onClick={()=>redireccionar("/buscarpedido")}>Buscar pedido por ID</div>
                 <div id="listadopedidos" className="enlace-lateral" onClick={()=>redireccionar("/listadopedidos")}>Listado de todos los pedidos</div>
             </div>

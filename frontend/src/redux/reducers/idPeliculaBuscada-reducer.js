@@ -1,6 +1,6 @@
 import {GUARDAR_ID_PELICULA} from '../types';
 
-const initialState = {};
+const initialState = 0;
 
 const idPeliculaBuscadaReducer = (state = initialState, action) => {
     switch(action.type){

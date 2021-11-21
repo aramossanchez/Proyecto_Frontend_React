@@ -1,0 +1,86 @@
+:root {
+    --principal: #114358;
+    --complementario1: #F2AA1F;
+    --complementario2: #F1ECE7;
+    --oscuro: #090909;
+    --claro: #EEEEEE;
+}
+/* CONTENEDOR DE LISTADO Y FILTROS DE PELICULAS */
+#container-listado-peliculas{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--claro);
+    color: var(--oscuro);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+/*CONTENEDOR DE H2, NOMBRES DE COLUMNAS Y LISTADO DE peliculas*/
+#contenido-listado-peliculas{
+    width: 80vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: scroll;
+}
+/*H2 DE CONTENIDO peliculas*/
+#contenido-listado-peliculas h2{
+    font-size: 2em;
+    margin: 1em 0;
+}
+/*CONTENEDOR DE NOMBRES DE COLUMNAS*/
+#contenido-listado-peliculas #nombres-columnas-listado-peliculas{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-bottom: 0.75em;
+}
+#contenido-listado-peliculas #nombres-columnas-listado-peliculas div{
+    width: 10%;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+/*LISTA DE peliculas*/
+#lista-listado-peliculas{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+/*UN UNICO USUARIO*/
+.pelicula-lista-individual{
+    font-size: 0.8em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    background-color: var(--complementario2);
+    margin: 0.25em 0;
+    transition: 0.3s;
+    overflow: hidden;
+    border-top: 2px solid var(--oscuro);
+    border-bottom: 2px solid var(--oscuro);
+}
+.pelicula-lista-individual p{
+    font-size: 1em;
+    text-align: center;
+    width: 10%;
+}
+.pelicula-lista-individual span{
+    font-weight: bold;
+}
+.pelicula-lista-individual:hover{
+    background-color: var(--principal);
+    color: var(--claro);
+    cursor: pointer;
+    border-top: 2px solid var(--complementario1);
+    border-bottom: 2px solid var(--complementario1);
+}

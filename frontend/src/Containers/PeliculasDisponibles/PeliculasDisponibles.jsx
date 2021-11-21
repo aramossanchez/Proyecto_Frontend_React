@@ -40,6 +40,11 @@ const PeliculasDisponibles = (props) =>{
         navigate("/detallespelicula");
     }
 
+    //PONER IMAGEN DE ERROR SI FALLA AL CARGAR LA CARATULA
+    const cambiarFoto = (e) =>{
+        e.target.src = "https://www.pngitem.com/pimgs/m/119-1190874_warning-icon-png-png-download-icon-transparent-png.png";
+    }
+
     if (props.datosLogin.usuario.rol !== "usuario") {
         return(
             <PantallaError/>
@@ -59,7 +64,7 @@ const PeliculasDisponibles = (props) =>{
                         
                         {props.peliculasMostradas.peliculas.map((pelicula)=>{
                             return <div key={pelicula.id} className="pelicula-individual" onClick={()=>verDetallesPelicula(pelicula.id)}>
-                                <div><img src={pelicula.caratula} alt="Caratula" /></div>
+                                <div><img src={pelicula.caratula} alt="Caratula" onError={(e)=>cambiarFoto(e)}/></div>
                                 <p><span>Título:</span> {pelicula.titulo}</p>
                                 <p><span>Género:</span> {pelicula.genero}</p>
                                 <p><span>Protagonista:</span> {pelicula.actor_principal}</p>                   

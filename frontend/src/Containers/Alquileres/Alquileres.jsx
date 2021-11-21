@@ -48,14 +48,16 @@ const Alquileres = (props) => {
         return fechaProvisional.join('-');
     }
 
+    //AL CARGAR EL COMPONENTE BUSCO ALQUILERES DE USUARIO Y ACTIVO SPINNER
     useEffect(()=>{
         mostrarAlquileres();
         mostrarLoading();
-    }, [])
+    }, []);
 
-    useEffect(()=>{
-        console.log(listaAlquileres);
-    }, [listaAlquileres])
+    //PONER IMAGEN DE ERROR SI FALLA AL CARGAR LA CARATULA
+    const cambiarFoto = (e) =>{
+        e.target.src = "https://www.pngitem.com/pimgs/m/119-1190874_warning-icon-png-png-download-icon-transparent-png.png";
+    }
 
     if (props.datosLogin.usuario.rol !== "usuario") {
         return(
@@ -76,7 +78,7 @@ const Alquileres = (props) => {
                         {listaAlquileres?.map((alquiler)=>{
                             return(
                                 <div id="alquiler">
-                                    <div><img src={alquiler.pelicula.caratula} alt="Caratula" /></div>
+                                    <div><img src={alquiler.pelicula.caratula} alt="Caratula" onError={(e)=>cambiarFoto(e)}/></div>
                                     <p><span>Titulo de la película:</span> {alquiler.pelicula.titulo}</p>
                                     <p><span>Fecha de alquiler:</span> {calcularFechaAlquiler(alquiler.fecha_alquiler)}</p>
                                     <p><span>Fecha de devolución:</span> {calcularFechaDevolucion(alquiler.fecha_devolucion)}</p>

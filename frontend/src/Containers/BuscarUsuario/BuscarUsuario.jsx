@@ -36,8 +36,8 @@ const BuscarUsuario = (props) =>{
     //COMPROBAR TELEFONO INTRODUCIDO
     const [comprobarTelefono, setComprobarTelefono] = useState(true);
 
-    //DATOS DEL USUARIO BUSCADO
-    const [usuarioBuscado, setUsuarioBuscado] = useState({});
+    //DATOS DEL USUARIO BUSCADO. SE CREA CON PROPIEDAD vacio PARA SABER SI ESTÁ EN ESTADO INICIAL
+    const [usuarioBuscado, setUsuarioBuscado] = useState({vacio:true});
 
 
     //AL CARGAR EL COMPONENTE COMPRUEBO SI idUsuarioBuscado TIENE VALOR DISTINTO DE 0. SI LO TIENE, QUE BUSQUE UN USUARIO CON ESE ID. CUANDO TERMINE TODAS LAS COMPROBACIONES, GUARDARÁ EN REDUX EL VALOR 0  
@@ -51,7 +51,7 @@ const BuscarUsuario = (props) =>{
             }
             buscarUsuarioDesdeListado();
         } else{
-            document.getElementById("busqueda-usuario-id").value = "";
+            document.getElementById("busqueda-usuario-id").value = "";console.log(datosCorrectos)
         }
         props.dispatch({type:GUARDAR_ID_USUARIO, payload: 0});
     }, []);
@@ -140,8 +140,16 @@ const BuscarUsuario = (props) =>{
 
     //GUARDAMOS EN HOOK LOS DATOS DEL USUARIO BUSCADO POR ID
     const obtenerUsuarioPorID = async () => {
-        let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${IDbusqueda}`, config);
-        setUsuarioBuscado(res.data);
+        try {
+            let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${IDbusqueda}`, config);
+            setUsuarioBuscado(res.data);            
+        } catch (error) {
+            //SETEO MENSAJE PARA MOSTRAR ERROR
+            setmensajeError("Ha surgido un error al intentar buscar el usuario.");//TRAS 4 SEGUNDOS, SETEO MENSAJE A STRING VACIO
+            setTimeout(() => {
+                setmensajeError("");
+            }, 4000);
+        }
     }
 
     //LOS CAMBIOS EN LOS INPUTS CAMBIAN EL HOOK DONDE GUARDAMOS LOS DATOS QUE VAMOS A ACTUALIZAR DEL USUARIO
@@ -246,8 +254,8 @@ const BuscarUsuario = (props) =>{
                         <p><span>Fecha de alta:</span><input readOnly type="text" name="createdAt" value={usuarioBuscado.createdAt !== undefined ? calcularFecha(usuarioBuscado.createdAt) : ""}/></p>
                     </div>
                     <div id="botones-buscar-usuario">
-                        <div className={datosCorrectos ? "boton" : "boton deshabilitado"} onClick={()=>actualizarRegistro()}>ACTUALIZAR DATOS DE USUARIO</div>
-                        <div className="boton" onClick={()=>borrarRegistro()}>BORRAR USUARIO</div>
+                        <div className={!datosCorrectos || usuarioBuscado.vacio ? "boton deshabilitado" : "boton"} onClick={()=>actualizarRegistro()}>ACTUALIZAR DATOS DE USUARIO</div>
+                        <div className={usuarioBuscado.vacio ? "boton deshabilitado" : "boton"} onClick={()=>borrarRegistro()}>BORRAR USUARIO</div>
                     </div>
                     
                 </div>

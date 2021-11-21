@@ -55,8 +55,8 @@ const Peliculas = (props) =>{
     //BUSQUEDA POR TITULO
     const buscarTitulo = async () =>{
         let valorBusqueda = document.getElementById("busqueda-titulo").value;
-        let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas/titulo/${valorBusqueda}`)
-        props.dispatch({type:GUARDAR_PELICULAS, payload: res.data});
+        let res = props.peliculasMostradas.peliculas.filter(pelicula => pelicula.titulo.includes(valorBusqueda))
+        props.dispatch({type:GUARDAR_PELICULAS, payload: res});
         mostrarLoading();
         mensajeBusqueda();
     }
@@ -64,8 +64,8 @@ const Peliculas = (props) =>{
     //BUSQUEDA POR GÉNERO
     const buscarGenero = async () =>{
         let valorBusqueda = document.getElementById("busqueda-genero").value;
-        let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas/genero/${valorBusqueda}`)
-        props.dispatch({type:GUARDAR_PELICULAS, payload: res.data});
+        let res = props.peliculasMostradas.peliculas.filter(pelicula => pelicula.genero.includes(valorBusqueda))
+        props.dispatch({type:GUARDAR_PELICULAS, payload: res});
         mostrarLoading();
         mensajeBusqueda();
     }
@@ -73,8 +73,8 @@ const Peliculas = (props) =>{
     //BUSQUEDA POR PROTAGONISTA
     const buscarProtagonista = async () =>{
         let valorBusqueda = document.getElementById("busqueda-protagonista").value;
-        let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas/actor_principal/${valorBusqueda}`)
-        props.dispatch({type:GUARDAR_PELICULAS, payload: res.data});
+        let res = props.peliculasMostradas.peliculas.filter(pelicula => pelicula.actor_principal.includes(valorBusqueda))
+        props.dispatch({type:GUARDAR_PELICULAS, payload: res});
         mostrarLoading();
         mensajeBusqueda();
     }
@@ -83,6 +83,11 @@ const Peliculas = (props) =>{
     const verDetallesPelicula = (id) =>{
         props.dispatch({type:GUARDAR_ID_PELICULA, payload: id});
         navigate("/detallespelicula");
+    }
+
+    //PONER IMAGEN DE ERROR SI FALLA AL CARGAR LA CARATULA
+    const cambiarFoto = (e) =>{
+        e.target.src = "https://www.pngitem.com/pimgs/m/119-1190874_warning-icon-png-png-download-icon-transparent-png.png";
     }
 
     if (props.datosLogin.usuario.rol !== "usuario") {
@@ -135,7 +140,7 @@ const Peliculas = (props) =>{
                     <div id="listado-peliculas">
                         {props.peliculasMostradas.peliculas.map((pelicula)=>{
                             return <div key={pelicula.id} className="pelicula-individual" onClick={()=>verDetallesPelicula(pelicula.id)}>
-                                <div><img src={pelicula.caratula} alt="Caratula" /></div>
+                                <div><img src={pelicula.caratula} alt="Caratula" onError={(e)=>cambiarFoto(e)}/></div>
                                 <p><span>Título:</span> {pelicula.titulo}</p>
                                 <p><span>Género:</span> {pelicula.genero}</p>
                                 <p><span>Protagonista:</span> {pelicula.actor_principal}</p>
