@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import './Perfil.css';
+import './Perfil.scss';
 import axios from 'axios';
 import Lateral from '../../Components/Lateral/Lateral';
 import FotoUsuario from '../../img/usuario.png';
@@ -44,6 +44,55 @@ const Perfil = (props) =>{
             setDatosCorrectos(false);
         }
     }, [props.datosActualizarUsuario])
+
+    //CAMBIA LOS VALORES GUARDADOS DE LA COPIA DE DATOS DE USUARIO LOGUEADO POR LOS DE LOS INPUT
+    const actualizarDatos = (e, propiedad) =>{
+        props.dispatch({type:GUARDA_CAMBIOS_ACTUALIZAR, payload: {propiedad: propiedad, valor:e.target.value}});
+    };
+
+    //USA LOS DATOS GUARDADOS DESDE LOS INPUT PARA GUARDAR CAMBIOS EN LA BASE DE DATOS
+    const actualizarRegistro = async () =>{
+        //CREAMOS LA CONFIGURACIÓN DEL HEADER QUE SE VA A MANDAR
+        let config = {
+            headers: { Authorization: `Bearer ${props.datosLogin.token}` }
+        };
+
+        try {
+            //MODIFICO USUARIO EN LA BASE DE DATOS
+            let res = await axios.put(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${props.datosLogin.usuario.id}`, props.datosActualizarUsuario, config)
+            
+            //CAMBIO LOS DATOS DE USUARIO LOGUEADO GUARDADOS POR LOS DATOS ACTUALES DEL USUARIO, TRAS ACTUALIZARLOS
+            props.dispatch({type:ACTUALIZA_DATOS_LOGIN, payload: props.datosActualizarUsuario});
+
+            //SETEAMOS MENSAJE INDICANDO QUE EL CAMBIO SE HA EFECTUADO CORRECTAMENTE
+            setmensajeError("Datos actualizados correctamente.");
+
+            //TRAS 4 SEGUNDOS, HAGO DESAPARECER EL MENSAJE
+            setTimeout(() => {
+                setmensajeError("");
+            }, 4000);            
+        } catch (error) {
+            //SETEO MENSAJE DE ERROR
+            setmensajeError("Ha habido un error al intentar cambiar los datos del usuario.");
+
+            //TRAS 4 SEGUNDOS, HAGO DESAPARECER EL MENSAJE
+            setTimeout(() => {
+                setmensajeError("");
+            }, 4000);
+        }
+        
+    }
+
+    //TRADUCE FECHA DE FORMATO BBDD A FORMATO ESPAÑOL
+    const calcularFecha = () =>{
+        let fechaBBDD = props.datosLogin.usuario.createdAt.split(/[- : T .]/);
+        let fechaProvisional = [fechaBBDD[2], fechaBBDD[1], fechaBBDD[0]];
+        setFechaReal(fechaProvisional.join('-'));
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//CONTROL DE ENTRADA DE DATOS POR INPUT
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //COMPROBAR ENTRADA DE DNI
     const entradaDNI = (e) =>{
@@ -105,51 +154,9 @@ const Perfil = (props) =>{
         }
     }
 
-    
-
-    //CAMBIA LOS VALORES GUARDADOS DE LA COPIA DE DATOS DE USUARIO LOGUEADO POR LOS DE LOS INPUT
-    const actualizarDatos = (e, propiedad) =>{
-        props.dispatch({type:GUARDA_CAMBIOS_ACTUALIZAR, payload: {propiedad: propiedad, valor:e.target.value}});
-    };
-
-    const actualizarRegistro = async () =>{
-        //CREAMOS LA CONFIGURACIÓN DEL HEADER QUE SE VA A MANDAR
-        let config = {
-            headers: { Authorization: `Bearer ${props.datosLogin.token}` }
-        };
-
-        try {
-            //MODIFICO USUARIO EN LA BASE DE DATOS
-            let res = await axios.put(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${props.datosLogin.usuario.id}`, props.datosActualizarUsuario, config)
-            
-            //CAMBIO LOS DATOS DE USUARIO LOGUEADO GUARDADOS POR LOS DATOS ACTUALES DEL USUARIO, TRAS ACTUALIZARLOS
-            props.dispatch({type:ACTUALIZA_DATOS_LOGIN, payload: props.datosActualizarUsuario});
-
-            //SETEAMOS MENSAJE INDICANDO QUE EL CAMBIO SE HA EFECTUADO CORRECTAMENTE
-            setmensajeError("Datos actualizados correctamente.");
-
-            //TRAS 4 SEGUNDOS, HAGO DESAPARECER EL MENSAJE
-            setTimeout(() => {
-                setmensajeError("");
-            }, 4000);            
-        } catch (error) {
-            //SETEO MENSAJE DE ERROR
-            setmensajeError("Ha habido un error al intentar cambiar los datos del usuario.");
-
-            //TRAS 4 SEGUNDOS, HAGO DESAPARECER EL MENSAJE
-            setTimeout(() => {
-                setmensajeError("");
-            }, 4000);
-        }
-        
-    }
-
-    //TRADUCE FECHA DE FORMATO BBDD A FORMATO ESPAÑOL
-    const calcularFecha = () =>{
-        let fechaBBDD = props.datosLogin.usuario.createdAt.split(/[- : T .]/);
-        let fechaProvisional = [fechaBBDD[2], fechaBBDD[1], fechaBBDD[0]];
-        setFechaReal(fechaProvisional.join('-'));
-    }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//RETURN
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     if (props.datosLogin.usuario.rol !== "usuario") {
         return(

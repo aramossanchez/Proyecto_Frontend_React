@@ -1,15 +1,11 @@
-:root {
-    --principal: #114358;
-    --complementario1: #F2AA1F;
-    --complementario2: #F1ECE7;
-    --oscuro: #090909;
-    --claro: #EEEEEE;
-}
+@import '../../style/colors.scss';
+
+/*CONTENEDOR DE MENU LATERAL*/
 #container-lateral{
     height: 100vh;
     width: 20vw;
-    background-color: var(--principal);
-    color: var(--claro);
+    background-color: $principal;
+    color: $claro;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -22,10 +18,10 @@
     margin-top: 1em;
     margin-bottom: 3em;
     align-self: center;
-}
-#container-lateral #logo-lateral img{
-    width: 4em;
-    height: 3em;
+    img{
+        width: 4em;
+        height: 3em;
+    }
 }
 /*ENLACES*/
 .enlace-lateral{
@@ -38,14 +34,14 @@
     padding: 0.5em 1em;
 }
 .enlace-lateral:hover{
-    text-shadow: 0px 0px 5px var(--complementario2);
-    color:var(--oscuro);
-    background-color: var(--complementario1);
+    text-shadow: 0px 0px 5px $complementario2;
+    color:$oscuro;
+    background-color: $complementario1;
 }
 .enlace-actual{
-    text-shadow: 0px 0px 5px var(--complementario2);
-    color:var(--oscuro);
-    background-color: var(--complementario1);
+    text-shadow: 0px 0px 5px $complementario2;
+    color:$oscuro;
+    background-color: $complementario1;
 }
 #opciones-admin, #opciones-user{
     width: 100%;

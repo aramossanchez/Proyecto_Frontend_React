@@ -1,16 +1,11 @@
-:root {
-    --principal: #114358;
-    --complementario1: #F2AA1F;
-    --complementario2: #F1ECE7;
-    --oscuro: #090909;
-    --claro: #EEEEEE;
-}
+@import '../../style/colors.scss';
+
 /* CONTENEDOR PERFIL */
 #container-perfil{
     width: 100vw;
     height: 100vh;
-    background-color: var(--claro);
-    color: var(--oscuro);
+    background-color: $claro;
+    color: $oscuro;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -24,8 +19,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    background-color:var(--claro);
-    color: var(--oscuro);
+    background-color:$claro;
+    color: $oscuro;
     font-size: 1.25em;
 }
 #container-usuario h2{
@@ -34,7 +29,7 @@
 }
 /* DATOS DE USUARIO */
 #datos-usuario{
-    background-color: var(--complementario2);
+    background-color: $complementario2;
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -43,14 +38,14 @@
     padding: 0.5em;
     border-radius: 0.5em;
     position: relative;
-    box-shadow: 0px 0px 8px 0.1em var(--oscuro);
+    box-shadow: 0px 0px 8px 0.1em $oscuro;
 }
 #foto-usuario{
     position: absolute;
     right: 0.5em;
     height: 12em;
     width: 10em;
-    border: 2px solid var(--oscuro);
+    border: 2px solid $oscuro;
 }
 #foto-usuario img{
     width: 100%;
@@ -69,15 +64,15 @@
     margin: 0 1em;
     text-align: left;
     border: 2px solid transparent;
-    border-bottom: 2px solid var(--oscuro);
-    background-color: var(--complementario2);
+    border-bottom: 2px solid $oscuro;
+    background-color: $complementario2;
     padding: 0.25em;
-    color: var(--oscuro);
+    color: $oscuro;
 }
 #datos-usuario input:focus{
-    border: 2px solid var(--oscuro);
-    background-color: var(--complementario1);
-    color: var(--oscuro);
+    border: 2px solid $oscuro;
+    background-color: $complementario1;
+    color: $oscuro;
 }
 /* INPUT NO MODIFICABLES */
 #datos-usuario input:read-only{
@@ -86,13 +81,13 @@
     margin: 0 1em;
     text-align: left;
     border: 2px solid transparent;
-    background-color: var(--complementario2);
+    background-color: $complementario2;
     padding: 0.25em;
-    color: var(--oscuro);
+    color: $oscuro;
 }
 #datos-usuario input:focus:read-only{
     border: 2px solid transparent;
-    background-color: var(--complementario2);
+    background-color: $complementario2;
 }
 /*BOTON DE ACTUALIZAR*/
 #container-usuario .boton{

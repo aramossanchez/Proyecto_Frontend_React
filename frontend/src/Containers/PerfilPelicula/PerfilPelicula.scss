@@ -1,24 +1,18 @@
-:root {
-    --principal: #114358;
-    --principal-transparente: #114358ec;
-    --complementario1: #F2AA1F;
-    --complementario2: #F1ECE7;
-    --oscuro: #090909;
-    --claro: #EEEEEE;
-}
+@import '../../style/colors.scss';
+
 /*LOADING*/
 img[alt="loading-pelicula-perfil"]{
     width: 100vw;
     height: 100vh;
-    background-color: var(--principal);
+    background-color: $principal;
 }
 /* CONTENEDOR PERFIL */
 #container-perfil-pelicula{
     width: 100vw;
     height: 100vh;
-    background-color: var(--claro);
+    background-color: $claro;
     background-size: cover;
-    color: var(--oscuro);
+    color: $oscuro;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,7 +20,7 @@ img[alt="loading-pelicula-perfil"]{
 }
 /*CONTENEDOR DE LA CARATULA, DE LOS DATOS Y DE LOS BOTONES*/
 #contenido-perfil-pelicula{
-    background-color: var(--principal-transparente);
+    background-color: $principal-transparente;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,7 +30,7 @@ img[alt="loading-pelicula-perfil"]{
 }
 #contenido-perfil-pelicula h2{
     font-size: 3em;
-    color: var(--claro);
+    color: $claro;
 }
 /*CONTENEDOR DE LA CARATULA Y DE LOS DATOS*/
 #informacion-pelicula{
@@ -47,7 +41,7 @@ img[alt="loading-pelicula-perfil"]{
     height: 70vh;
 }
 #caratula-pelicula{
-    border: 2px solid var(--complementario1);
+    border: 2px solid $complementario1;
     width: 20vw;
     height: 60vh;
     margin: 0 2em;
@@ -62,7 +56,7 @@ img[alt="loading-pelicula-perfil"]{
     align-items: flex-start;
     justify-content: flex-start;
     font-size: 1.25em;
-    color: var(--claro);
+    color: $claro;
     height: 60vh;
     width: 40%;
     text-align: left;
@@ -84,7 +78,7 @@ img[alt="loading-pelicula-perfil"]{
 /*FLECHA PARA PODER VOLVER AL LISTADO DE PELICULAS*/
 #flecha-regreso{
     cursor: pointer;
-    color: var(--claro);
+    color: $claro;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -93,7 +87,7 @@ img[alt="loading-pelicula-perfil"]{
     transition: 0.3s;
 }
 #flecha-regreso:hover{
-    text-shadow: 0px 0px 3px var(--complementario2);
+    text-shadow: 0px 0px 3px $complementario2;
 }
 #flecha-regreso img{
     width: 3em;

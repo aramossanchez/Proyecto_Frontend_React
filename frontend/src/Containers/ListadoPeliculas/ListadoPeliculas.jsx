@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './ListadoPeliculas.css';
+import './ListadoPeliculas.scss';
 import axios from 'axios';
 import Lateral from '../../Components/Lateral/Lateral';
 import { connect } from 'react-redux';
@@ -56,7 +56,7 @@ const ListadoPeliculas = (props) =>{
         return(
             <div id="container-listado-peliculas">
                 <Lateral/>
-                <div id="contenido-listado-peliculas">
+                <div id="contenido-listado-peliculas" className="scroll">
                     <h2>Listado de peliculas dadas de alta</h2>
                     <div id="nombres-columnas-listado-peliculas">
                         <div>ID</div>

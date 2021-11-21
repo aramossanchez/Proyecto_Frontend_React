@@ -1,5 +1,5 @@
 import  React, { useState } from 'react';
-import './Contacto.css';
+import './Contacto.scss';
 import flecha from '../../img/flecha.png';
 import { Navigate, useNavigate } from 'react-router';
 

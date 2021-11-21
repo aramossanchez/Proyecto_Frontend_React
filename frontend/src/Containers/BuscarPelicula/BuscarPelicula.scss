@@ -1,16 +1,11 @@
-:root {
-    --principal: #114358;
-    --complementario1: #F2AA1F;
-    --complementario2: #F1ECE7;
-    --oscuro: #090909;
-    --claro: #EEEEEE;
-}
+@import '../../style/colors.scss';
+
 /* CONTENEDOR GESTION ADMINISTRADOR */
 #container-buscar-pelicula{
     width: 100vw;
     height: 100vh;
-    background-color: var(--claro);
-    color: var(--oscuro);
+    background-color: $claro;
+    color: $oscuro;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -41,15 +36,15 @@
     all: unset;
     width: 9em;
     font-size: 1em;
-    background-color: var(--complementario2);
-    color: var(--oscuro);
-    border: 2px solid var(--oscuro);
+    background-color: $complementario2;
+    color: $oscuro;
+    border: 2px solid $oscuro;
     text-align: left;
     padding: 0 0.25em;
     margin-bottom: 1em;
 }
 .barra-busqueda-pelicula input:focus{
-    background-color: var(--complementario1);
+    background-color: $complementario1;
 }
 /*CONTENEDOR DE DATOS DE pelicula POR ID*/
 #datos-pelicula-id{
@@ -59,10 +54,10 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-evenly;
-    background-color: var(--complementario2);
+    background-color: $complementario2;
     border-radius: 0.5em;
     padding: 0.5em;
-    box-shadow: 0px 0px 8px 0.1em var(--oscuro);
+    box-shadow: 0px 0px 8px 0.1em $oscuro;
 }
 #datos-pelicula-id span{
     font-weight: bold;
@@ -75,17 +70,17 @@
     all:unset;
     text-align: left;
     border: 2px solid transparent;
-    border-bottom: 2px solid var(--oscuro);
-    background-color: var(--complementario2);
+    border-bottom: 2px solid $oscuro;
+    background-color: $complementario2;
     padding: 0.25em;
     width: 50em;
     margin-left: 1em;
-    color: var(--oscuro);
+    color: $oscuro;
 }
 #datos-pelicula-id input:focus{
-    border: 2px solid var(--oscuro);
-    background-color: var(--complementario1);
-    color: var(--oscuro);
+    border: 2px solid $oscuro;
+    background-color: $complementario1;
+    color: $oscuro;
 }
 /* INPUT NO MODIFICABLES */
 #datos-pelicula-id input:read-only{
@@ -94,9 +89,9 @@
     margin: 0 1em;
     text-align: left;
     border: 2px solid transparent;
-    background-color: var(--complementario2);
+    background-color: $complementario2;
     padding: 0.25em;
-    color: var(--oscuro);
+    color: $oscuro;
 }
 /*BOTONES*/
 #botones-buscar-pelicula{

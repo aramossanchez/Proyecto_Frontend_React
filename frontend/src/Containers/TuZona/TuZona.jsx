@@ -1,4 +1,4 @@
-import './TuZona.css';
+import './TuZona.scss';
 import Lateral from '../../Components/Lateral/Lateral';
 import PantallaError from '../PantallaError/PantallaError';
 import { connect } from 'react-redux';

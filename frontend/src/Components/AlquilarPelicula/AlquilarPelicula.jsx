@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './AlquilarPelicula.css';
+import './AlquilarPelicula.scss';
 import { connect } from 'react-redux';
 import { MENSAJE_ALQUILAR } from '../../redux/types';
 import axios from 'axios';

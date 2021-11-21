@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './ListadoUsuarios.css';
+import './ListadoUsuarios.scss';
 import axios from 'axios';
 import Lateral from '../../Components/Lateral/Lateral';
 import { connect } from 'react-redux';
@@ -61,7 +61,7 @@ const ListadoUsuarios = (props) =>{
         return(
             <div id="container-usuarios">
                 <Lateral/>
-                <div id="contenido-usuarios">
+                <div id="contenido-usuarios" className="scroll">
                     <h2>Listado de usuarios dados de alta</h2>
                     <div id="nombres-columnas-usuarios">
                         <div>ID de usuario</div>

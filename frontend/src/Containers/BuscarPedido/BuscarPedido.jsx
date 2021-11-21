@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Lateral from '../../Components/Lateral/Lateral';
-import './BuscarPedido.css';
+import './BuscarPedido.scss';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import lupa from '../../img/lupa.png';
@@ -9,6 +9,7 @@ import { GUARDAR_ID_PEDIDO } from '../../redux/types';
 
 const BuscarPedido = (props) =>{
 
+    //CABECERA PARA MANDAR TOKEN
     let config = {
         headers: { Authorization: `Bearer ${props.datosLogin.token}` }
     };
@@ -37,6 +38,7 @@ const BuscarPedido = (props) =>{
         setIdPedido(e.target.value);
     }
 
+    //BUSCA PEDIDO EN BASE DE DATOS
     const encontrarPedido = async () =>{
         try {
             let res = await axios.get(`https://aramossanchez-videoclub-api.herokuapp.com/pedidos/${idPedido}`, config);

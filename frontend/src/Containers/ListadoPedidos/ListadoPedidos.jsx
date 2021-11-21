@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './ListadoPedidos.css';
+import './ListadoPedidos.scss';
 import axios from 'axios';
 import Lateral from '../../Components/Lateral/Lateral';
 import { connect } from 'react-redux';
@@ -43,11 +43,13 @@ const ListadoPedidos = (props) =>{
         mostrarLoading();
     },[]);
 
+    //GUARDA ID DE PEDIDO CLICKADO Y REDIRIGE A BUSCARPEDIDO
     const buscarPedido = (id) =>{
         props.dispatch({type:GUARDAR_ID_PEDIDO, payload: id});
         navigate("/buscarpedido");
     };
 
+    //BORRAR PEDIDO DE LA BASE DE DATOS
     const borrarPedido = async (pedido, pelicula) =>{
         try {
             await axios.delete(`https://aramossanchez-videoclub-api.herokuapp.com/pedidos/${pedido}/pelicula/${pelicula}`, config);
@@ -92,7 +94,7 @@ const ListadoPedidos = (props) =>{
         return(
             <div id="container-pedidos">
                 <Lateral/>
-                <div id="contenido-pedidos">
+                <div id="contenido-pedidos" className="scroll">
                     <h2>Listado de pedidos realizados</h2>
                     {/* SI mensajeError ESTÁ VACIO NO MUESTRA NADA. SI TIENE ALGO, MUESTRA EL MENSAJE */}
                     {!mensajeError

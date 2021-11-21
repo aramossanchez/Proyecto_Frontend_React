@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './Alquileres.css';
+import './Alquileres.scss';
 import axios from 'axios';
 import Lateral from '../../Components/Lateral/Lateral';
 import { connect } from 'react-redux';
@@ -67,7 +67,7 @@ const Alquileres = (props) => {
         return(
             <div id="container-alquileres">
                 <Lateral/>
-                <div id="contenido-alquileres">
+                <div id="contenido-alquileres" className="scroll">
                     <h2>Listado de alquileres</h2>
                     {/* MOSTRAR LOS PEDIDOS O ICONO DE CARGANDO*/}
                     {cargando

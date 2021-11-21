@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './Peliculas.css';
+import './Peliculas.scss';
 import axios from 'axios';
 import lupa from '../../img/lupa.png';
 import Lateral from '../../Components/Lateral/Lateral';
@@ -98,7 +98,7 @@ const Peliculas = (props) =>{
         return(
             <div id="container-peliculas">
                 <Lateral/>
-                <div id="contenido-peliculas">
+                <div id="contenido-peliculas" className="scroll">
                     <h2>Listado completo de películas de nuestro videoclub</h2>
                     <div id="filtros-peliculas">
                         {/* BUSQUEDA POR TITULO */}

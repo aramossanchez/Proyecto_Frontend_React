@@ -1,15 +1,10 @@
-:root {
-    --principal: #114358;
-    --complementario1: #F2AA1F;
-    --complementario2: #F1ECE7;
-    --oscuro: #090909;
-    --claro: #EEEEEE;
-}
+@import '../../style/colors.scss';
+
 /* CONTENEDOR DE LISTADO Y FILTROS DE PELICULAS */
 #container-peliculas{
     max-height: 100vh;
-    background-color: var(--claro);
-    color: var(--oscuro);
+    background-color: $claro;
+    color: $oscuro;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -46,16 +41,16 @@
 #filtros-peliculas input{
     all: unset;
     font-size: 1em;
-    background-color: var(--complementario2);
-    color: var(--oscuro);
-    border: 2px solid var(--oscuro);
+    background-color: $complementario2;
+    color: $oscuro;
+    border: 2px solid $oscuro;
     text-align: left;
     padding: 0 0.25em;
 }
 #filtros-peliculas input:focus{
-    background-color: var(--complementario1);
-    color: var(--oscuro);
-    border: 2px solid var(--oscuro);
+    background-color: $complementario1;
+    color: $oscuro;
+    border: 2px solid $oscuro;
     text-align: left;
     padding: 0 0.25em;
 }
@@ -72,7 +67,7 @@
     width: 50%;
     font-size: 2em;
     font-weight: bold;
-    border-bottom: 3px solid var(--principal);
+    border-bottom: 3px solid $principal;
 }
 .mensaje-resultado-busqueda span{
     margin-left: 3em;
@@ -95,20 +90,20 @@
     border:2px solid transparent;
     padding: 1em;
     transition: 0.25s;
-    background-color: var(--complementario2);
-    color: var(--oscuro);
+    background-color: $complementario2;
+    color: $oscuro;
     border-radius: 0.5em;
-    box-shadow: 0px 0px 10px 1px var(--oscuro);
+    box-shadow: 0px 0px 10px 1px $oscuro;
 }
 .pelicula-individual:hover{
-    background-color: var(--principal);
-    border:2px solid var(--complementario1);
-    color: var(--claro);
+    background-color: $principal;
+    border:2px solid $complementario1;
+    color: $claro;
     cursor: pointer;
 }
 /*CARATULA*/
 .pelicula-individual div{
-    border: 2px solid var(--oscuro);
+    border: 2px solid $oscuro;
     width: 8em;
     height: 10em;
     margin-bottom: 1em;

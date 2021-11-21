@@ -1,17 +1,12 @@
-:root {
-  --principal: #114358;
-  --complementario1: #F2AA1F;
-  --complementario2: #F1ECE7;
-  --oscuro: #090909;
-  --claro: #EEEEEE;
-}
+@import './style/colors.scss';
+
 *{
   padding: 0;
   margin: 0;
 }
 *::selection{
-  color: var(--complementario1);
-  background-color: var(--complementario2);
+  color: $complementario1;
+  background-color: $complementario2;
 }
 body {
   margin: 0;
@@ -27,8 +22,8 @@ code {
     monospace;
 }
 .boton{
-    color: var(--oscuro);
-    background-color: var(--complementario1);
+    color:$oscuro;
+    background-color: $complementario1;
     padding: 0.5em 2em;
     border-radius: 0.25em;
     cursor: pointer;
@@ -36,18 +31,18 @@ code {
     margin: 0;
 }
 .boton:hover{
-    color: var(--complementario2);
-    text-shadow: 0px 0px 3px var(--claro);
-    box-shadow: 0px 0px 10px 1px var(--complementario1);
+    color:$complementario2;
+    text-shadow: 0px 0px 3px $claro;
+    box-shadow: 0px 0px 10px 1px $complementario1;
 }
 .boton-lupa{
     width: 2em;
     height: 2em;
     cursor: pointer;
-}
-.boton-lupa img{
-  width: 1.5em;
-  height: 1.5em;
+    img{
+      width: 1.5em;
+      height: 1.5em;
+    }
 }
 .mensaje-error{
   width: 20em;
@@ -56,12 +51,12 @@ code {
   opacity: 0;
   top: 80%;
   left: calc(50% - 20em/2);
-  color: var(--claro);
-  border: 2px solid var(--complementario1);
+  color:$claro;
+  border: 2px solid $complementario1;
   margin: 1em 0;
   padding: 0.5em 1em;
   transition: 0.3s;
-  background-color: var(--principal);
+  background-color: $principal;
   border-radius: 0.5em;
   animation: subir 4s infinite;
   z-index: 10;
@@ -74,6 +69,37 @@ code {
 /*USADO PARA EL MENSAJE QUE APARECE EN ALQUILERES SI NO HA HECHO NINGUNO AUN*/
 .invisible{
   opacity: 0;
+}
+/*BARRA DE SCROLL PERSONALIZADA*/
+.scroll {
+}
+
+/* Estilos para motores Webkit y blink (Chrome, Safari, Opera... )*/
+
+.scroll::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.scroll::-webkit-scrollbar:vertical {
+  width:0.5em;
+}
+
+.scroll::-webkit-scrollbar-button:increment,.scroll::-webkit-scrollbar-button {
+  display: none;
+} 
+
+.scroll::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background-color: $principal;
+  border-radius: 20px;
+  border: 2px solid $claro;
+}
+
+.scroll::-webkit-scrollbar-track {
+  border-radius: 10px;  
 }
 
 @keyframes subir {

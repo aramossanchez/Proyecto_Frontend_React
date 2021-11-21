@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Lateral from '../../Components/Lateral/Lateral';
-import './BuscarUsuario.css';
+import './BuscarUsuario.scss';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import lupa from '../../img/lupa.png';
@@ -9,6 +9,7 @@ import PantallaError from '../PantallaError/PantallaError';
 
 const BuscarUsuario = (props) =>{
 
+    //CABECERA PARA MANDAR EL TOKEN
     let config = {
         headers: { Authorization: `Bearer ${props.datosLogin.token}` }
     };
@@ -56,6 +57,7 @@ const BuscarUsuario = (props) =>{
         props.dispatch({type:GUARDAR_ID_USUARIO, payload: 0});
     }, []);
 
+    //CADA VEZ QUE CAMBIA EL HOOK peliculaBuscada, COMPRUEBA QUE TODOS LOS HOOKS RELACIONADOS CON CONTROL DE ENTRADA DE DATOS ESTÉN TRUE
     useEffect(()=>{
         if (comprobarDNI && comprobarNombre && comprobarApellidos && comprobarDireccion && comprobarCiudad && comprobarTelefono) {
             setDatosCorrectos(true);
@@ -64,75 +66,6 @@ const BuscarUsuario = (props) =>{
         }
     }, [usuarioBuscado])
 
-    //COMPROBAR CUADRO DE BUSQUEDA
-    const comprobarIdBusqueda = (e) =>{
-        let er = /^[0-9]+$/;
-        if (er.test(e.target.value)) {
-            setComprobarID(true);
-        }else{
-            setComprobarID(false);
-        }
-        console.log(comprobarID)
-    }
-    //COMPROBAR ENTRADA DE DNI
-    const entradaDNI = (e) =>{
-        let er = /^\d{8}[a-zA-Z]$/;
-        if (er.test(e.target.value)) {
-            setComprobarDNI(true);
-        }else{
-            setComprobarDNI(false);
-        }
-    }
-
-    //COMPROBAR ENTRADA DE NOMBRE
-    const entradaNombre = (e) =>{
-        let er = /^([a-z ñáéíóú]{2,60})$/i;
-        if(er.test(e.target.value)){
-            setComprobarNombre(true);
-        }
-        else{
-            setComprobarNombre(false);
-        }
-    }
-
-    //COMPROBAR ENTRADA DE APELLIDOS
-    const entradaApellidos = (e) =>{
-        let er = /^([a-z ñáéíóú]{2,60})$/i;
-        if (er.test(e.target.value)) {
-            setComprobarApellidos(true);
-        }else{
-            setComprobarApellidos(false);
-        }
-    }
-
-    //COMPROBAR ENTRADA DE DIRECCION
-    const entradaDireccion = (e) =>{
-        if (e.target.value.length > 0) {
-            setComprobarDireccion(true);
-        }else{
-            setComprobarDireccion(false);
-        }
-    }
-
-    //COMPROBAR ENTRADA DE CIUDAD
-    const entradaCiudad = (e) =>{
-        let er = /Valencia|Getafe|Albacete/;
-        if (er.test(e.target.value)) {
-            setComprobarCiudad(true);
-        }else{
-            setComprobarCiudad(false);
-        }
-    }
-
-    //COMPROBAR ENTRADA DE TELEFONO
-    const entradaTelefono = (e) =>{
-        let er = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
-        if (er.test(e.target.value) && e.target.value.length > 12) {
-            setComprobarTelefono(true);
-        }else{
-            setComprobarTelefono(false);
-        }
-    }
     //GUARDO ID DE USUARIO AL ACTUALIZAR EL INPUT
     const guardarID = (e) =>{
         setIDbusqueda(e.target.value);
@@ -157,6 +90,7 @@ const BuscarUsuario = (props) =>{
         setUsuarioBuscado({...usuarioBuscado, [e.target.name]: e.target.value})
     }
 
+    //GUARDA LA INFORMACION GUARDADA EN usuarioBuscado EN LA BASE DE DATOS
     const actualizarRegistro = async () =>{
         try {
             let res = await axios.put(`https://aramossanchez-videoclub-api.herokuapp.com/usuarios/${IDbusqueda}`, usuarioBuscado, config);            
@@ -178,6 +112,7 @@ const BuscarUsuario = (props) =>{
         }
     }
 
+    //BORRA USUARIO DE LA BASE DE DATOS
     const borrarRegistro = async () =>{
         try {
             //BORRO USUARIO EN BASE DE DATOS
@@ -219,6 +154,82 @@ const BuscarUsuario = (props) =>{
         let fechaProvisional = [fechaBBDD[2], fechaBBDD[1], fechaBBDD[0]];
         return fechaProvisional.join('-');
     }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//CONTROL DE ENTRADA DE DATOS POR INPUT
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//COMPROBAR CUADRO DE BUSQUEDA
+const comprobarIdBusqueda = (e) =>{
+    let er = /^[0-9]+$/;
+    if (er.test(e.target.value)) {
+        setComprobarID(true);
+    }else{
+        setComprobarID(false);
+    }
+    console.log(comprobarID)
+}
+//COMPROBAR ENTRADA DE DNI
+const entradaDNI = (e) =>{
+    let er = /^\d{8}[a-zA-Z]$/;
+    if (er.test(e.target.value)) {
+        setComprobarDNI(true);
+    }else{
+        setComprobarDNI(false);
+    }
+}
+
+//COMPROBAR ENTRADA DE NOMBRE
+const entradaNombre = (e) =>{
+    let er = /^([a-z ñáéíóú]{2,60})$/i;
+    if(er.test(e.target.value)){
+        setComprobarNombre(true);
+    }
+    else{
+        setComprobarNombre(false);
+    }
+}
+
+//COMPROBAR ENTRADA DE APELLIDOS
+const entradaApellidos = (e) =>{
+    let er = /^([a-z ñáéíóú]{2,60})$/i;
+    if (er.test(e.target.value)) {
+        setComprobarApellidos(true);
+    }else{
+        setComprobarApellidos(false);
+    }
+}
+
+//COMPROBAR ENTRADA DE DIRECCION
+const entradaDireccion = (e) =>{
+    if (e.target.value.length > 0) {
+        setComprobarDireccion(true);
+    }else{
+        setComprobarDireccion(false);
+    }
+}
+
+//COMPROBAR ENTRADA DE CIUDAD
+const entradaCiudad = (e) =>{
+    let er = /Valencia|Getafe|Albacete/;
+    if (er.test(e.target.value)) {
+        setComprobarCiudad(true);
+    }else{
+        setComprobarCiudad(false);
+    }
+}
+
+//COMPROBAR ENTRADA DE TELEFONO
+const entradaTelefono = (e) =>{
+    let er = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
+    if (er.test(e.target.value) && e.target.value.length > 12) {
+        setComprobarTelefono(true);
+    }else{
+        setComprobarTelefono(false);
+    }
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//RETURN
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     if (props.datosLogin.usuario.rol !== "administrador") {
         return(

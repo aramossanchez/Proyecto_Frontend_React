@@ -1,11 +1,5 @@
-:root {
-    --principal: #114358;
-    --complementario1: #F2AA1F;
-    --complementario2: #F1ECE7;
-    --complementario2-transparente: #f1ece7de;
-    --oscuro: #090909;
-    --claro: #EEEEEE;
-}
+@import '../../style/colors.scss';
+
 /* CONTENEDOR DE MENSAJE Y DE PANTALLA INHABILITADORA */
 #container-mensaje-alquilar{
     position: absolute;
@@ -14,7 +8,7 @@
     z-index: 4;
     width: 100vw;
     height: 100vh;
-    background-color: var(--complementario2-transparente);
+    background-color: $complementario2-transparente;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,7 +16,7 @@
 }
 /*CUADOR MENSAJE ALQUILAR*/
 #cuador-mensaje-alquilar{
-    color: var(--claro);
+    color: $claro;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -30,8 +24,8 @@
     justify-content: space-evenly;
     width: 40em;
     height: 12em;
-    background-color: var(--principal);
-    border: 2px solid var(--complementario1)
+    background-color: $principal;
+    border: 2px solid $complementario1;
 }
 /*X PARA CERRAR MENSAJER PARA ALQUILAR*/
 #cerrar-mensaje-alquilar{

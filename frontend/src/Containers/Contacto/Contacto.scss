@@ -1,19 +1,13 @@
-:root {
-    --principal: #114358;
-    --fondo: #11435898;
-    --complementario1: #F2AA1F;
-    --complementario2: #F1ECE7;
-    --oscuro: #090909;
-    --claro: #EEEEEE;
-}
+@import '../../style/colors.scss';
+
 /* CONTENEDOR INICIO */
 #container-contacto{
     width: 100vw;
     height: 100vh;
-    background-color: var(--claro);
+    background-color: $claro;
     background-image: url(../../img/fondo-contacto.jpg);
     background-size: cover;
-    color: var(--claro);
+    color: $claro;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,7 +15,7 @@
 }
 /*DEGRADADO DE COLOR EN IMAGEN DE FONDO*/
 #container-contacto::before{
-    background-color: var(--fondo);
+    background-color: $fondo;
     content: '';
     display: block;
     height: 100%;
@@ -58,7 +52,7 @@
 }
 #contenido-contacto span{
     font-weight: bold;
-    color: var(--complementario1);
+    color: $complementario1;
     cursor: pointer;
 }
 #contacto-inicial p{
@@ -90,7 +84,7 @@
     top: 5em;
     opacity: 1;
     width: 50%;
-    background-color: var(--principal);
+    background-color: $principal;
     padding: 1em;
     border-radius: 0.5em;
     display: flex;
@@ -109,37 +103,37 @@
     all:unset;
     text-align: left;
     border: 2px solid transparent;
-    border-bottom: 2px solid var(--oscuro);
+    border-bottom: 2px solid $oscuro;
     padding: 0.25em;
     width: 80%;
     margin: 0.5em 0;
 }
 #contenido-contacto input:focus{
-    color: var(--oscuro);
-    border: 2px solid var(--claro);
-    background-color: var(--complementario1);
+    color: $oscuro;
+    border: 2px solid $claro;
+    background-color: $complementario1;
 }
 #contenido-contacto input::placeholder {
-    color: var(--oscuro);
+    color: $oscuro;
 }
 #contenido-contacto textarea{
     all: unset;
-    background-color: var(--principal);
-    border: 2px solid var(--oscuro);
+    background-color: $principal;
+    border: 2px solid $oscuro;
     width: 80%;
     height: 10em;
     text-align: left;
     padding: 0.5em;
     margin: 1em 0;
-    color: var(--oscuro);
+    color: $oscuro;
 }
 #contenido-contacto textarea:focus{
-    color: var(--oscuro);
-    border: 2px solid var(--claro);
-    background-color: var(--complementario1);
+    color: $oscuro;
+    border: 2px solid $claro;
+    background-color: $complementario1;
 }
 #contenido-contacto textarea::placeholder {
-    color: var(--oscuro);
+    color: $oscuro;
 }
 
 /*BOTONES*/

@@ -1,15 +1,10 @@
-:root {
-    --principal: #114358;
-    --complementario1: #F2AA1F;
-    --complementario2: #F1ECE7;
-    --oscuro: #090909;
-    --claro: #EEEEEE;
-}
+@import '../../style/colors.scss';
+
 /* CONTENEDOR DE PANTALLA DE ERROR*/
 #container-error{
     height: 100vh;
-    background-color: var(--principal);
-    color: var(--claro);
+    background-color: $principal;
+    color: $claro;
     display: flex;
     flex-direction: column;
     align-items: center;

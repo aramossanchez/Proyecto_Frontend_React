@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Lateral from '../../Components/Lateral/Lateral';
-import './BuscarPelicula.css';
+import './BuscarPelicula.scss';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import lupa from '../../img/lupa.png';
@@ -9,6 +9,7 @@ import PantallaError from '../PantallaError/PantallaError';
 
 const BuscarPelicula = (props) =>{
 
+    //CABECERA PARA MANDAR TOKEN
     let config = {
         headers: { Authorization: `Bearer ${props.datosLogin.token}` }
     };
@@ -56,6 +57,7 @@ const BuscarPelicula = (props) =>{
         props.dispatch({type:GUARDAR_ID_PELICULA, payload: 0});
     }, []);
 
+    //CADA VEZ QUE CAMBIA EL HOOK peliculaBuscada, COMPRUEBA QUE TODOS LOS HOOKS RELACIONADOS CON CONTROL DE ENTRADA DE DATOS ESTÉN TRUE
     useEffect(()=>{
         if (comprobarTitulo && comprobarCaratula && comprobarImagenPromocional && comprobarGenero && comprobarCiudad && comprobarActorPrincipal) {
             setDatosCorrectos(true);
@@ -63,77 +65,6 @@ const BuscarPelicula = (props) =>{
             setDatosCorrectos(false);
         }
     }, [peliculaBuscada])
-
-    //COMPROBAR CUADRO DE BUSQUEDA
-    const comprobarIdBusqueda = (e) =>{
-        let er = /^[0-9]+$/;
-        if (er.test(e.target.value)) {
-            setComprobarID(true);
-        }else{
-            setComprobarID(false);
-        }
-        console.log(comprobarID)
-    }
-
-    //COMPROBAR ENTRADA DE TITULO
-    const entradaTitulo = (e) =>{
-        if((e.target.value.length > 0)){
-            setComprobarTitulo(true);
-        }
-        else{
-            setComprobarTitulo(false);
-        }
-    }
-
-    //COMPROBAR ENTRADA DE CARATULA
-    const entradaCaratula = (e) =>{
-        let er = /^(ftp|http|https):\/\/[^ "]+$/;
-        if (er.test(e.target.value)) {
-            setComprobarCaratula(true);
-        }else{
-            setComprobarCaratula(false);
-        }
-    }
-
-    //COMPROBAR ENTRADA DE IMAGEN PROMOCIONAL
-    const entradaImagenPromocional = (e) =>{
-        let er = /^(ftp|http|https):\/\/[^ "]+$/;
-        if (er.test(e.target.value)) {
-            setComprobarImagenPromocional(true);
-        }else{
-            setComprobarImagenPromocional(false);
-        }
-    }
-
-    //COMPROBAR ENTRADA DE GENERO
-    const entradaGenero = (e) =>{
-        if (e.target.value.length > 0) {
-            setComprobarGenero(true);
-        }else{
-            setComprobarGenero(false);
-        }
-    }
-
-    //COMPROBAR ENTRADA DE ACTOR PRINCIPAL
-    const entradaActorPrincipal = (e) =>{
-        let er = /^([a-z ñáéíóú]{1,120})$/i;
-        if(er.test(e.target.value)){
-            setComprobarActorPrincipal(true);
-        }
-        else{
-            setComprobarActorPrincipal(false);
-        }
-    }
-
-    //COMPROBAR ENTRADA DE CIUDAD
-    const entradaCiudad = (e) =>{
-        let er = /Valencia|Getafe|Albacete/;
-        if (er.test(e.target.value)) {
-            setComprobarCiudad(true);
-        }else{
-            setComprobarCiudad(false);
-        }
-    }
 
     //GUARDO ID DE USUARIO AL ACTUALIZAR EL INPUT
     const guardarID = (e) =>{
@@ -159,6 +90,7 @@ const BuscarPelicula = (props) =>{
         setPeliculaBuscada({...peliculaBuscada, [e.target.name]: e.target.value})
     }
 
+    //GUARDA LOS CAMBIOS HECHOS EN LOS INPUT EN LA BASE DE DATOS
     const actualizarPelicula = async () =>{
         try {
             let res = await axios.put(`https://aramossanchez-videoclub-api.herokuapp.com/peliculas/${IDbusqueda}`, peliculaBuscada, config);            
@@ -180,6 +112,7 @@ const BuscarPelicula = (props) =>{
         }
     }
 
+    //BORRA LA PELÍCULA DE LA BASE DE DATOS
     const borrarPelicula = async () =>{
         try {
             //BORRO PELICULA EN BASE DE DATOS
@@ -221,6 +154,83 @@ const BuscarPelicula = (props) =>{
         let fechaProvisional = [fechaBBDD[2], fechaBBDD[1], fechaBBDD[0]];
         return fechaProvisional.join('-');
     }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//CONTROL DE ENTRADA DE DATOS POR INPUT
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//COMPROBAR CUADRO DE BUSQUEDA
+const comprobarIdBusqueda = (e) =>{
+    let er = /^[0-9]+$/;
+    if (er.test(e.target.value)) {
+        setComprobarID(true);
+    }else{
+        setComprobarID(false);
+    }
+    console.log(comprobarID)
+}
+
+//COMPROBAR ENTRADA DE TITULO
+const entradaTitulo = (e) =>{
+    if((e.target.value.length > 0)){
+        setComprobarTitulo(true);
+    }
+    else{
+        setComprobarTitulo(false);
+    }
+}
+
+//COMPROBAR ENTRADA DE CARATULA
+const entradaCaratula = (e) =>{
+    let er = /^(ftp|http|https):\/\/[^ "]+$/;
+    if (er.test(e.target.value)) {
+        setComprobarCaratula(true);
+    }else{
+        setComprobarCaratula(false);
+    }
+}
+
+//COMPROBAR ENTRADA DE IMAGEN PROMOCIONAL
+const entradaImagenPromocional = (e) =>{
+    let er = /^(ftp|http|https):\/\/[^ "]+$/;
+    if (er.test(e.target.value)) {
+        setComprobarImagenPromocional(true);
+    }else{
+        setComprobarImagenPromocional(false);
+    }
+}
+
+//COMPROBAR ENTRADA DE GENERO
+const entradaGenero = (e) =>{
+    if (e.target.value.length > 0) {
+        setComprobarGenero(true);
+    }else{
+        setComprobarGenero(false);
+    }
+}
+
+//COMPROBAR ENTRADA DE ACTOR PRINCIPAL
+const entradaActorPrincipal = (e) =>{
+    let er = /^([a-z ñáéíóú]{1,120})$/i;
+    if(er.test(e.target.value)){
+        setComprobarActorPrincipal(true);
+    }
+    else{
+        setComprobarActorPrincipal(false);
+    }
+}
+
+//COMPROBAR ENTRADA DE CIUDAD
+const entradaCiudad = (e) =>{
+    let er = /Valencia|Getafe|Albacete/;
+    if (er.test(e.target.value)) {
+        setComprobarCiudad(true);
+    }else{
+        setComprobarCiudad(false);
+    }
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//RETURN
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     if (props.datosLogin.usuario.rol !== "administrador") {
         return(

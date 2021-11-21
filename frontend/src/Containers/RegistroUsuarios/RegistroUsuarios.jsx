@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Lateral from '../../Components/Lateral/Lateral';
-import './RegistroUsuarios.css';
+import './RegistroUsuarios.scss';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import PantallaError from '../PantallaError/PantallaError';

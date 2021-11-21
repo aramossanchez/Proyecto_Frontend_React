@@ -1,12 +1,8 @@
 import React from 'react';
-import './PantallaError.css';
-import { useNavigate } from 'react-router-dom';
-import { connect } from 'react-redux';
+import './PantallaError.scss';
 import gato from '../../img/gato-trabajando.png';
 
 const PantallaError = () =>{
-
-    const navigate = useNavigate();//CREADO PARA REDIRECCIONAR ENTRE CONTAINERS
 
     return(
         <div id="container-error">
@@ -21,6 +17,4 @@ const PantallaError = () =>{
     )
 }
 
-export default connect((state)=>({
-    datosLogin: state.datosLogin
-}))(PantallaError);
+export default PantallaError;

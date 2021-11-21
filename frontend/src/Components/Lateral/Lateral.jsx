@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './Lateral.css';
+import './Lateral.scss';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { LOGOUT } from '../../redux/types';

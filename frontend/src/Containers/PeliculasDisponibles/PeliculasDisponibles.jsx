@@ -53,7 +53,7 @@ const PeliculasDisponibles = (props) =>{
         return(
             <div id="container-peliculas">
                 <Lateral/>
-                <div id="contenido-peliculas">
+                <div id="contenido-peliculas" className="scroll">
                     <h2>Listado de películas disponibles para alquilar en {props.datosLogin.usuario.ciudad}</h2>
                     {/* MOSTRAR LAS PELICULAS O ICONO DE CARGANDO*/}
                     {cargando

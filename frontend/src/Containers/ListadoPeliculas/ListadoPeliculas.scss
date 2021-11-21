@@ -1,16 +1,11 @@
-:root {
-    --principal: #114358;
-    --complementario1: #F2AA1F;
-    --complementario2: #F1ECE7;
-    --oscuro: #090909;
-    --claro: #EEEEEE;
-}
+@import '../../style/colors.scss';
+
 /* CONTENEDOR DE LISTADO Y FILTROS DE PELICULAS */
 #container-listado-peliculas{
     width: 100vw;
     height: 100vh;
-    background-color: var(--claro);
-    color: var(--oscuro);
+    background-color: $claro;
+    color: $oscuro;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -24,12 +19,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    overflow-y: scroll;
-}
-/*H2 DE CONTENIDO peliculas*/
-#contenido-listado-peliculas h2{
-    font-size: 2em;
-    margin: 1em 0;
+    overflow-y: scroll;    
+    /*H2 DE CONTENIDO peliculas*/
+    h2{
+        font-size: 2em;
+        margin: 1em 0;
+    }
 }
 /*CONTENEDOR DE NOMBRES DE COLUMNAS*/
 #contenido-listado-peliculas #nombres-columnas-listado-peliculas{
@@ -62,25 +57,25 @@
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    background-color: var(--complementario2);
+    background-color: $complementario2;
     margin: 0.25em 0;
     transition: 0.3s;
     overflow: hidden;
-    border-top: 2px solid var(--oscuro);
-    border-bottom: 2px solid var(--oscuro);
-}
-.pelicula-lista-individual p{
-    font-size: 1em;
-    text-align: center;
-    width: 10%;
-}
-.pelicula-lista-individual span{
-    font-weight: bold;
+    border-top: 2px solid $oscuro;
+    border-bottom: 2px solid $oscuro;
+    p{
+        font-size: 1em;
+        text-align: center;
+        width: 10%;
+    }
+    span{
+        font-weight: bold;
+    }
 }
 .pelicula-lista-individual:hover{
-    background-color: var(--principal);
-    color: var(--claro);
+    background-color: $principal;
+    color: $claro;
     cursor: pointer;
-    border-top: 2px solid var(--complementario1);
-    border-bottom: 2px solid var(--complementario1);
+    border-top: 2px solid $complementario1;
+    border-bottom: 2px solid $complementario1;
 }

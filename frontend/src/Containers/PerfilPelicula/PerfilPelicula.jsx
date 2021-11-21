@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './PerfilPelicula.css';
+import './PerfilPelicula.scss';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import flecha from '../../img/flecha.png';

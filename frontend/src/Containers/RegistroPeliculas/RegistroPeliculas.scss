@@ -1,16 +1,11 @@
-:root {
-    --principal: #114358;
-    --complementario1: #F2AA1F;
-    --complementario2: #F1ECE7;
-    --oscuro: #090909;
-    --claro: #EEEEEE;
-}
+@import '../../style/colors.scss';
+
 /* CONTENEDOR REGISTRO */
 #container-registro-pelicula{
     width: 100vw;
     height: 100vh;
-    background-color: var(--claro);
-    color: var(--oscuro);
+    background-color: $claro;
+    color: $oscuro;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -37,39 +32,39 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    background-color: var(--complementario2);
+    background-color: $complementario2;
     border-radius: 0.5em;
-    box-shadow: 0px 0px 8px 0.1em var(--oscuro);
+    box-shadow: 0px 0px 8px 0.1em $oscuro;
 }
 /* INPUT DE REGISTRO */
 #cuadro-registro-pelicula input{
     all:unset;
     text-align: left;
     border: 2px solid transparent;
-    border-bottom: 2px solid var(--oscuro);
+    border-bottom: 2px solid $oscuro;
     padding: 0.25em;
     width: 90%;
 }
 #cuadro-registro-pelicula input:focus{
-    border: 2px solid var(--oscuro);
-    background-color: var(--complementario1);
-    color: var(--oscuro);
+    border: 2px solid $oscuro;
+    background-color: $complementario1;
+    color: $oscuro;
 }
 #cuadro-registro-pelicula input::placeholder {
-    color: var(--principal);
+    color: $principal;
 }
 #cuadro-registro-pelicula textarea{
     all:unset;
     text-align: left;
-    border: 2px solid var(--oscuro);
+    border: 2px solid $oscuro;
     padding: 0.25em;
     width: 90%;
 }
 #cuadro-registro-pelicula textarea::placeholder {
-    color: var(--principal);
+    color: $principal;
 }
 #cuadro-registro-pelicula textarea:focus{
-    border: 2px solid var(--oscuro);
-    background-color: var(--complementario1);
-    color: var(--oscuro);
+    border: 2px solid $oscuro;
+    background-color: $complementario1;
+    color: $oscuro;
 }
