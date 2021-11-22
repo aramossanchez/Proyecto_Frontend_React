@@ -3,7 +3,7 @@
 ***
 ![Vista Inicial APP React](./frontend/src/screenshots/home.jpg)
 ***
-La aplicación se encuentra desplegada en AWS en el siguiente enlace: https://deploy.d33nwpnuidrsr6.amplifyapp.com/
+## La aplicación se encuentra desplegada en AWS en el siguiente enlace: https://deploy.d33nwpnuidrsr6.amplifyapp.com/
 <br>
 La aplicación tiene las siguientes características:
 * Los usuarios pueden logarse en la aplicación. Existen 2 tipos de usuarios, y cada perfil podrá realizar una serie de acciones:
